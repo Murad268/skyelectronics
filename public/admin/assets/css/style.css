@@ -1,0 +1,317 @@
+.admin__panel__wrapper {
+   display: grid;
+   grid-template-columns: 20% 75%;
+   height: max-content;
+}
+.dashboard {
+   border-right: 1px solid rgba(0, 0, 0, 0.1) ;
+   height: 100%;
+   padding: 20px;
+}
+.dashboard__logo {
+   width: 75%;
+   height: 50px;
+}
+.dashboard__logo img {
+   width: 100%;
+   height: 100%;
+}
+
+.select-menu {
+   max-width: 330px;
+   margin: 20px auto;
+ }
+ .select-menu .select-btn {
+   display: flex;
+   height: 55px;
+   background: #fff;
+   padding: 20px;
+   font-size: 18px;
+   font-weight: 400;
+   border-radius: 8px;
+   align-items: center;
+   cursor: pointer;
+   justify-content: space-between;
+   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+ }
+ .select-menu .options {
+   position: absolute;
+   overflow-y: auto;
+   max-height: 295px;
+   padding: 10px;
+   border-radius: 8px;
+   background: #fff;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   animation-name: fadeInDown;
+   -webkit-animation-name: fadeInDown;
+   animation-duration: 0.35s;
+   animation-fill-mode: both;
+   -webkit-animation-duration: 0.35s;
+   -webkit-animation-fill-mode: both;
+ }
+ .select-menu .options .option {
+   display: flex;
+   height: 55px;
+   cursor: pointer;
+   padding: 0 16px;
+   border-radius: 8px;
+   align-items: center;
+   background: #fff;
+ }
+ .select-menu .options .option:hover {
+   background: #f2f2f2;
+ }
+ .select-menu .options .option i {
+   font-size: 25px;
+   margin-right: 12px;
+ }
+ .select-menu .options .option .option-text {
+   font-size: 18px;
+   color: #333;
+ }
+
+ .select-btn i {
+   font-size: 25px;
+   transition: 0.3s;
+ }
+
+ .select-menu.active .select-btn i {
+   transform: rotate(-180deg);
+ }
+ .select-menu.active .options {
+   display: block;
+   opacity: 0;
+   z-index: 10;
+   animation-name: fadeInUp;
+   -webkit-animation-name: fadeInUp;
+   animation-duration: 0.4s;
+   animation-fill-mode: both;
+   -webkit-animation-duration: 0.4s;
+   -webkit-animation-fill-mode: both;
+ }
+
+ @keyframes fadeInUp {
+   from {
+     transform: translate3d(0, 30px, 0);
+   }
+   to {
+     transform: translate3d(0, 0, 0);
+     opacity: 1;
+   }
+ }
+ @keyframes fadeInDown {
+   from {
+     transform: translate3d(0, 0, 0);
+     opacity: 1;
+   }
+   to {
+     transform: translate3d(0, 20px, 0);
+     opacity: 0;
+   }
+ }
+
+ .sBtn-text {
+   display: flex;
+   align-items: center;
+ }
+ .sBtn-text i {
+   font-size: 20px;
+   margin-right: 10px;
+ }
+
+ .option a {
+   text-decoration: none;
+   color: black;
+ }
+ .panel {
+   padding: 20px;
+ }
+ .search{
+   position: relative;
+   box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+   }
+
+   .search input{
+
+    height: 60px;
+    text-indent: 25px;
+    border: 2px solid #d6d4d4;
+
+
+   }
+
+
+   .search input:focus{
+    box-shadow: none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+   }
+
+   .search .fa-search{
+    position: absolute;
+    top: 20px;
+    left: 16px;
+   }
+
+   .search button{
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      height: 50px;
+      width: 110px;
+   }
+
+   .panel__cordinate {
+      display: flex;
+      align-items: center;
+      margin-top: 30px;
+   }
+   .panel__cordinate a {
+      text-decoration: none;
+      color: black;
+   }
+
+   .panel__info {
+      padding: 40px;
+      width: 80%;
+      margin: 40px auto 0 auto;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   }
+
+
+
+   @import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
+
+.card {
+       position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0px solid transparent;
+    border-radius: 0px;
+}
+
+
+.card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+.card .card-title {
+    position: relative;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+}
+
+* {
+    outline: none;
+}
+
+.table th, .table thead th {
+    font-weight: 500;
+}
+
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+
+
+.table th {
+    padding: 1rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+
+.table th, .table thead th {
+    font-weight: 500;
+}
+
+
+th {
+    text-align: inherit;
+}
+
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+
+.customcheckbox {
+    display: block;
+    position: relative;
+    padding-left: 24px;
+    font-weight: 100;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+.customcheckbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: -3px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #CDCDCD;
+    border-radius: 6px;
+}
+
+
+.customcheckbox input:checked ~ .checkmark {
+    background-color: #2196BB;
+}
+
+
+.customcheckbox .checkmark:after {
+    left: 8px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.siteLogo {
+    width: 200px;
+    height: 50px;
+}
+.siteLogo img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
