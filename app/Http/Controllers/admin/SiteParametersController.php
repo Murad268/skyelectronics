@@ -34,7 +34,7 @@ class SiteParametersController extends Controller
         if($update) {
             return redirect()->back()->with('success', 'Məlumatlar uğurla yeniləndilər');
         } else {
-            return redirect()->back()->with('success', 'Məlumatların yenilənməsi zamanı xəta');
+            return redirect()->back()->with('error', 'Məlumatların yenilənməsi zamanı xəta');
         }
     }
 }

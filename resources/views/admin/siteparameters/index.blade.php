@@ -39,6 +39,7 @@
                     {{session('error')}}
                 </div>
             @endif
+            
         </div>
         <button style="margin: 0 auto" class="d-block mt-4 btn btn-success">Məlumatları yenilə</button>
     </form>
