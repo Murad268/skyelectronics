@@ -11,26 +11,30 @@ class SiteParametersController extends Controller
 {
     public function index() {
         $siteInfo = Settings::all();
-        return view('admin.siteParameters.index', compact('siteInfo'));
+        return view('admin.siteparameters.index', compact('siteInfo'));
     }
 
     public function update(Request $req) {
+        $settings = Settings::find(3);
         if($req->hasFile('sitelogosu')) {
             $image = $req->file('sitelogosu');
             $path = public_path('/admin/assets/images/');
             File::delete($path,'logo.'.$image->getClientOriginalExtension());
             $image->move($path,'logo.'.$image->getClientOriginalExtension());
+            $settings->siteLogosu = 'logo.'.$image->getClientOriginalExtension();
+
+            $settings->save();
         }
 
 
 
-        $settings = Settings::find(3);
-        $all = $req->all();
+
+        $all = $req->except('sitelogosu');
         $update = $settings->update($all);
         if($update) {
             return redirect()->back()->with('success', 'Məlumatlar uğurla yeniləndilər');
         } else {
-            return redirect()->back()->with('success', 'Məlumatlar;n yenilənməsi zamanı xəta');
+            return redirect()->back()->with('success', 'Məlumatların yenilənməsi zamanı xəta');
         }
     }
 }

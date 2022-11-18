@@ -1,6 +1,6 @@
 <div class="dashboard">
     <div class="dashboard__logo">
-        <a href="{{route('admin.index')}}"><img src="{{asset('admin/assets/images/logo.png')}}" alt=""></a>
+        <a href="{{route('admin.index')}}"><img src="{{asset('admin/assets/images/'.$siteInfo[0]->siteLogosu)}}" alt=""></a>
     </div>
     <div class="dashboard__btns">
     <div class="select-menu">
@@ -12,13 +12,13 @@
     </div>
     <ul style="width: 230px;" class="options">
         <li class="option">
-            <span class="option-text"><a href="{{route('siteParameters')}}">Ümumi parametrlər</a></span>
+            <span class="option-text"><a href="{{route('admin.siteparameters')}}">Ümumi parametrlər</a></span>
         </li>
         <li class="option">
-            <span class="option-text">Səhifə Parametrləri</span>
+            <span class="option-text"><a href="{{route('admin.phonesparameters')}}">Telefon Parametrləri</a></span>
         </li>
         <li class="option">
-            <span class="option-text">Instagram</span>
+            <span class="option-text"><a href="{{route('admin.contactsparameters')}}">Əlaqə Parametrləri</a></span>
         </li>
         <li class="option">
             <span class="option-text">Instagram</span>

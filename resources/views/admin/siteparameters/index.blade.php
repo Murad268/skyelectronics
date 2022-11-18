@@ -11,11 +11,11 @@
         <i class="me-2 fas fa-angle-right"></i>
         <span><a href="">Ümumi parametrlər</a></span>
     </div>
-    <form method="post" action="{{Route('siteparametersedit')}}" enctype="multipart/form-data">
+    <form method="post" action="{{Route('admin.siteparametersedit')}}" enctype="multipart/form-data">
         @csrf
         <div class="panel__info">
             <div class="siteLogo">
-                <img src="{{asset('admin/assets/images/logo.png')}}" alt="">
+                <img src="{{asset('admin/assets/images/'.$siteInfo[0]->siteLogosu)}}" alt="">
             </div>
             <label for="disabledTextInput" class="form-label">Logonu dəyiş</label>
             <input type="file" name="sitelogosu" class="form-control">
