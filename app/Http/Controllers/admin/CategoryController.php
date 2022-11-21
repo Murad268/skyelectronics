@@ -10,12 +10,19 @@ use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
-    public function index() {
+    public function index(Request $req) {
+        if($req->catsearch != null) {
+            $q = $req->catsearch;
+            $categories =  DB::table('categories')->where('cat__name','LIKE','%'.$q.'%')
+            ->get();
+        } else {
+            $categories = categories::all();
+        }
+
         $siteInfo = Settings::all();
-        $categories = categories::all();
+        $catlist = categories::all();
 
-
-        return view('admin.categoryparameters.index', compact('siteInfo', 'categories'));
+        return view('admin.categoryparameters.index', compact('siteInfo', 'categories', 'catlist'));
     }
     public function create(Request $req) {
         $categories = new categories();
@@ -41,7 +48,8 @@ class CategoryController extends Controller
         }
     }
     public function edit($id) {
-        $el = categories::find($id);
+
+        $el = categories::find((int)$id);
         $siteInfo = Settings::all();
         $categories = categories::all();
         return view('admin.categoryparameters.edit', compact('el', 'siteInfo', 'categories'));

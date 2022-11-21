@@ -2,16 +2,20 @@
 @section('content')
 <div class="panel">
     <div class="search">
-        <i class="fa fa-search"></i>
-        <input type="text" class="form-control" placeholder="axtar">
-        <button class="btn btn-success">Search</button>
+        <form method="post" action="{{route('admin.categories.search')}}">
+            @csrf
+            <i class="fa fa-search"></i>
+            <input name="catsearch" type="text" class="form-control" placeholder="axtar">
+            <button class="btn btn-success">Search</button>
+        </form>
     </div>
     <div class="panel__cordinate">
         <a href=""><i class="me-2 fa fa-home" aria-hidden="true"></i></a>
         <i class="me-2 fas fa-angle-right"></i>
-        <span><a href="">Ümumi parametrlər</a></span>
+        <span><a href="">Kateqoriya parametrləri</a></span>
     </div>
         <div style="width: 100%" class="panel__info">
+        <a class="btn btn-primary" href="#newcat">Yeni kateqoriya əlavə elə</a>
         <div class="row">
                <div class="col-12">
                    <div class="card">
@@ -71,15 +75,15 @@
                </div>
         </div>
         <hr>
-        <form action="{{Route('admin.categories.create')}}" method="post">
+        <form id="newcat" action="{{Route('admin.categories.create')}}" method="post">
             @csrf
             <label for="disabledTextInput" class="mt-4 form-label">Aid olduğu kateqoriya</label>
             <select class="form-select" name="upid" id="">
                 <option value="0">Yeni bir kateqoriya</option>
-                @foreach($categories as $category)
+                @foreach($catlist as $category)
                 @if($category->upid == 0)
                     <option value="{{$category->id}}">{{$category->cat__name}}</option>
-                    @foreach($categories as $category1)
+                    @foreach($catlist as $category1)
                     @if($category1->upid == $category->id)
                         <option disabled value="{{$category->id}}">{{$category1->cat__name}}</option>
                     @endif

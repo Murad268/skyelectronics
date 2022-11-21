@@ -32,6 +32,7 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
     });
     Route::group(['prefix' => 'categories', 'as' => 'categories.'], function() {
         Route::get('/', [CategoryController::class, 'index'])->name('index');
+        Route::post('/', [CategoryController::class, 'index'])->name('search');
         Route::post('/create', [CategoryController::class, 'create'])->name('create');
         Route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('delete');
         Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('edit');
