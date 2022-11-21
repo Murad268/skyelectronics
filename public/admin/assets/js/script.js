@@ -23,3 +23,13 @@ options.forEach((option) => {
 
 
 
+
+
+function alertindchange(selectSeelector) {
+    const select = document.querySelector(selectSeelector);
+    select.addEventListener('change', () => {
+        alert('!!!Diqqət!!! Üst kateqoriya dəyişilın zaman bütün alt kateqoriyalar silinəcək!!!');
+    })
+}
+
+alertindchange('.category__select')

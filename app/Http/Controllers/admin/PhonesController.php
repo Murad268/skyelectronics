@@ -14,6 +14,7 @@ class PhonesController extends Controller
     public function index() {
         $siteInfo = Settings::all();
         $allPhones = phones::all();
+       
         return view('admin.phoneparameters.index', compact('allPhones', 'siteInfo'));
     }
     public function create(Request $req) {

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ContactsController;
 use App\Http\Controllers\admin\FaqController;
 use App\Http\Controllers\admin\PhonesController;
@@ -28,6 +29,13 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::post('/store', [FaqController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [FaqController::class, 'edit'])->name('edit');
         Route::post('/update/{id}', [FaqController::class, 'update'])->name('update');
+    });
+    Route::group(['prefix' => 'categories', 'as' => 'categories.'], function() {
+        Route::get('/', [CategoryController::class, 'index'])->name('index');
+        Route::post('/create', [CategoryController::class, 'create'])->name('create');
+        Route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('delete');
+        Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [CategoryController::class, 'update'])->name('update');
     });
 
 });
