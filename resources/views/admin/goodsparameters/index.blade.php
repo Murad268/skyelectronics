@@ -2,7 +2,7 @@
 @section('content')
 <div class="panel">
     <div class="search">
-        <form method="post" action="">
+        <form method="post" action="{{route('admin.goods.search')}}">
             @csrf
             <i class="fa fa-search"></i>
             <input name="catsearch" type="text" class="form-control" placeholder="axtar">
@@ -76,7 +76,7 @@
                                         @endforeach
                                    </tbody>
                                </table>
-
+                               {{$goods->appends(['_token' => request()->_token, 'catsearch' => request()->catsearch])->links("pagination::bootstrap-5")}}
                            </div>
                            <hr>
                            <form id="newgoods" action="{{Route('admin.goods.store')}}" enctype="multipart/form-data" method="post">

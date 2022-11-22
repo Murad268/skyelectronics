@@ -12,9 +12,15 @@ use Illuminate\Http\Request;
 
 class GoodController extends Controller
 {
-    public function index() {
+    public function index(Request $req) {
+        if(isset($req->catsearch)) {
+            $q = $req->catsearch;
+            $goods =  Goods::where('goods_name', 'like', '%'.$q.'%')->paginate(2);
+        } else {
+            $goods = Goods::paginate(2);
+        }
         $siteInfo = Settings::all();
-        $goods = Goods::all();
+
         $categories = categories::all();
         $firms = Firms::all();
         return view('admin.goodsparameters.index', compact('siteInfo', 'goods', 'categories', 'firms'));
