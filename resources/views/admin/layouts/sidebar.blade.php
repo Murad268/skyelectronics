@@ -4,7 +4,7 @@
     </div>
     <div class="dashboard__btns">
         <div class="dashboard__button">
-            <a href="{{route('admin.faq.index')}}">Sayt Məlumatları</a>
+            <a href="{{route('admin.faq.index')}}">Ən çox verilən suallar</a>
         </div>
         <div class="dashboard__button">
             <a href="{{route('admin.categories.index')}}">Kateqoriyalar</a>

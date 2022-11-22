@@ -1,15 +1,10 @@
 @extends('admin.layouts.admin')
 @section('content')
 <div class="panel">
-    <div class="search">
-        <i class="fa fa-search"></i>
-        <input type="text" class="form-control" placeholder="axtar">
-        <button class="btn btn-success">Search</button>
-    </div>
     <div class="panel__cordinate">
         <a href=""><i class="me-2 fa fa-home" aria-hidden="true"></i></a>
         <i class="me-2 fas fa-angle-right"></i>
-        <span><a href="">Ümumi parametrlər</a></span>
+        <span><a href="">Firmanı yeniləmək</a></span>
     </div>
         <div class="panel__info">
         <form id="newcat" action="{{Route('admin.firms.update', ['id' => $firm->id])}}" enctype="multipart/form-data" method="post">

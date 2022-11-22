@@ -1,15 +1,11 @@
 @extends('admin.layouts.admin')
 @section('content')
 <div class="panel">
-    <div class="search">
-        <i class="fa fa-search"></i>
-        <input type="text" class="form-control" placeholder="axtar">
-        <button class="btn btn-success">Search</button>
-    </div>
+
     <div class="panel__cordinate">
         <a href=""><i class="me-2 fa fa-home" aria-hidden="true"></i></a>
         <i class="me-2 fas fa-angle-right"></i>
-        <span><a href="">Ümumi parametrlər</a></span>
+        <span><a href="">Sualı yeniləmək</a></span>
     </div>
     <form method="post" action="{{Route('admin.faq.update', ['id' => $question->id])}}" enctype="multipart/form-data">
         @csrf
