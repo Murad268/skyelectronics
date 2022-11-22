@@ -45,6 +45,7 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::get('/delete/{id}', [FirmsController::class, 'delete'])->name('delete');
         Route::get('/edit/{id}', [FirmsController::class, 'edit'])->name('edit');
         Route::post('/update/{id}', [FirmsController::class, 'update'])->name('update');
+        Route::post('/', [FirmsController::class, 'index'])->name('search');
     });
 });
 

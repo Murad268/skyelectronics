@@ -2,9 +2,12 @@
 @section('content')
 <div class="panel">
     <div class="search">
-        <i class="fa fa-search"></i>
-        <input type="text" class="form-control" placeholder="axtar">
-        <button class="btn btn-success">Search</button>
+        <form method="post" action="{{route('admin.firms.search')}}">
+            @csrf
+            <i class="fa fa-search"></i>
+            <input name="catsearch" type="text" class="form-control" placeholder="axtar">
+            <button class="btn btn-success">Search</button>
+        </form>
     </div>
     <div class="panel__cordinate">
         <a href=""><i class="me-2 fa fa-home" aria-hidden="true"></i></a>
@@ -13,11 +16,20 @@
     </div>
 
         <div class="panel__info">
-
+        @if(session('success'))
+            <div class="mt-3 alert alert-success">
+                {{session('success')}}
+            </div>
+        @endif
+        @if(session('error'))
+            <div class="mt-3 alert alert-danger">
+                {{session('error')}}
+            </div>
+        @endif
         <div class="col-12">
                    <div class="card">
                            <div class="mt-5 table-responsive">
-                               <table class="table">
+                               <table class="table mb-5">
                                    <thead class="thead-light">
                                        <tr>
                                            <th>
@@ -50,6 +62,7 @@
 
                                    </tbody>
                                </table>
+                               {{$firms->appends(['_token' => request()->_token, 'catsearch' => request()->catsearch])->links("pagination::bootstrap-5")}}
                            </div>
                            <hr>
                            <form id="newcat" action="{{Route('admin.firms.store')}}" enctype="multipart/form-data" method="post">

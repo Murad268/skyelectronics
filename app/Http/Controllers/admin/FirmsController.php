@@ -10,9 +10,16 @@ use Illuminate\Support\Facades\File;
 
 class FirmsController extends Controller
 {
-    public function index() {
+    public function index(Request $req) {
+
+        if($req->catsearch != null) {
+            $q = $req->catsearch;
+            $firms =  Firms::where('firm__name', 'like', '%'.$q.'%')->paginate(2);
+        } else {
+            $firms = Firms::paginate(2);
+        }
         $siteInfo = Settings::all();
-        $firms = Firms::all();
+
         return view('admin.firmparameters.index', compact('siteInfo', 'firms'));
     }
 
@@ -30,17 +37,17 @@ class FirmsController extends Controller
         ]);
 
         if($created) {
-            return redirect()->back()->with('success', 'Firma uğurla əlavə edildi');
+            return redirect()->route('admin.firms.index')->with('success', 'Firma uğurla əlavə edildi');
         } else {
-            return redirect()->back()->with('error', 'Firmanın əlavə edilməsi zamanı xəta');
+            return redirect()->route('admin.firms.index')->with('error', 'Firmanın əlavə edilməsi zamanı xəta');
         }
     }
     public function delete($id) {
         $destroyed = Firms::destroy($id);
         if($destroyed) {
-            return redirect()->back()->with('success', 'Firma uğurla silindi');
+            return redirect()->route('admin.firms.index')->with('success', 'Firma uğurla silindi');
         } else {
-            return redirect()->back()->with('error', 'Firmanın silinməsi zamanı xəta');
+            return redirect()->route('admin.firms.index')->with('error', 'Firmanın silinməsi zamanı xəta');
         }
     }
 
