@@ -17,4 +17,5 @@ class Firms extends Model
             return 'admin/assets/images/';
         }
     }
+  
 }

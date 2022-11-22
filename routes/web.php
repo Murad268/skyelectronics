@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\FaqController;
 use App\Http\Controllers\admin\FirmsController;
 use App\Http\Controllers\admin\PhonesController;
 use App\Http\Controllers\admin\SiteParametersController;
+use App\Http\Controllers\admin\GoodController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -47,6 +48,12 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::get('/edit/{id}', [FirmsController::class, 'edit'])->name('edit');
         Route::post('/update/{id}', [FirmsController::class, 'update'])->name('update');
         Route::post('/', [FirmsController::class, 'index'])->name('search');
+    });
+    Route::group(['prefix' => 'goods', 'as' => 'goods.'], function() {
+        Route::get('/', [GoodController::class, 'index'])->name('index');
+        Route::post('/store', [GoodController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [GoodController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [GoodController::class, 'update'])->name('update');
     });
 });
 

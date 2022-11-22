@@ -14,7 +14,7 @@ class PhonesController extends Controller
     public function index() {
         $siteInfo = Settings::all();
         $allPhones = phones::all();
-       
+
         return view('admin.phoneparameters.index', compact('allPhones', 'siteInfo'));
     }
     public function create(Request $req) {
@@ -38,7 +38,7 @@ class PhonesController extends Controller
         if($updated) {
             return redirect()->route('admin.phonesparameters')->with('success', 'Məlumatlar uğurla yeniləndilər');
         } else {
-            return redirect()->route('admin.phonesparameters')->with('error', 'Məlumatlar;n yenilənməsi zamanı xəta');
+            return redirect()->route('admin.phonesparameters')->with('error', 'Məlumatların yenilənməsi zamanı xəta');
         }
     }
     public function delete(Request $req) {
