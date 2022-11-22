@@ -336,3 +336,17 @@ th {
     padding: 20px;
     text-align: justify;
 }
+.img_class {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img_class img {
+    display: block;
+    width: 150px;
+    height: 60px;
+    object-fit: fill;
+}
+th {
+    text-align: center;
+}

@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ContactsController;
 use App\Http\Controllers\admin\FaqController;
+use App\Http\Controllers\admin\FirmsController;
 use App\Http\Controllers\admin\PhonesController;
 use App\Http\Controllers\admin\SiteParametersController;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +39,13 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('edit');
         Route::post('/update/{id}', [CategoryController::class, 'update'])->name('update');
     });
-
+    Route::group(['prefix' => 'firms', 'as' => 'firms.'], function() {
+        Route::get('/', [FirmsController::class, 'index'])->name('index');
+        Route::post('/store', [FirmsController::class, 'store'])->name('store');
+        Route::get('/delete/{id}', [FirmsController::class, 'delete'])->name('delete');
+        Route::get('/edit/{id}', [FirmsController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [FirmsController::class, 'update'])->name('update');
+    });
 });
 
 

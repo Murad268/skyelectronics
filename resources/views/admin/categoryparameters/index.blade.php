@@ -17,6 +17,27 @@
         <div style="width: 100%" class="panel__info">
         <a class="btn btn-primary" href="#newcat">Yeni kateqoriya əlavə elə</a>
         <div class="row">
+            @if(session('addsuccess'))
+                    <div class="mt-3 alert alert-success">
+                        {{session('addsuccess')}}
+                    </div>
+                @endif
+                @if(session('adderror'))
+                    <div class="mt-3 alert alert-danger">
+                        {{session('adderror')}}
+                    </div>
+                @endif
+
+            @if(session('deletesuccess'))
+                <div class="mt-3 alert alert-success">
+                    {{session('deletesuccess')}}
+                </div>
+            @endif
+            @if(session('deleterror'))
+                <div class="mt-3 alert alert-danger">
+                    {{session('deleterror')}}
+                </div>
+            @endif
                <div class="col-12">
                    <div class="card">
                            <div class="mt-5 table-responsive">

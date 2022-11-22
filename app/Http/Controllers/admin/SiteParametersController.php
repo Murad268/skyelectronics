@@ -19,7 +19,7 @@ class SiteParametersController extends Controller
         if($req->hasFile('sitelogosu')) {
 
             $image = $req->file('sitelogosu');
-            $path = public_path('/admin/assets/images/');
+            $path = public_path('/admin/assets/images/firms');
             File::delete($path,'logo.'.$image->getClientOriginalExtension());
             $image->move($path,'logo.'.$image->getClientOriginalExtension());
             $settings->siteLogosu = 'logo.'.$image->getClientOriginalExtension();
