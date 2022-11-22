@@ -12,7 +12,7 @@
     <div class="panel__cordinate">
         <a href=""><i class="me-2 fa fa-home" aria-hidden="true"></i></a>
         <i class="me-2 fas fa-angle-right"></i>
-        <span><a href="">Firma parametrləri</a></span>
+        <span><a href="">Məhsul parametrləri</a></span>
     </div>
 
         <div style="width: 100%" class="panel__info">
@@ -71,7 +71,7 @@
                                                 <td>{{$item->tags}}</td>
                                                 <td>{{$item->cashdicount}}</td>
                                                 <td><a class="text-primary" href="{{route('admin.goods.edit', ['id' => $item->id])}}"><i class="fa fa-pencil"></i></a></td>
-                                                <td><a onclick="return confirm('Kateqoriyanı silmək istədiyinizdən əminsiiniz?')" class="text-danger" href=""><i class="fa fa-trash"></i></a></td>
+                                                <td><a onclick="return confirm('Məhsulu silmək istədiyinizdən əminsiiniz?')" class="text-danger" href=""><i class="fa fa-trash"></i></a></td>
                                             </tr>
                                         @endforeach
                                    </tbody>

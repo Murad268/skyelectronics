@@ -2,7 +2,7 @@
 @section('content')
 <div class="panel">
     <div class="search">
-        <form method="post" action="{{route('admin.firms.search')}}">
+        <form method="post" action="">
             @csrf
             <i class="fa fa-search"></i>
             <input name="catsearch" type="text" class="form-control" placeholder="axtar">
@@ -12,10 +12,10 @@
     <div class="panel__cordinate">
         <a href=""><i class="me-2 fa fa-home" aria-hidden="true"></i></a>
         <i class="me-2 fas fa-angle-right"></i>
-        <span><a href="">Firma parametrləri</a></span>
+        <span><a href="">Tag parametrləri</a></span>
     </div>
 
-        <div class="panel__info">
+        <div style="width: 100%" class="panel__info">
         @if(session('success'))
             <div class="mt-3 alert alert-success">
                 {{session('success')}}
@@ -27,8 +27,8 @@
             </div>
         @endif
         <div class="col-12">
-            <a href="#newfirm" class="btn btn-primary">Yeni firma əlavə elə</a>
-                   <div class="card">
+            <a href="#newgoods" class="btn btn-primary">Yeni Tag əlavə elə</a>
+                   <div class="card goods__section">
                            <div class="mt-5 table-responsive">
                                <table class="table mb-5">
                                    <thead class="thead-light">
@@ -39,14 +39,14 @@
                                                    <span class="checkmark"></span>
                                                </label>
                                            </th>
-                                           <th scope="col">Firma Şəkli</th>
-                                           <th scope="col">Firma Adı</th>
-                                           <th scope="col"></th>
+                                           <th scope="col">Tag Adı</th>
+
+
                                            <th scope="col"></th>
                                        </tr>
                                    </thead>
                                    <tbody class="customtable">
-                                        @foreach($firms as $firm)
+                                        @foreach($tags as $item)
                                             <tr style="color: blue;">
                                                 <th>
                                                     <label class="customcheckbox">
@@ -54,26 +54,23 @@
                                                         <span class="checkmark"></span>
                                                     </label>
                                                 </th>
-                                                <td class="img_class"><img src="{{asset(asset($firm->img($firm->firm__logo).$firm->firm__logo))}}" alt=""></td>
-                                                <th>{{$firm->firm__name}}</th>
-                                                <td><a class="text-primary" href="{{route('admin.firms.edit', ['id' => $firm->id])}}"><i class="fa fa-pencil"></i></a></td>
-                                                <td><a onclick="return confirm('Firmanı silmək istədiyinizdən əminsiiniz?')" class="text-danger" href="{{route('admin.firms.delete', ['id' => $firm->id])}}"><i class="fa fa-trash"></i></a></td>
+
+                                                <td>{{$item->tag__name}}</td>
+
+                                                <td><a onclick="return confirm('Tagı silmək istədiyinizdən əminsiiniz?')" class="text-danger" href="{{route('admin.tags.delete', ['id' => $item->id])}}"><i class="fa fa-trash"></i></a></td>
                                             </tr>
                                         @endforeach
-
                                    </tbody>
                                </table>
-                               {{$firms->appends(['_token' => request()->_token, 'catsearch' => request()->catsearch])->links("pagination::bootstrap-5")}}
+
                            </div>
                            <hr>
-                           <form id="newfirm" action="{{Route('admin.firms.store')}}" enctype="multipart/form-data" method="post">
+                           <form id="newgoods" action="{{Route('admin.tags.store')}}" enctype="multipart/form-data" method="post">
                             @csrf
+                            <label for="disabledTextInput" class="mt-4 form-label">Tag adı</label>
+                            <input type="text" name="tag__name" id="disabledTextInput" class="form-control">
 
-                            <label for="disabledTextInput" class="mt-4 form-label">Firma şəkli</label>
-                            <input type="file" name="firm__logo" id="disabledTextInput" class="form-control">
-                            <label for="disabledTextInput" class="mt-4 form-label">Firma adı</label>
-                            <input type="text" name="firm__name" id="disabledTextInput" class="form-control">
-                            <button class="mt-3 btn btn-success">Yeni firma əlavə elə</button>
+                            <button class="mt-3 btn btn-success">Yeni Tag əlavə elə</button>
                         </form>
                    </div>
 

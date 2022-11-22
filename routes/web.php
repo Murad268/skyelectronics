@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\FirmsController;
 use App\Http\Controllers\admin\PhonesController;
 use App\Http\Controllers\admin\SiteParametersController;
 use App\Http\Controllers\admin\GoodController;
+use App\Http\Controllers\admin\TagsController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -55,6 +56,12 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::get('/edit/{id}', [GoodController::class, 'edit'])->name('edit');
         Route::post('/update/{id}', [GoodController::class, 'update'])->name('update');
         Route::post('/', [GoodController::class, 'index'])->name('search');
+    });
+
+    Route::group(['prefix' => 'tags', 'as' => 'tags.'], function() {
+        Route::get('/', [TagsController::class, 'index'])->name('index');
+        Route::post('/store', [TagsController::class, 'store'])->name('store');
+        Route::get('/delete/{id}', [TagsController::class, 'delete'])->name('delete');
     });
 });
 

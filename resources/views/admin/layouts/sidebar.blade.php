@@ -13,6 +13,9 @@
             <a href="{{route('admin.categories.index')}}">Kateqoriyalar</a>
         </div>
         <div class="dashboard__button">
+            <a href="{{route('admin.tags.index')}}">Tag parametrləri</a>
+        </div>
+        <div class="dashboard__button">
             <a href="{{route('admin.firms.index')}}">Firma parametrləri</a>
         </div>
         <div class="select-menu">

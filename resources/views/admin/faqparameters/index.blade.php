@@ -9,7 +9,7 @@
     <div class="panel__cordinate">
         <a href=""><i class="me-2 fa fa-home" aria-hidden="true"></i></a>
         <i class="me-2 fas fa-angle-right"></i>
-        <span><a href="">Ümumi parametrlər</a></span>
+        <span><a href="">Ən çox verilən suallar</a></span>
     </div>
     <form method="post" action="{{Route('admin.faq.store')}}" enctype="multipart/form-data">
         @csrf
