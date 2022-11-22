@@ -12,7 +12,7 @@
     <div class="panel__cordinate">
         <a href=""><i class="me-2 fa fa-home" aria-hidden="true"></i></a>
         <i class="me-2 fas fa-angle-right"></i>
-        <span><a href="">Ümumi parametrlər</a></span>
+        <span><a href="">Firma parametrləri</a></span>
     </div>
 
         <div class="panel__info">
@@ -27,6 +27,7 @@
             </div>
         @endif
         <div class="col-12">
+            <a href="#newfirm" class="btn btn-primary">Yeni firma əlavə elə</a>
                    <div class="card">
                            <div class="mt-5 table-responsive">
                                <table class="table mb-5">
@@ -65,7 +66,7 @@
                                {{$firms->appends(['_token' => request()->_token, 'catsearch' => request()->catsearch])->links("pagination::bootstrap-5")}}
                            </div>
                            <hr>
-                           <form id="newcat" action="{{Route('admin.firms.store')}}" enctype="multipart/form-data" method="post">
+                           <form id="newfirm" action="{{Route('admin.firms.store')}}" enctype="multipart/form-data" method="post">
                             @csrf
 
                             <label for="disabledTextInput" class="mt-4 form-label">Firma şəkli</label>
