@@ -2,15 +2,10 @@
 
 @section('content')
 <div class="panel">
-    <div class="search">
-        <i class="fa fa-search"></i>
-        <input type="text" class="form-control" placeholder="axtar">
-        <button class="btn btn-success">Search</button>
-    </div>
     <div class="panel__cordinate">
         <a href=""><i class="me-2 fa fa-home" aria-hidden="true"></i></a>
         <i class="me-2 fas fa-angle-right"></i>
-        <span><a href="">Ümumi parametrlər</a></span>
+        <span><a href="">kateqoriya yeniləmək</a></span>
     </div>
         <div style="width: 100%" class="panel__info">
             <form action="{{Route('admin.categories.update', ['id' => $el->id])}}" method="post">

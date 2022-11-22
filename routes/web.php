@@ -24,6 +24,7 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
     Route::post('/edit', [ContactsController::class, 'edit'])->name('contactsparametersedit');
     Route::post('/create', [PhonesController::class, 'create'])->name('phonesparametersadd');
     Route::get('/delete', [PhonesController::class, 'delete'])->name('phonesparameterdelete');
+
     Route::group(['prefix' => 'faq', 'as' => 'faq.'], function() {
         Route::get('/', [FaqController::class, 'index'])->name('index');
         Route::get('/delete/{id}', [FaqController::class, 'delete'])->name('delete');
