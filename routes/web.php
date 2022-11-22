@@ -62,6 +62,7 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::get('/', [TagsController::class, 'index'])->name('index');
         Route::post('/store', [TagsController::class, 'store'])->name('store');
         Route::get('/delete/{id}', [TagsController::class, 'delete'])->name('delete');
+        Route::post('/', [TagsController::class, 'index'])->name('search');
     });
 });
 

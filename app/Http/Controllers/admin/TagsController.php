@@ -9,9 +9,15 @@ use Illuminate\Http\Request;
 
 class TagsController extends Controller
 {
-    public function index() {
+    public function index(Request $req) {
+        if(isset($req->catsearch)) {
+            $q = $req->catsearch;
+            $tags =  Tags::where('tag__name', 'like', '%'.$q.'%')->paginate(2);
+        } else {
+            $tags = Tags::paginate(2);
+        }
         $siteInfo = Settings::all();
-        $tags = Tags::all();
+
         return view('admin.tagsparameters.index', compact('siteInfo', 'tags'));
     }
 
@@ -27,7 +33,6 @@ class TagsController extends Controller
     }
     public function delete($id) {
         $deleted = Tags::destroy($id);
-
         if($deleted) {
             return redirect()->route('admin.tags.index')->with('success', 'Tag uğurla silindi');
         } else {

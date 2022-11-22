@@ -2,7 +2,7 @@
 @section('content')
 <div class="panel">
     <div class="search">
-        <form method="post" action="">
+        <form method="post" action="{{Route('admin.tags.search')}}">
             @csrf
             <i class="fa fa-search"></i>
             <input name="catsearch" type="text" class="form-control" placeholder="axtar">
@@ -14,7 +14,6 @@
         <i class="me-2 fas fa-angle-right"></i>
         <span><a href="">Tag parametrləri</a></span>
     </div>
-
         <div style="width: 100%" class="panel__info">
         @if(session('success'))
             <div class="mt-3 alert alert-success">
@@ -40,8 +39,6 @@
                                                </label>
                                            </th>
                                            <th scope="col">Tag Adı</th>
-
-
                                            <th scope="col"></th>
                                        </tr>
                                    </thead>
@@ -54,15 +51,13 @@
                                                         <span class="checkmark"></span>
                                                     </label>
                                                 </th>
-
                                                 <td>{{$item->tag__name}}</td>
-
                                                 <td><a onclick="return confirm('Tagı silmək istədiyinizdən əminsiiniz?')" class="text-danger" href="{{route('admin.tags.delete', ['id' => $item->id])}}"><i class="fa fa-trash"></i></a></td>
                                             </tr>
                                         @endforeach
                                    </tbody>
                                </table>
-
+                               {{$tags->appends(['_token' => request()->_token, 'catsearch' => request()->catsearch])->links("pagination::bootstrap-5")}}
                            </div>
                            <hr>
                            <form id="newgoods" action="{{Route('admin.tags.store')}}" enctype="multipart/form-data" method="post">
