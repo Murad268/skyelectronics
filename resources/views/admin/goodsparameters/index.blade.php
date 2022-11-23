@@ -54,6 +54,11 @@
                                    </thead>
                                    <tbody class="customtable">
                                         @foreach($goods as $item)
+
+
+
+
+
                                             <tr style="color: blue;">
                                                 <th>
                                                     <label class="customcheckbox">
@@ -61,7 +66,16 @@
                                                         <span class="checkmark"></span>
                                                     </label>
                                                 </th>
-                                                <th></th>
+                                                <th>
+                                                @if($item->photos->first() != null)
+                                                    <img style="width: 100%; height: 50px" src="{{asset('admin/assets/images/goods/'.$item->photos->first()->good_img)}}" alt="">
+                                                @else
+                                                    <img style="width: 100%; height: 50px" src="{{asset('admin/assets/images/goods/empty.png')}}" alt="">
+                                                @endif
+
+
+
+                                                </th>
                                                 <td>{{$item->goods_name}}</td>
                                                 <td>{{$item->goods_price}}</td>
                                                 <td>{{$item->goods__count}}</td>

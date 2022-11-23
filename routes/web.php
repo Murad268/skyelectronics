@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\FirmsController;
 use App\Http\Controllers\admin\PhonesController;
 use App\Http\Controllers\admin\SiteParametersController;
 use App\Http\Controllers\admin\GoodController;
+use App\Http\Controllers\admin\PotoController;
 use App\Http\Controllers\admin\TagsController;
 use Illuminate\Support\Facades\Route;
 
@@ -63,6 +64,13 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::post('/store', [TagsController::class, 'store'])->name('store');
         Route::get('/delete/{id}', [TagsController::class, 'delete'])->name('delete');
         Route::post('/', [TagsController::class, 'index'])->name('search');
+    });
+
+    Route::group(['prefix' => 'photos', 'as' => 'photos.'], function() {
+        Route::get('/', [PotoController::class, 'index'])->name('index');
+        Route::post('/create', [PotoController::class, 'create'])->name('create');
+        Route::get('/delete/{id}', [PotoController::class, 'delete'])->name('delete');
+        Route::get('/update/{id}', [PotoController::class, 'update'])->name('update');
     });
 });
 

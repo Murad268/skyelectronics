@@ -17,13 +17,11 @@ class SiteParametersController extends Controller
     public function update(Request $req) {
         $settings = Settings::find(1);
         if($req->hasFile('sitelogosu')) {
-
             $image = $req->file('sitelogosu');
             $path = public_path('/admin/assets/images/firms');
             File::delete($path,'logo.'.$image->getClientOriginalExtension());
             $image->move($path,'logo.'.$image->getClientOriginalExtension());
             $settings->siteLogosu = 'logo.'.$image->getClientOriginalExtension();
-
             $settings->save();
         }
 

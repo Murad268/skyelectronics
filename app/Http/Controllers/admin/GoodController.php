@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 class GoodController extends Controller
 {
     public function index(Request $req) {
+        
         if(isset($req->catsearch)) {
             $q = $req->catsearch;
             $goods =  Goods::where('goods_name', 'like', '%'.$q.'%')->paginate(10);

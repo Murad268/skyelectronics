@@ -43,6 +43,9 @@ class FirmsController extends Controller
         }
     }
     public function delete($id) {
+        $item = Firms::find($id);
+        $image__path = public_path('/admin/assets/images/firms/'.$item->firm__logo);
+        File::delete($image__path);
         $destroyed = Firms::destroy($id);
         if($destroyed) {
             return redirect()->route('admin.firms.index')->with('success', 'Firma uğurla silindi');
@@ -82,4 +85,5 @@ class FirmsController extends Controller
             return redirect()->route('admin.firms.index')->with('error', 'Məlumatların yenilənməsi zamanı xəta');
         }
     }
+    
 }
