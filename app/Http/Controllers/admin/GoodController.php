@@ -8,12 +8,13 @@ use App\Models\categories;
 use App\Models\Firms;
 use App\Models\Goods;
 use App\Models\Settings;
+use App\Models\Tags;
 use Illuminate\Http\Request;
 
 class GoodController extends Controller
 {
     public function index(Request $req) {
-        
+
         if(isset($req->catsearch)) {
             $q = $req->catsearch;
             $goods =  Goods::where('goods_name', 'like', '%'.$q.'%')->paginate(10);
@@ -21,14 +22,20 @@ class GoodController extends Controller
             $goods = Goods::paginate(10);
         }
         $siteInfo = Settings::all();
-
+        $tags = Tags::all();
         $categories = categories::all();
         $firms = Firms::all();
-        return view('admin.goodsparameters.index', compact('siteInfo', 'goods', 'categories', 'firms'));
+
+        return view('admin.goodsparameters.index', compact('siteInfo', 'goods', 'categories', 'firms', 'tags'));
     }
 
     public function store(Request $req) {
+
         $all = $req->all();
+        if(isset($all['tags'])) {
+            $all['tags'] = implode(' ', $req->tags);
+        }
+
         $created = Goods::create($all);
         if($created) {
             return redirect()->route('admin.goods.index')->with('addsuccess', 'Məhsul uğurla əlavə edildi');

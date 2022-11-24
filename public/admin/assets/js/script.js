@@ -1,4 +1,5 @@
-const optionMenu = document.querySelector(".select-menu"),
+try {
+    const optionMenu = document.querySelector(".select-menu"),
   selectBtn = optionMenu.querySelector(".select-btn"),
   options = optionMenu.querySelectorAll(".option"),
   sBtn_text = optionMenu.querySelector(".sBtn-text");
@@ -33,3 +34,8 @@ function alertindchange(selectSeelector) {
 }
 
 alertindchange('.category__select')
+
+
+
+
+}catch{}

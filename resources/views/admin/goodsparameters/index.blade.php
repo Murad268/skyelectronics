@@ -1,4 +1,7 @@
 @extends('admin.layouts.admin')
+@section('css')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endsection
 @section('content')
 <div class="panel">
     <div class="search">
@@ -82,7 +85,11 @@
                                                 <td>{{$item->categories->cat__name}}</td>
                                                 <td>{{$item->firms->firm__name}}</td>
                                                 <td>{{$item->views}}</td>
-                                                <td>{{$item->tags}}</td>
+                                                <td>
+
+                                                   {{$item->tagsintr($item->tags)}}
+
+                                                </td>
                                                 <td>{{$item->cashdicount}}</td>
                                                 <td><a class="text-primary" href="{{route('admin.goods.edit', ['id' => $item->id])}}"><i class="fa fa-pencil"></i></a></td>
                                                 <td><a onclick="return confirm('Məhsulu silmək istədiyinizdən əminsiiniz?')" class="text-danger" href=""><i class="fa fa-trash"></i></a></td>
@@ -120,6 +127,12 @@
                                     <option value="{{$firm->id}}">{{$firm->firm__name}}</option>
                                 @endforeach
                             </select>
+                            <label for="disabledTextInput" class="mt-4 form-label">Tagları seç</label>
+                            <select style="width: 100%;" class="js-example-basic-single" multiple="multiple" name="tags[]">
+                                @foreach($tags as $tag)
+                                    <option value="{{$tag->id}}">{{$tag->tag__name}}</option>
+                                @endforeach
+                            </select>
                             <label for="disabledTextInput" class="mt-4 form-label">Nəğd ödəniş endirimi</label>
                             <input name="cashdicount" type="number" name="firm__name" id="disabledTextInput" class="form-control">
                             <button class="mt-3 btn btn-success">Yeni məhsul əlavə elə</button>
@@ -131,4 +144,12 @@
         </div>
 
 </div>
+@endsection
+@section('js')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
 @endsection

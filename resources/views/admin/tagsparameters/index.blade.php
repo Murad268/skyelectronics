@@ -64,7 +64,6 @@
                             @csrf
                             <label for="disabledTextInput" class="mt-4 form-label">Tag adı</label>
                             <input type="text" name="tag__name" id="disabledTextInput" class="form-control">
-
                             <button class="mt-3 btn btn-success">Yeni Tag əlavə elə</button>
                         </form>
                    </div>
