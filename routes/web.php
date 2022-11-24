@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\SiteParametersController;
 use App\Http\Controllers\admin\GoodController;
 use App\Http\Controllers\admin\PotoController;
 use App\Http\Controllers\admin\TagsController;
+use App\Http\Controllers\front\MainMenuController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -76,4 +77,7 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
 
 
 
+
+
+    Route::get('/', [MainMenuController::class, 'index'])->name('index');
 
