@@ -1,4 +1,7 @@
 @extends('admin.layouts.admin')
+@section('css')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endsection
 @section('content')
 <div class="panel">
     <div class="search">
@@ -54,6 +57,12 @@
                         <option {{$firm->id == $el->goods__firm?'selected':null}} value="{{$firm->id}}">{{$firm->firm__name}}</option>
                     @endforeach
                 </select>
+                <label for="disabledTextInput" class="mt-4 form-label">Tagları seç</label>
+                <select style="width: 100%;" class="js-example-basic-single" multiple="multiple" name="tags[]">
+                    @foreach($tags as $tag)
+                        <option value="{{$tag->id}}">{{$tag->tag__name}}</option>
+                    @endforeach
+                </select>
                 <label for="disabledTextInput" class="mt-4 form-label">Nəğd ödəniş endirimi</label>
                 <input value="{{$el->cashdicount}}" name="cashdicount" type="number" name="firm__name" id="disabledTextInput" class="form-control">
                 <button class="mt-3 btn btn-success">Məhsulu yenilə</button>
@@ -62,4 +71,12 @@
                </div>
         </div>
 </div>
+@endsection
+@section('js')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
 @endsection

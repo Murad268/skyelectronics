@@ -92,7 +92,7 @@
                                                 </td>
                                                 <td>{{$item->cashdicount}}</td>
                                                 <td><a class="text-primary" href="{{route('admin.goods.edit', ['id' => $item->id])}}"><i class="fa fa-pencil"></i></a></td>
-                                                <td><a onclick="return confirm('Məhsulu silmək istədiyinizdən əminsiiniz?')" class="text-danger" href=""><i class="fa fa-trash"></i></a></td>
+                                                <td><a onclick="return confirm('Məhsulu silmək istədiyinizdən əminsiiniz?')" class="text-danger" href="{{route('admin.goods.delete', ['id' => $item->id])}}"><i class="fa fa-trash"></i></a></td>
                                             </tr>
                                         @endforeach
                                    </tbody>

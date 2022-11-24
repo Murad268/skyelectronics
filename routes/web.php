@@ -57,6 +57,7 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::post('/store', [GoodController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [GoodController::class, 'edit'])->name('edit');
         Route::post('/update/{id}', [GoodController::class, 'update'])->name('update');
+        Route::get('/delete/{id}', [GoodController::class, 'delete'])->name('delete');
         Route::post('/', [GoodController::class, 'index'])->name('search');
     });
 
