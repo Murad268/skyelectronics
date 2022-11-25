@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\ColorController;
 use App\Http\Controllers\admin\ContactsController;
 use App\Http\Controllers\admin\FaqController;
 use App\Http\Controllers\admin\FirmsController;
@@ -75,6 +76,12 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::get('/delete/{id}', [PotoController::class, 'delete'])->name('delete');
         Route::get('/update/{id}', [PotoController::class, 'update'])->name('update');
     });
+
+    Route::group(['prefix' => 'colors', 'as' => 'colors.'], function() {
+        Route::get('/', [ColorController::class, 'index'])->name('index');
+        Route::post('/store', [ColorController::class, 'store'])->name('store');
+        Route::get('/delete/{id}', [ColorController::class, 'delete'])->name('delete');
+    });
 });
 
 
@@ -83,4 +90,4 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
 
     Route::get('/', [MainMenuController::class, 'index'])->name('index');
 
-    Route::get('/məhsul/{slug}', [GoodsMenuController::class, 'index'])->name('goodsab');
+    Route::get('/məhsul/{slug}/{color}', [GoodsMenuController::class, 'index'])->name('goodsab');

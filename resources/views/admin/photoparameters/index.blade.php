@@ -40,7 +40,7 @@
                     <div class="photo__item__img">
                         <img src="{{asset('admin/assets/images/goods/'.$photo->good_img)}}" alt="">
                     </div>
-                    <div class="photo__item__name">{{$photo->goods->goods_name}}</div>
+                    <div class="photo__item__name">{{$photo->goods->goods_name}} ({{$photo->goods->colors[0]->color_name}})</div>
                 </div>
             @endforeach
         </div>
@@ -52,7 +52,7 @@
                 <label for="disabledTextInput" class="mt-4 form-label">Məhsulu seç</label>
                 <select name="good_id" data-live-search="true" data-live-search-style="startsWith" class="form-control selectpicker" aria-label="Default select example" >
                     @foreach($goods as $item)
-                        <option value="{{$item->id}}">{{$item->goods_name}}</option>
+                        <option value="{{$item->id}}">{{$item->goods_name}} ({{$item->colors[0]->color_name}})</option>
                     @endforeach
                 </select>
                 <button class="mt-3 btn btn-success">Yeni şəkil əlavə et</button>

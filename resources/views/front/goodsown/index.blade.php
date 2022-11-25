@@ -127,9 +127,13 @@
                        Rəngi
                      </button>
                      <ul class="dropdown-menu">
-                       <li><a class="dropdown-item">Göy <span style="background-color: blue;"></span> </a></li>
-                       <li><a class="dropdown-item" >Qırmızı <span style="background-color: red;"></span></a></li>
-                       <li><a class="dropdown-item" >Sarı <span style="background-color: yellow;"></span></a></li>
+                        @foreach($colorsId as $id)
+                            @foreach($colors as $color)
+                                @if($id->color__id == $color->id)
+                                    <li><a href="{{route('goodsab', ['slug' => $its[0]->slug, 'color'=>$color->id])}}" class="d-block dropdown-item" >{{$color->color_name}} <span style="margin-top: 8px;  background-color: {{$color->color}}"></span></a></li>
+                                @endif
+                            @endforeach
+                        @endforeach
                      </ul>
                </div>
                <div class="good__content__choose__price">

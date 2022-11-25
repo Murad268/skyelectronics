@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\categories;
+use App\Models\Colors;
 use App\Models\Firms;
 use App\Models\Goods;
 use App\Models\Photo;
@@ -27,8 +28,9 @@ class GoodController extends Controller
         $tags = Tags::all();
         $categories = categories::all();
         $firms = Firms::all();
+        $colors = Colors::all();
 
-        return view('admin.goodsparameters.index', compact('siteInfo', 'goods', 'categories', 'firms', 'tags'));
+        return view('admin.goodsparameters.index', compact('siteInfo', 'goods', 'categories', 'firms', 'tags', 'colors'));
     }
 
     public function store(Request $req) {
@@ -51,7 +53,8 @@ class GoodController extends Controller
         $categories = categories::all();
         $firms = Firms::all();
         $tags = Tags::all();
-        return view('admin.goodsparameters.edit', compact('el', 'categories', 'firms', 'siteInfo', 'tags'));
+        $colors = Colors::all();
+        return view('admin.goodsparameters.edit', compact('el', 'categories', 'firms', 'siteInfo', 'tags', 'colors'));
     }
 
     public function update(Request $req, $id) {

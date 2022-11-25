@@ -133,6 +133,14 @@
                                     <option value="{{$tag->id}}">{{$tag->tag__name}}</option>
                                 @endforeach
                             </select>
+                            <label for="disabledTextInput" class="mt-4 form-label">Aylıq faiz</label>
+                            <input type="number" name="percent" id="disabledTextInput" class="form-control">
+                            <label for="disabledTextInput" class="mt-4 form-label">Rəngi seç</label>
+                            <select name="color_id" class="form-select" aria-label="Default select example">
+                                @foreach($colors as $color)
+                                    <option value="{{$color->id}}">{{$color->color_name}}</option>
+                                @endforeach
+                            </select>
                             <label for="disabledTextInput" class="mt-4 form-label">Nəğd ödəniş endirimi</label>
                             <input name="cashdicount" type="number" name="firm__name" id="disabledTextInput" class="form-control">
                             <button class="mt-3 btn btn-success">Yeni məhsul əlavə elə</button>

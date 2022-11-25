@@ -24,6 +24,10 @@ class Goods extends Model
     public function photos() {
         return $this->hasMany(Photo::class, 'good_id', 'id')->orderBy('main', 'desc');
     }
+
+    public function colors() {
+        return $this->hasMany(Colors::class, 'id', 'color_id');
+    }
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()

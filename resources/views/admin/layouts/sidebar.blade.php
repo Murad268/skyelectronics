@@ -19,6 +19,9 @@
             <a href="{{route('admin.photos.index')}}">Şəkil parametrləri</a>
         </div>
         <div class="dashboard__button">
+            <a href="{{route('admin.colors.index')}}">Rəng parametrləri</a>
+        </div>
+        <div class="dashboard__button">
             <a href="{{route('admin.firms.index')}}">Firma parametrləri</a>
         </div>
         <div class="select-menu">
