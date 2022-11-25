@@ -14,9 +14,9 @@ class FirmsController extends Controller
 
         if($req->catsearch != null) {
             $q = $req->catsearch;
-            $firms =  Firms::where('firm__name', 'like', '%'.$q.'%')->paginate(2);
+            $firms =  Firms::where('firm__name', 'like', '%'.$q.'%')->paginate(10);
         } else {
-            $firms = Firms::paginate(2);
+            $firms = Firms::paginate(10);
         }
         $siteInfo = Settings::all();
 
@@ -27,12 +27,13 @@ class FirmsController extends Controller
 
         if($req->hasFile('firm__logo')) {
             $image = $req->file('firm__logo');
+            $rand = rand();
             $path = public_path('/admin/assets/images/firms');
-            $image->move($path, $image->getClientOriginalName());
+            $image->move($path, $rand.$image->getClientOriginalName());
         }
 
         $created = Firms::create([
-            "firm__logo" => $image->getClientOriginalName(),
+            "firm__logo" => $rand.$image->getClientOriginalName(),
             "firm__name" => $req->firm__name
         ]);
 
@@ -66,7 +67,7 @@ class FirmsController extends Controller
             $image = $req->file('firm__logo');
             $path =  public_path('/admin/assets/images/firms');
             $image__path = public_path('/admin/assets/images/firms/'.$firms->firm__logo);
-
+            // dd( $image__path);
             $f=File::delete($image__path);
 
             $image->move($path, $image->getClientOriginalName());
@@ -85,5 +86,5 @@ class FirmsController extends Controller
             return redirect()->route('admin.firms.index')->with('error', 'Məlumatların yenilənməsi zamanı xəta');
         }
     }
-    
+
 }

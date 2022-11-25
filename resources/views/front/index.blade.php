@@ -51,9 +51,9 @@
                 </div>
             </div>
          </div>
-         <div class="content__title">
+         <div class="mt-3 mb-3 content__title">
             <div class="content__title__left">
-               NEW PRODUCTS
+               YENİ MƏHSULLAR
             </div>
             <div class="content__title__right">
                <p>
@@ -62,44 +62,27 @@
                </p>
             </div>
          </div>
-         <div class="content__goods__wrapper">
-            <div class="content__goods">
-               <img src="./assets/images/new-pic1.jpg" alt="">
-               <div class="content__goods__title">LOREM IPSUM IS SIMPLY</div>
-               <div class="content__goods__footer">
-                  <div class="content__goods__footer__price">⫙620.87</div>
-                  <button>Səbətə Əlavə Et</button>
-               </div>
-            </div>
-            <div class="content__goods">
-               <img src="./assets/images/new-pic1.jpg" alt="">
-               <div class="content__goods__title">LOREM IPSUM IS SIMPLY</div>
-               <div class="content__goods__footer">
-                  <div class="content__goods__footer__price">⫙620.87</div>
-                  <button>Səbətə Əlavə Et</button>
-               </div>
-            </div>
-            <div class="content__goods">
-               <img src="./assets/images/new-pic1.jpg" alt="">
-               <div class="content__goods__title">LOREM IPSUM IS SIMPLY</div>
-               <div class="content__goods__footer">
-                  <div class="content__goods__footer__price">⫙620.87</div>
-                  <button>Səbətə Əlavə Et</button>
-               </div>
-            </div>
-            <div class="content__goods">
-               <img src="./assets/images/new-pic1.jpg" alt="">
-               <div class="content__goods__title">LOREM IPSUM IS SIMPLY</div>
-               <div class="content__goods__footer">
-                  <div class="content__goods__footer__price">⫙620.87</div>
-                  <button>Səbətə Əlavə Et</button>
-               </div>
-            </div>
+         <div  class="content__goods__wrapper">
+            @foreach($newgoods as $goods)
+                <div  style="height: 300px;" class="content__goods">
+                @if($goods->photos->first() != null)
+                    <img style="height: 200px;"height: 50px" src="{{asset('admin/assets/images/goods/'.$goods->photos->first()->good_img)}}" alt="">
+                @else
+                    <img style="width: 100%; height: 50px" src="{{asset('admin/assets/images/goods/empty.png')}}" alt="">
+                @endif
+                <div class="content__goods__title">{{substr($goods->goods_name, 0, 15)}}</div>
+                <div class="mt-3 content__goods__footer">
+                    <div class="content__goods__footer__price">⫙{{$goods->goods_price}}</div>
+                    <button>Səbətə Əlavə Et</button>
+                </div>
+                </div>
+            @endforeach
+
          </div>
 
-         <div class="content__title">
+         <div class="mt-3 mb-3 content__title">
             <div class="content__title__left">
-               FEATURE PRODUCTS
+               ƏN POPULYAR MƏHSULLAR
             </div>
             <div class="content__title__right">
                <p>
@@ -109,38 +92,21 @@
             </div>
          </div>
          <div class="content__goods__wrapper">
-            <div class="content__goods">
-               <img src="./assets/images/new-pic1.jpg" alt="">
-               <div class="content__goods__title">LOREM IPSUM IS SIMPLY</div>
-               <div class="content__goods__footer">
-                  <div class="content__goods__footer__price">⫙620.87</div>
-                  <button>Səbətə Əlavə Et</button>
-               </div>
-            </div>
-            <div class="content__goods">
-               <img src="./assets/images/new-pic1.jpg" alt="">
-               <div class="content__goods__title">LOREM IPSUM IS SIMPLY</div>
-               <div class="content__goods__footer">
-                  <div class="content__goods__footer__price">⫙620.87</div>
-                  <button>Səbətə Əlavə Et</button>
-               </div>
-            </div>
-            <div class="content__goods">
-               <img src="./assets/images/new-pic1.jpg" alt="">
-               <div class="content__goods__title">LOREM IPSUM IS SIMPLY</div>
-               <div class="content__goods__footer">
-                  <div class="content__goods__footer__price">⫙620.87</div>
-                  <button>Səbətə Əlavə Et</button>
-               </div>
-            </div>
-            <div class="content__goods">
-               <img src="./assets/images/new-pic1.jpg" alt="">
-               <div class="content__goods__title">LOREM IPSUM IS SIMPLY</div>
-               <div class="content__goods__footer">
-                  <div class="content__goods__footer__price">⫙620.87</div>
-                  <button>Səbətə Əlavə Et</button>
-               </div>
-            </div>
+            @foreach($populargoods as $goods)
+                <div  style="height: 300px;" class="content__goods">
+                @if($goods->photos->first() != null)
+                    <img style="height: 200px;"height: 50px" src="{{asset('admin/assets/images/goods/'.$goods->photos->first()->good_img)}}" alt="">
+                @else
+                    <img style="width: 100%; height: 50px" src="{{asset('admin/assets/images/goods/empty.png')}}" alt="">
+                @endif
+                <div class="content__goods__title">{{substr($goods->goods_name, 0, 15)}}</div>
+                <div class="mt-3 content__goods__footer">
+                    <div class="content__goods__footer__price">⫙{{$goods->goods_price}}</div>
+                    <button>Səbətə Əlavə Et</button>
+                </div>
+                </div>
+            @endforeach
+
          </div>
 
       </div>

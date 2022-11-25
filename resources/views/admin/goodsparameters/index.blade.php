@@ -107,7 +107,7 @@
                             <label for="disabledTextInput" class="mt-4 form-label">Məhsul sayı</label>
                             <input type="number" name="goods__count" id="disabledTextInput" class="form-control">
                             <label for="disabledTextInput" class="mt-4 form-label">Məhsulun qiyməti</label>
-                            <input type="number" name="goods_price" id="disabledTextInput" class="form-control">
+                            <input type="text" name="goods_price" id="disabledTextInput" class="form-control">
                             <label for="disabledTextInput" class="mt-4 form-label">Məhsul kateqoriyası</label>
                             <select name="goods__category" class="form-select" aria-label="Default select example">
                             @foreach($categories as $category)
