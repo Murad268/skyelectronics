@@ -51,7 +51,7 @@
    position: absolute;
    right: 0;
    top: 0;
-  
+
  }
 .header__fnavbar__link a {
    text-decoration: none;
@@ -93,7 +93,7 @@
 }
 .main__nav {
    margin-top: 40px;
-   background: #383838 !important; 
+   background: #383838 !important;
 	border-radius: 6px;
    display: flex;
    justify-content: space-between;
@@ -166,10 +166,10 @@
    justify-content: space-between;
 }
 .categories {
-   width: 24%;
+   width: 27%;
 }
 .slider {
-   width: 75%;
+   width: 70%;
    position: relative;
    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
    padding: 15px 10px 0;
@@ -637,11 +637,11 @@
 
 .related__productes__wrapper .content__goods__footer__price {
    font-size: 13px;
-} 
+}
 
 .related__productes__wrapper .content__goods__title {
    font-size: 11px;
-} 
+}
 .good__content__listeners__content__comment>div {
    display: flex;
    justify-content: space-between;
@@ -696,11 +696,11 @@
    content: '★ ';
 }
 .rate > input:checked ~ label {
-   color: #ffc700;    
+   color: #ffc700;
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-   color: #deb217;  
+   color: #deb217;
 }
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
@@ -1084,7 +1084,7 @@
    text-transform: uppercase;
    font-size: 16px;
    margin: 10px 0;
-} 
+}
 .delivery__desc {
    font-size: 14px;
    line-height: 24px;
@@ -1338,7 +1338,7 @@
    text-align: justify;
 }
 .monthly li {
-   margin-bottom: 30px;  
+   margin-bottom: 30px;
 }
 .monthly li b {
    color: black;
@@ -1416,23 +1416,23 @@ li a {
    margin: 0;
    padding: 0;
  }
- 
+
  .gold ol > li {
    display: table;
    counter-increment: item;
    margin-bottom: 0.6em;
  }
- 
+
  .gold ol > li:before {
    content: counters(item, ".") ". ";
    display: table-cell;
-   padding-right: 0.6em;    
+   padding-right: 0.6em;
  }
- 
+
  .gold li ol > li {
    margin: 0;
  }
- 
+
  .gold li ol > li:before {
    content: counters(item, ".") " ";
  }
@@ -1670,13 +1670,13 @@ thead {
    margin-left: 100%;
  }
  .nested.dropdown .dropdown-trigger button::after {
- 
+
  }
  .nested.dropdown .dropdown-trigger button {
    padding: 0px 0px;
    border: 0px;
    font-size: 14px;
-   font-weight: 400;  
+   font-weight: 400;
  }
 
  .dropdown a {
@@ -1684,5 +1684,4 @@ thead {
    text-decoration: none !important;
    color: black !important;
    cursor: pointer;
- } 
- 
+ }

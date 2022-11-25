@@ -21,6 +21,7 @@ class GoodsMenuController extends Controller
         $cat = categories::find($its[0]->goods__category);
         $colorsId = ColorsModel::where('good_slug', $its[0]->slug)->get();
         $colors = Colors::all();
-        return view('front.goodsown.index', compact('siteInfo', 'its', 'smiliar', 'cat', 'colorsId', 'colors'));
+        $categories = categories::all();
+        return view('front.goodsown.index', compact('siteInfo', 'its', 'smiliar', 'cat', 'colorsId', 'colors', 'categories'));
     }
 }
