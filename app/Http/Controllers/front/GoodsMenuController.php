@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Models\categories;
 use App\Models\Goods;
 use App\Models\Settings;
 use Illuminate\Http\Request;
@@ -13,7 +14,8 @@ class GoodsMenuController extends Controller
         $siteInfo = Settings::find(1);
         $its = Goods::where('slug', $slug)->get();
         $smiliar = Goods::where('goods__category', $its[0]->goods__category)->take(3)->get();
+        $cat = categories::find($its[0]->goods__category);
 
-        return view('front.goodsown.index', compact('siteInfo', 'its', 'smiliar'));
+        return view('front.goodsown.index', compact('siteInfo', 'its', 'smiliar', 'cat'));
     }
 }

@@ -49,4 +49,18 @@ class Goods extends Model
         }
         return $str;
     }
+
+    public function tagsOneIntr($array) {
+        $arr = explode(' ', $array);
+
+        $str = [];
+        for($i = 0; $i<count($arr); $i++) {
+            $itm = Tags::find((int)$arr[$i]);
+            if($itm) {
+                array_push($str, $itm);
+            }
+
+        }
+        return $str;
+    }
 }

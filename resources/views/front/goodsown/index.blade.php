@@ -6,7 +6,7 @@
    <div style="overflow: hidden;" class="good__content">
       <div class="container">
          <div class="good__content__top">
-            Home >>> Electronics >>> good_name
+            Home >>> {{$cat->cat__name}} >>> {{$its[0]->goods_name}}
             <span>
                <i class="fa-solid fa-bars"></i>
                <i style="display: none;" class="fa fa-window-close" aria-hidden="true"></i>
@@ -16,12 +16,14 @@
             <div class="have">✔ Məhsul mövcuddur(400 ədəd)</div>
             <div class="none">∅ Məhsul mövcud deyil</div>
             <div class="goods__code"><span>Məhsul kodu:</span>
-               TM-MT-BMT-1108-WM-0321</div>
-            <div class="goods__views"><span>Məhsula baxılıb:</span> <b class="views__bad">120 dəfə</b></div>
+               {{$its[0]->id}}</div>
+            <div class="goods__views"><span>Məhsula baxılıb:</span> <b class="views__bad">{{$its[0]->views}} dəfə</b></div>
          </div>
          <div class="goods__tags">
-            <div class="no__percent"><a href="">faizsiz</a></div>
-            <div class="delovery__free"><a href="">pulsuz çatdırılma</a></div>
+            @foreach($its[0]->tagsOneIntr($its[0]->tags) as $tags)
+                <div  class="{{$tags->color}}"><a href="">{{$tags->tag__name}}</a></div>
+            @endforeach
+
          </div>
          <div class="good__content__wrapper">
             <div class="categories__menu">
@@ -80,25 +82,24 @@
             </div>
             <div class="good__content__wrapper__slider">
                <div class="good__content__wrapper__slider__mini">
-                  <div class="good__content__wrapper__slider__mini__img">
-                     <img src="./assets/images/feature-pic1.jpg" alt="">
-                  </div>
-                  <div class="good__content__wrapper__slider__mini__img">
-                     <img src="./assets/images/feature-pic2.jpg" alt="">
-                  </div>
-                  <div class="good__content__wrapper__slider__mini__img">
-                     <img src="./assets/images/feature-pic3.jpg" alt="">
-                  </div>
-                  <div class="good__content__wrapper__slider__mini__img">
-                     <img src="./assets/images/feature-pic4.jpg" alt="">
-                  </div>
+                    @foreach($its[0]->photos as $photo)
+
+                        <div class="good__content__wrapper__slider__mini__img">
+                            <img src="{{asset('admin/assets/images/goods/'.$photo->good_img)}}" alt="">
+                        </div>
+
+                    @endforeach
+
+
                </div>
-               <div class="good__content__wrapper__slider__img">
-                  <img src="./assets/images/feature-pic1.jpg" alt="">
+               <div style="display: flex; justify-content: center; align-items: center;" class="good__content__wrapper__slider__img">
+                    @if($its[0]->photos->first() != null)
+                        <img style="height: 80%; width: 80%"height: 50px" src="{{asset('admin/assets/images/goods/'.$its[0]->photos->first()->good_img)}}" alt="">
+                    @endif
                </div>
             </div>
             <div class="good__content__choose">
-               <div class="good__content__choose__name">Televizor HOFFMANN LED 32F3700 <span class="addFavorite"><i style="color: orange" class="fa-regular fa-heart" aria-hidden="true"></i></span></div>
+               <div class="good__content__choose__name">{{$its[0]->goods_name}} <span class="addFavorite"><i style="color: orange" class="fa-regular fa-heart" aria-hidden="true"></i></span></div>
                <div class="good__content__choose__mthods">
                   <div class="good__content__choose__mthod">
                      <img src="{{asset('front/assets/images/negd.png')}}" alt="">
@@ -126,17 +127,18 @@
                        Rəngi
                      </button>
                      <ul class="dropdown-menu">
-                       <li><a class="dropdown-item" href="#">Göy <span style="background-color: blue;"></span> </a></li>
-                       <li><a class="dropdown-item" href="#">Qırmızı <span style="background-color: red;"></span></a></li>
-                       <li><a class="dropdown-item" href="#">Sarı <span style="background-color: yellow;"></span></a></li>
+                       <li><a class="dropdown-item">Göy <span style="background-color: blue;"></span> </a></li>
+                       <li><a class="dropdown-item" >Qırmızı <span style="background-color: red;"></span></a></li>
+                       <li><a class="dropdown-item" >Sarı <span style="background-color: yellow;"></span></a></li>
                      </ul>
                </div>
                <div class="good__content__choose__price">
-                  <div class="good__content__choose__price__left"><span style="font-size: 25px; font-weight: 600">Qiymət:</span> {{$its[0]->goods_price}} ⫙ <span>- nağd alışda {{$its[0]->goods_price-$its[0]->cashdicount}} ⫙</span></div>
+                  <div class="good__content__choose__price__left"><span style="font-size: 25px; font-weight: 600">Qiymət:</span> {{$its[0]->goods_price}} ⫙ <span>- nağd alışda <span class="goods_price">{{$its[0]->goods_price-$its[0]->cashdicount}}</span> ⫙</span></div>
                </div>
                <label class="calcLabel" for="calculator">Kredit Kalkulyatoru</label>
                <br>
                <input type="range" min="1" max="6" step="1" id="calculator" name="calculator" />
+               <input class="goods__percent" type="hidden" name="" value="{{$its[0]->percent}}">
                <div class="calculator__list">
                   <span style="margin-left: 3px">|</span>
                   <span style="margin-left: 3px">|</span>
@@ -160,7 +162,7 @@
                   </div>
                   <div class="mountly_pay">
                      Aylıq ödəniş <br>
-                     16.8 ⫙
+                     <span class="monthly_pay">16.8</span> ⫙
                   </div>
                </div>
                <div class="paymethods">
