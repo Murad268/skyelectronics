@@ -11,6 +11,8 @@ use App\Http\Controllers\admin\SiteParametersController;
 use App\Http\Controllers\admin\GoodController;
 use App\Http\Controllers\admin\PotoController;
 use App\Http\Controllers\admin\TagsController;
+use App\Http\Controllers\auth\EnterController;
+use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\front\GoodsMenuController;
 use App\Http\Controllers\front\MainMenuController;
 use Illuminate\Support\Facades\Route;
@@ -91,3 +93,12 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
     Route::get('/', [MainMenuController::class, 'index'])->name('index');
 
     Route::get('/məhsul/{slug}/{color}', [GoodsMenuController::class, 'index'])->name('goodsab');
+
+    Route::group(['namespace' => 'Auth', 'prefix' => 'auth', 'as' => 'auth.'], function() {
+        Route::get('/', [RegisterController::class, 'index'])->name('register');
+        Route::post('/create', [RegisterController::class, 'create'])->name('create');
+        Route::get('/enter', [EnterController::class, 'index'])->name('enter');
+    });
+
+
+
