@@ -24,7 +24,7 @@
                 <div  class="{{$tags->color}}"><a href="">{{$tags->tag__name}}</a></div>
             @endforeach
 
-         </div>
+         </div>foreac
          <div class="good__content__wrapper">
             <div style="width: max-content" class="categories__menu">
                 @include('front.layouts.sidebar')
@@ -194,7 +194,6 @@
                            <label for="star1" title="text">1 star</label>
                          </div>
                         <textarea id="comment" class="form-control">
-
                         </textarea>
                         <button class="btn btn-primary">Rəyi göndər</button>
                      </form>
@@ -224,12 +223,10 @@
                         <div class="content__goods__title"><a style="text-decoration: none; color: black" href="">{{substr($goods->goods_name, 0, 15)}}</a></div>
                         <div class="content__goods__footer">
                             <div class="content__goods__footer__price">⫙{{$goods->goods_price}}</div>
-                            <button style="font-size: 9px">Səbətə Əlavə Et</button>
+                            <a href="{{route('user.addcart', ['id' => $goods->id])}}" class="btn btn-danger" style="font-size: 7px">Səbətə Əlavə Et</a>
                         </div>
                     </div>
                     @endforeach
-
-
                </div>
             </div>
          </div>
@@ -245,31 +242,39 @@
             <div data-bs-dismiss="modal" class="credit__modal__exit">
                <i class="fa fa-window-close" aria-hidden="true"></i>
             </div>
-            <div class="creadit__modal__top">
-               <div class="creadit__modal__top__left">
-                  <img src="./assets/images/new-pic1.jpg" alt="">
-               </div>
-               <div class="creadit__modal__top__right">
-                  <div class="creadit__modal__top__right__top">
-                     <div class="modal__good_name">Televizor HOFFMANN LED 32F3700</div>
-                     <div class="creadit__modal__top__right__top__count">
-                        <span class="mq">Miqdar</span>
-                        <span>+ </span><input type="text"> <span>+</span>
-                     </div>
-                     <div class="creadit__modal__top__right__top__price">349.99 ⫙</div>
-                  </div>
-                   <div class="creadit__modal__top__right__footer">
-                     <select class="form-select" aria-label="Default select example">
-                        <option selected>Zəmanət əlavə et</option>
-                        <option value="1">İstifadəçi zəmanəti 0 ⫙</option>
-                        <option value="3">Qızıl zəmanət(1 il) - 35 ⫙</option>
-                        <option value="3">Qızıl zəmanət(2 il) - 53 ⫙</option>
-                        <option value="3">Qızıl zəmanət(3 il) - 70 ⫙</option>
-                        <option value="2">Qızıl zəmanət(6 ay) - 88 ⫙</option>
-                      </select>
-                   </div>
-               </div>
-            </div>
+                @foreach($cart as $el)
+                    <div class="mt-3 creadit__modal__top">
+                        <div class="creadit__modal__top__left">
+                        @if($el->photos->first() != null)
+                            <img style="object-fit:fill"  src="{{asset('admin/assets/images/goods/'.$el->photos->first()->good_img)}}" alt="">
+                        @else
+                            <img style="width: 100%; height: 50px" src="{{asset('admin/assets/images/goods/empty.png')}}" alt="">
+                        @endif
+                        </div>
+                        <div class="creadit__modal__top__right">
+                        <div class="creadit__modal__top__right__top">
+                            <div class="modal__good_name">{{$el->name}}</div>
+                            <div class="creadit__modal__top__right__top__count">
+                                <span class="mq">Miqdar</span>
+                                <input disabled class="cartelcount" value="{{$el->quantity}}" type="text">
+                                <input class="cartelper" value="{{$el->percent}}" type="hidden" name="">
+                            </div>
+                            <div class="cartelprice creadit__modal__top__right__top__price">{{$el->price}} ⫙</div>
+                        </div>
+                            <div class="creadit__modal__top__right__footer">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Zəmanət əlavə et</option>
+                                <option value="1">İstifadəçi zəmanəti 0 ⫙</option>
+                                <option value="3">Qızıl zəmanət(1 il) - 35 ⫙</option>
+                                <option value="3">Qızıl zəmanət(2 il) - 53 ⫙</option>
+                                <option value="3">Qızıl zəmanət(3 il) - 70 ⫙</option>
+                                <option value="2">Qızıl zəmanət(6 ay) - 88 ⫙</option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+
+                @endforeach
             <div class="creadit__modal__center">
                <div class="creadit__modal__center__months">
                   <div class="creadit__modal__center__month creadit__modal__center__month__active"><div>6ay</div></div>
@@ -293,7 +298,7 @@
             <div class="creadit__modal__prices">
                <div class="creadit__modal__dur">
                   <div>Müddət:
-                     <span>24 ay</span>
+                     <span class="cartduration">24 ay</span>
                   </div>
                </div>
                <div class="creadit__modal__dur">
@@ -303,7 +308,7 @@
                </div>
                <div class="creadit__modal__dur">
                   <div>Aylıq ödəniş:
-                     <span>16.8  ⫙ </span>
+                     <span class="monthlypacart">16.8  ⫙ </span>
                   </div>
                </div>
             </div>
@@ -321,109 +326,60 @@
                <i class="fa fa-window-close" aria-hidden="true"></i>
             </div>
             <div class="cart-overflow" style="height: 320px;">
-               <div class="cart__el">
-                  <div class="creadit__modal__top">
-                     <div class="creadit__modal__top__left">
-                        <img src="./assets/images/new-pic1.jpg" alt="">
-                     </div>
-                     <div class="creadit__modal__top__right">
-                        <div class="creadit__modal__top__right__top">
-                           <div class="modal__good_name">Televizor HOFFMANN LED 32F3700</div>
-                           <div class="creadit__modal__top__right__top__count">
-                              <span class="mq">Miqdar</span>
-                              <span>+ </span><input type="text"> <span>+</span>
-                           </div>
-                           <div class="creadit__modal__top__right__top__price">349.99 ⫙</div>
-                           <i class="fa fa-trash cart__delete" aria-hidden="true"></i>
+               @foreach($cart as $el)
+                <div class="mt-3 cart__el">
+                    <div class="creadit__modal__top">
+                        <div class="me-3 creadit__modal__top__left">
+                        @if($el->photos->first() != null)
+                            <img style="object-fit:fill"  src="{{asset('admin/assets/images/goods/'.$el->photos->first()->good_img)}}" alt="">
+                        @else
+                            <img style="width: 100%; height: 50px" src="{{asset('admin/assets/images/goods/empty.png')}}" alt="">
+                        @endif
                         </div>
-                         <div class="creadit__modal__top__right__footer">
-                           <select class="form-select" aria-label="Default select example">
-                              <option selected>Zəmanət əlavə et</option>
-                              <option value="1">İstifadəçi zəmanəti 0 ⫙</option>
-                              <option value="3">Qızıl zəmanət(1 il) - 35 ⫙</option>
-                              <option value="3">Qızıl zəmanət(2 il) - 53 ⫙</option>
-                              <option value="3">Qızıl zəmanət(3 il) - 70 ⫙</option>
-                              <option value="2">Qızıl zəmanət(6 ay) - 88 ⫙</option>
-                            </select>
-                         </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="cart__el">
-                  <div class="creadit__modal__top">
-                     <div class="creadit__modal__top__left">
-                        <img src="./assets/images/new-pic1.jpg" alt="">
-                     </div>
-                     <div class="creadit__modal__top__right">
-                        <div class="creadit__modal__top__right__top">
-                           <div class="modal__good_name">Televizor HOFFMANN LED 32F3700</div>
-                           <div class="creadit__modal__top__right__top__count">
-                              <span class="mq">Miqdar</span>
-                              <span>+ </span><input type="text"> <span>+</span>
-                           </div>
-                           <div class="creadit__modal__top__right__top__price">349.99 ⫙</div>
-                           <i class="fa fa-trash cart__delete" aria-hidden="true"></i>
+                        <div class="creadit__modal__top__right">
+                            <div class="creadit__modal__top__right__top">
+                            <div class="modal__good_name">{{$el->name}}</div>
+                            <div class="creadit__modal__top__right__top__count">
+                                <span class="mq">Miqdar</span>
+                                <input class="quantitity1" value="{{$el->quantity}}" disabled type="text">
+                                <input type="hidden" value="{{$el->cashdiscount}}" class="cashdiscount1">
+                            </div>
+                            <div class="creadit__modal__top__right__top__price1 creadit__modal__top__right__top__price">{{$el->price}} ⫙</div>
+                            <a href="{{route('user.delete', ['id' => $el->id])}}"><i class="fa fa-trash cart__delete" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="creadit__modal__top__right__footer">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Zəmanət əlavə et</option>
+                                <option value="1">İstifadəçi zəmanəti 0 ⫙</option>
+                                <option value="3">Qızıl zəmanət(1 il) - 35 ⫙</option>
+                                <option value="3">Qızıl zəmanət(2 il) - 53 ⫙</option>
+                                <option value="3">Qızıl zəmanət(3 il) - 70 ⫙</option>
+                                <option value="2">Qızıl zəmanət(6 ay) - 88 ⫙</option>
+                                </select>
+                            </div>
                         </div>
-                         <div class="creadit__modal__top__right__footer">
-                           <select class="form-select" aria-label="Default select example">
-                              <option selected>Zəmanət əlavə et</option>
-                              <option value="1">İstifadəçi zəmanəti 0 ⫙</option>
-                              <option value="3">Qızıl zəmanət(1 il) - 35 ⫙</option>
-                              <option value="3">Qızıl zəmanət(2 il) - 53 ⫙</option>
-                              <option value="3">Qızıl zəmanət(3 il) - 70 ⫙</option>
-                              <option value="2">Qızıl zəmanət(6 ay) - 88 ⫙</option>
-                            </select>
-                         </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="cart__el">
-                  <div class="creadit__modal__top">
-                     <div class="creadit__modal__top__left">
-                        <img src="./assets/images/new-pic1.jpg" alt="">
-                     </div>
-                     <div class="creadit__modal__top__right">
-                        <div class="creadit__modal__top__right__top">
-                           <div class="modal__good_name">Televizor HOFFMANN LED 32F3700</div>
-                           <div class="creadit__modal__top__right__top__count">
-                              <span class="mq">Miqdar</span>
-                              <span>+ </span><input type="text"> <span>+</span>
-                           </div>
-                           <div class="creadit__modal__top__right__top__price">349.99 ⫙</div>
-                           <i class="fa fa-trash cart__delete" aria-hidden="true"></i>
-                        </div>
-                         <div class="creadit__modal__top__right__footer">
-                           <select class="form-select" aria-label="Default select example">
-                              <option selected>Zəmanət əlavə et</option>
-                              <option value="1">İstifadəçi zəmanəti 0 ⫙</option>
-                              <option value="3">Qızıl zəmanət(1 il) - 35 ⫙</option>
-                              <option value="3">Qızıl zəmanət(2 il) - 53 ⫙</option>
-                              <option value="3">Qızıl zəmanət(3 il) - 70 ⫙</option>
-                              <option value="2">Qızıl zəmanət(6 ay) - 88 ⫙</option>
-                            </select>
-                         </div>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                </div>
+               @endforeach
             </div>
             <hr>
             <div class="cash__modal__pieces">
                <div class="cash__modal__pieces__all">
                   <div>Məhsulun qiyməti:</div>
-                  <div>3429.96⫙ </div>
+                  <div class="allprice1">3429.96⫙ </div>
                </div>
                <div class="cash__modal__pieces__all">
                   <div>Nağd alış endirimi:</div>
-                  <div>-580⫙ </div>
+                  <div class="cashall1">-580⫙ </div>
                </div>
             </div>
             <div class="cash__modal__pieces__end">
                <div>Yekun məbləğ</div>
-               <div>2849.96⫙</div>
+               <div class="lastall">2849.96⫙</div>
             </div>
             <div class="cash__buttons">
                <button>Alış-verişə davam et</button>
-               <button>Sifarişi rəsmiləşdir <i class="fa 	fa-angle-right"></i></button>
+               <button>Sifarişi rəsmiləşdir <i class="fa fa-angle-right"></i></button>
             </div>
           </div>
       </div>

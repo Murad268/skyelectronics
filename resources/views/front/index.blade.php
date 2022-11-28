@@ -73,7 +73,7 @@
                 <div class="content__goods__title"><a style="color: gray; text-decoration: none" href="{{route('goodsab', ['slug' => $goods->slug, 'color' => $goods->color_id])}}">{{substr($goods->goods_name, 0, 15)}}</a></div>
                 <div class="mt-3 content__goods__footer">
                     <div class="content__goods__footer__price">⫙{{$goods->goods_price}}</div>
-                    <button>Səbətə Əlavə Et</button>
+                    <a href="{{route('user.addcart', ['id' => $goods->id])}}" class="btn btn-danger">Səbətə Əlavə Et</a>
                 </div>
                 </div>
             @endforeach

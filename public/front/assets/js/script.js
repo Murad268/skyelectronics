@@ -203,3 +203,54 @@ function creditCalculator(calcSelector, monSelector, perSelector, priceSelector)
 }
 
 creditCalculator('#calculator', '.monthly_pay', '.goods__percent', '.goods_price')
+
+function cashdicount(cashdiscountSelector, priceSelector, countSelector, allPriceSelector, cashAllSelector, lastPriceSelector) {
+    let cashdiscount = document.querySelectorAll(cashdiscountSelector);
+    let price = document.querySelectorAll(priceSelector);
+    let count = document.querySelectorAll(countSelector);
+    let allPrice = document.querySelector(allPriceSelector);
+    let cashAll = document.querySelector(cashAllSelector);
+    let lastPrice = document.querySelector(lastPriceSelector);
+    let all = 0;
+    let cashDis = 0;
+    let last = 0;
+    price.forEach((item, i) => {
+        all += (parseFloat(item.textContent) * +count[i].value);
+        cashDis += parseFloat(cashdiscount[i].value);
+        allPrice.textContent = all + " ⫙";
+        cashAll.textContent = ("-" + cashDis)+ ' ⫙';
+
+    })
+    last += parseFloat(allPrice.textContent) - parseFloat(cashAll.textContent);
+
+    lastPrice.textContent = last + ' ⫙';
+}
+
+cashdicount('.cashdiscount1', '.creadit__modal__top__right__top__price1', '.quantitity1', '.allprice1', '.cashall1', '.lastall');
+
+
+function cashdicount1(countSelector, priceSelector, timeSelector, monthlySelector, triggerSelector, percentSeelector) {
+    let count = document.querySelectorAll(countSelector);
+    let price = document.querySelectorAll(priceSelector);
+    let time = document.querySelector(timeSelector);
+    let monthly = document.querySelector(monthlySelector);
+    let triggers = document.querySelectorAll(triggerSelector);
+    const percent = document.querySelectorAll(percentSeelector);
+    let month = 6;
+    let prices = 0;
+
+    price.forEach((item, i) => {
+        prices += parseFloat(item.textContent) * parseFloat(count[i].value);
+        monthly.textContent = (prices/month * +percent[i].value/100).toFixed(2);
+    })
+    time.textContent = month;
+    triggers.forEach((trigger, i) => {
+        trigger.addEventListener('click', () => {
+            price.forEach((item, i) => {
+                monthly.textContent = (prices/parseFloat(trigger.textContent) * +percent[i].value/100).toFixed(2);
+            })
+            time.textContent = parseFloat(trigger.textContent);
+        })
+    })
+}
+cashdicount1('.cartelcount', '.cartelprice', '.cartduration', '.monthlypacart', '.creadit__modal__center__month div', '.cartelper');

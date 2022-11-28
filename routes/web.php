@@ -15,6 +15,7 @@ use App\Http\Controllers\auth\EnterController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\front\GoodsMenuController;
 use App\Http\Controllers\front\MainMenuController;
+use App\Http\Controllers\user\CartController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -102,5 +103,10 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::get('/exit', [EnterController::class, 'exit'])->name('exit');
     });
 
+
+    Route::group(['namespace' => 'User', 'prefix' => 'user', 'as' => 'user.'], function() {
+        Route::get('/addcart/{id}', [CartController::class, 'addcart'])->name('addcart');
+        Route::get('/delete/{id}', [CartController::class, 'delete'])->name('delete');
+    });
 
 

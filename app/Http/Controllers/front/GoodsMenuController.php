@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\categories;
 use App\Models\Colors;
 use App\Models\ColorsModel;
 use App\Models\Goods;
 use App\Models\Settings;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class GoodsMenuController extends Controller
@@ -22,6 +24,9 @@ class GoodsMenuController extends Controller
         $colorsId = ColorsModel::where('good_slug', $its[0]->slug)->get();
         $colors = Colors::all();
         $categories = categories::all();
-        return view('front.goodsown.index', compact('siteInfo', 'its', 'smiliar', 'cat', 'colorsId', 'colors', 'categories'));
+        $user_id = User::where('email', session('user_email'))->get();
+        $cart = Cart::where('user_id', $user_id[0]->id)->get();
+
+        return view('front.goodsown.index', compact('siteInfo', 'its', 'smiliar', 'cat', 'colorsId', 'colors', 'categories', 'cart'));
     }
 }
