@@ -29,10 +29,14 @@
                <div class="text-danger header__fnavbar__contact__span"><strong>+99470-853-59-98</strong></div>
             </nav>
             <ul class="header__fnavbar__links">
-               <li class="header__fnavbar__link"><a href="{{route('auth.register')}}">Qeyd Ol</a></li>
-               <li class="header__fnavbar__link"><a href="">Daxil Ol</a></li>
+                @if(session('user_email'))
+                    <li class="header__fnavbar__link"><a href="{{route('auth.exit')}}">Çıxış</a></li>
+                    <li class="header__fnavbar__link"><a href="">Hesabım</a></li>
+                @else
+                    <li class="header__fnavbar__link"><a href="{{route('auth.enter')}}">Daxil ol</a></li>
+                    <li class="header__fnavbar__link"><a href="{{route('auth.register')}}">Qeyd ol</a></li>
+                @endif
                <li class="header__fnavbar__link"><a href="">Sifarişlərim</a></li>
-               <li class="header__fnavbar__link"><a href="">Hesabım</a></li>
             </ul>
          </div>
          <div class="header__cart__block">

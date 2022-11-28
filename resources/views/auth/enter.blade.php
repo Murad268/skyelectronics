@@ -19,8 +19,8 @@
 
                   <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-                  <form class="mx-1 mx-md-4">
-
+                  <form action="{{Route('auth.login')}}" method="post" class="mx-1 mx-md-4">
+                    @csrf
 
 
                     <div class="d-flex flex-row align-items-center mb-4">
@@ -31,7 +31,12 @@
                                 {{session('entersuccess')}}
                             </div>
                         @endif
-                        <input type="email" id="form3Example3c" class="form-control" />
+                        @if(session('errorenter'))
+                            <div class="alert alert-danger">
+                                {{session('errorenter')}}
+                            </div>
+                        @endif
+                        <input name="email" type="email" id="form3Example3c" class="form-control" />
                         <label class="form-label" for="form3Example3c">Elektron poçtunuz</label>
                       </div>
                     </div>
@@ -39,7 +44,7 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="password" id="form3Example4c" class="form-control" />
+                        <input name="password" type="password" id="form3Example4c" class="form-control" />
                         <label class="form-label" for="form3Example4c">Şifrəniz</label>
                       </div>
                     </div>
@@ -48,7 +53,7 @@
 
 
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button type="button" class="btn btn-primary btn-lg">Daxil ol</button>
+                      <button type="submit" class="btn btn-primary btn-lg">Daxil ol</button>
                     </div>
 
                   </form>

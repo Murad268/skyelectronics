@@ -15,7 +15,7 @@ class RegisterController extends Controller
         $email = User::where('email', $req->email)->get();
 
 
-        $all = $req->all();
+  
         if($email->count() > 0) {
             return redirect()->route('auth.register')->with('errorremail', 'bu email ilə artıq istifadəçi mövcuddur');
         }
@@ -26,7 +26,11 @@ class RegisterController extends Controller
         if($req->ok != "on") {
             return redirect()->route('auth.register')->with('errorok', 'qeydiyyatdan keçmək üçün siz mütləq istifadəçi qaydaları ilə razı olmalısınız');
         }
-        $uptaded = User::create($all);
+        $uptaded = User::create([
+            'name' => $req->name,
+            'email' => $req->email,
+            'password' => md5($req->password)
+        ]);
             if($uptaded) {
                 return redirect()->route('auth.enter')->with('entersuccess', 'qeydiyyat uğurla tamamlandı');
             }

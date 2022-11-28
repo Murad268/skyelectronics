@@ -90,7 +90,7 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
 
 
 
-    Route::get('/', [MainMenuController::class, 'index'])->name('index');
+    Route::get('/', [MainMenuController::class, 'index'])->name('front.index');
 
     Route::get('/məhsul/{slug}/{color}', [GoodsMenuController::class, 'index'])->name('goodsab');
 
@@ -98,6 +98,8 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::get('/', [RegisterController::class, 'index'])->name('register');
         Route::post('/create', [RegisterController::class, 'create'])->name('create');
         Route::get('/enter', [EnterController::class, 'index'])->name('enter');
+        Route::post('/login', [EnterController::class, 'login'])->name('login');
+        Route::get('/exit', [EnterController::class, 'exit'])->name('exit');
     });
 
 
