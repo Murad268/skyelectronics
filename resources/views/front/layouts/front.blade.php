@@ -33,6 +33,7 @@
                     <li class="header__fnavbar__link"><a href="{{route('auth.exit')}}">Çıxış</a></li>
                     <li class="header__fnavbar__link"><a href="">Hesabım</a></li>
                     <li class="header__fnavbar__link"><a href="{{route('user.cart')}}">Səbətim</a></li>
+                    <li class="header__fnavbar__link"><a href="{{route('user.favorites')}}">Favorilərim</a></li>
                 @else
                     <li class="header__fnavbar__link"><a href="{{route('auth.enter')}}">Daxil ol</a></li>
                     <li class="header__fnavbar__link"><a href="{{route('auth.register')}}">Qeyd ol</a></li>

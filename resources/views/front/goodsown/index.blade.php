@@ -49,7 +49,12 @@
                </div>
             </div>
             <div class="good__content__choose">
-               <div class="good__content__choose__name">{{$its[0]->goods_name}} <span class="addFavorite"><i style="color: orange" class="fa-regular fa-heart" aria-hidden="true"></i></span></div>
+                @if($bool)
+                <div class="good__content__choose__name">{{$its[0]->goods_name}} <a href="{{route('user.delfav', ['id' => $its[0] -> id])}}" class="addFavorite"><i style="color: orange" class="fa fa-heart" aria-hidden="true"></i></a></div>
+                @else
+                <div class="good__content__choose__name">{{$its[0]->goods_name}} <a href="{{route('user.addfav', ['id' => $its[0] -> id])}}" class="addFavorite"><i style="color: orange" class="fa-regular fa-heart" aria-hidden="true"></i></a></div>
+                @endif
+
                <div class="good__content__choose__mthods">
                   <div class="good__content__choose__mthod">
                      <img src="{{asset('front/assets/images/negd.png')}}" alt="">

@@ -47,8 +47,9 @@
                                                         <div class="cart_item_text">{{$item->price}} ⫙</div>
                                                     </div>
                                                     <div class="cart_item_total cart_info_col">
+                                                        <input type="hidden" value="{{$item->cashdiscount}}" class="cartcashdicount">
                                                         <div class="cart_item_title">Tam qiymət</div>
-                                                        <div class="cart_item_text">{{$item->price * $item->quantity}} ⫙</div>
+                                                        <div class="cart_item_text carttotalprices">{{$item->price * $item->quantity}} ⫙</div>
                                                     </div>
                                                 </div>
                                             </li>
@@ -57,11 +58,26 @@
                                 @endforeach
                                 <div class="order_total">
                                     <div class="order_total_content text-md-right">
-                                        <div class="order_total_title">Order Total:</div>
-                                        <div class="order_total_amount">₹22000</div>
+                                        <div class="order_total_title">Ümumi Qiymət:</div>
+                                        <div class="order_total_amount totalprices">₹22000</div>
                                     </div>
+
+
                                 </div>
-                                <div class="cart_buttons"> <button type="button" class="button cart_button_clear">Alış-verişə davam elə</button> <button type="button" class="button cart_button_checkout">Sifarişi rəsmiləşdir</button> </div>
+                                <div class="order_total">
+                                    <div class="order_total_content text-md-right">
+                                            <div class="order_total_title">Nəğd Alış Endirimi:</div>
+                                            <div class="order_total_amount cashtotalprices">₹22000</div>
+                                        </div>
+                                </div>
+                                <div class="order_total">
+                                        <div class="order_total_content text-md-right">
+                                            <div class="order_total_title">Son Qiymət:</div>
+                                            <div class="order_total_amount lastprices">₹22000</div>
+                                        </div>
+                                </div>
+                                </div>
+                                <div class="cart_buttons"> <a href="{{route('front.index')}}" class="btn btn-white cart_button_clear">Alış-verişə davam elə</a> <button type="button" class="button cart_button_checkout">Sifarişi rəsmiləşdir</button> </div>
                             </div>
                         </div>
                     </div>

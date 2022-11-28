@@ -17,6 +17,7 @@ use App\Http\Controllers\front\GoodsMenuController;
 use App\Http\Controllers\front\MainMenuController;
 use App\Http\Controllers\user\CartController;
 use App\Http\Controllers\user\CommentsController;
+use App\Http\Controllers\user\FavoritesController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -112,6 +113,9 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::post('/addcomment', [CommentsController::class, 'addcomment'])->name('addcomment');
         Route::get('/addcount/{id}', [CartController::class, 'addcount'])->name('addcount');
         Route::get('/mincount/{id}', [CartController::class, 'mincount'])->name('mincount');
+        Route::get('/addfav/{id}', [FavoritesController::class, 'addfav'])->name('addfav');
+        Route::get('/favorilərim', [FavoritesController::class, 'index'])->name('favorites');
+        Route::get('/delfav/{id}', [FavoritesController::class, 'delfav'])->name('delfav');
     });
 
 
