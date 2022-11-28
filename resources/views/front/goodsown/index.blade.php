@@ -129,72 +129,46 @@
          <div class="good__content__footer">
             <div class="good__content__listeners">
                <div class="good__content__listeners__top">
-                  <div class="active__cont__btn good__content__listeners__top1">Xüsusiyyətlər</div>
-                  <div class="good__content__listeners__top2">İstifadəçi rəyləri</div>
+                  <div class="good__content__listeners__top1">Xüsusiyyətlər</div>
+                  <div class="active__cont__btn good__content__listeners__top2">İstifadəçi rəyləri</div>
                </div>
-               <div class="good__content__listeners__content first__cont">
+               <div class="active__cont__disble  good__content__listeners__content first__cont">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam adipisci fuga tenetur quis fugiat suscipit cupiditate doloremque at explicabo tempora, qui ex iure distinctio autem cumque unde nesciunt earum eaque impedit assumenda laboriosam iste. Fugiat quidem veritatis rerum minus sit sequi culpa nemo perspiciatis, ab, mollitia ipsam harum recusandae sapiente aut dolore vero voluptas ratione.
                </div>
-               <div class="active__cont__disble good__content__listeners__content second__cont">
+               <div class="good__content__listeners__content second__cont">
                   <div class="good__content__listeners__content__comments">
-                     <div class="good__content__listeners__content__comment">
-                        <div>
-                           <div class="good__content__listeners__content__comment__name">Murad Agamedov</div>
-                           <div class="good__content__listeners__content__comment__time">1122</div>
-                        </div>
-                        <div class="good__content__listeners__content__comment__content">
-                           ww
-                        </div>
-                     </div>
-                     <hr>
-                     <div class="good__content__listeners__content__comment">
-                        <div>
-                           <div class="good__content__listeners__content__comment__name">Murad Agamedov</div>
-                           <div class="good__content__listeners__content__comment__time">1122</div>
-                        </div>
-                        <div class="good__content__listeners__content__comment__content">
-                           ww
-                        </div>
-                     </div>
-                     <hr>
-                     <div class="good__content__listeners__content__comment">
-                        <div>
-                           <div class="good__content__listeners__content__comment__name">Murad Agamedov</div>
-                           <div class="good__content__listeners__content__comment__time">1122</div>
-                        </div>
-                        <div class="good__content__listeners__content__comment__content">
-                           ww
-                        </div>
-                     </div>
-                     <hr>
-                     <div class="good__content__listeners__content__comment">
-                        <div>
-                           <div class="good__content__listeners__content__comment__name">Murad Agamedov</div>
-                           <div class="good__content__listeners__content__comment__time">1122</div>
-                        </div>
-                        <div class="good__content__listeners__content__comment__content">
-                           ww
-                        </div>
-                     </div>
-                     <hr>
+                     @foreach($comments as $comment)
+                        @if($comment->good_id == $its[0]->id)
+                            <div class="good__content__listeners__content__comment">
+                                <div>
+                                <div class="good__content__listeners__content__comment__name">{{$comment->user[0]->name}}</div>
+                                <div class="good__content__listeners__content__comment__time">{{$comment->created_at}}</div>
+                                </div>
+                                <div class="good__content__listeners__content__comment__content">
+                                {{$comment->comment}}
+                                </div>
+                            </div>
+                            <hr>
+                        @endif
+                     @endforeach
                   </div>
                   <div class="good__content__listeners__content__yourComment">
-                     <form action="">
+                    @if(session('addcommsuccess'))
+                    <div class="alert alert-primary" role="alert">
+                        {{session('addcommsuccess')}}
+                    </div>
+                    @endif
+                    @if(session('addcommerror'))
+                    <div class="alert alert-primary" role="alert">
+                        {{session('addcommerror')}}
+                    </div>
+                    @endif
+                     <form method="post" action="{{Route('user.addcomment')}}">
+                        @csrf
                         <label class="d-block" id="commentLabel" for="comment">Sənin rəyin</label>
-                        <div class="rate">
-                           <input type="radio" id="star5" name="rate" value="5" />
-                           <label for="star5" title="text">5 stars</label>
-                           <input type="radio" id="star4" name="rate" value="4" />
-                           <label for="star4" title="text">4 stars</label>
-                           <input type="radio" id="star3" name="rate" value="3" />
-                           <label for="star3" title="text">3 stars</label>
-                           <input type="radio" id="star2" name="rate" value="2" />
-                           <label for="star2" title="text">2 stars</label>
-                           <input type="radio" id="star1" name="rate" value="1" />
-                           <label for="star1" title="text">1 star</label>
-                         </div>
-                        <textarea id="comment" class="form-control">
+                        <textarea name="comment" id="comment" class="form-control">
                         </textarea>
+                        <input type="hidden" value="{{$its[0]->id}}" name="good_id">
                         <button class="btn btn-primary">Rəyi göndər</button>
                      </form>
                   </div>

@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\categories;
 use App\Models\Colors;
 use App\Models\ColorsModel;
+use App\Models\Comments;
 use App\Models\Goods;
 use App\Models\Settings;
 use App\Models\User;
@@ -26,7 +27,7 @@ class GoodsMenuController extends Controller
         $categories = categories::all();
         $user_id = User::where('email', session('user_email'))->get();
         $cart = Cart::where('user_id', $user_id[0]->id)->get();
-
-        return view('front.goodsown.index', compact('siteInfo', 'its', 'smiliar', 'cat', 'colorsId', 'colors', 'categories', 'cart'));
+        $comments = Comments::all();
+        return view('front.goodsown.index', compact('siteInfo', 'its', 'smiliar', 'cat', 'colorsId', 'colors', 'categories', 'cart', 'comments'));
     }
 }
