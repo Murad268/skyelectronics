@@ -21,7 +21,7 @@
                                     <div class="cart_items">
                                         <ul class="cart_list">
                                             <li class="cart_item clearfix">
-                                            <i style="float: left; margin-left: -30px; cursor: pointer;" class="text-danger fa fa-trash"></i>
+                                            <a href="{{route('user.delete', ['id' => $item->id])}}"><i style="float: left; margin-left: -30px; cursor: pointer;" class="text-danger fa fa-trash"></i></a>
                                                 <div class="cart_item_image">
                                                 @if($item->photos->first() != null)
                                                     <img style="height: 130px;"height: 50px" src="{{asset('admin/assets/images/goods/'.$item->photos->first()->good_img)}}" alt="">
