@@ -106,9 +106,12 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
 
 
     Route::group(['namespace' => 'User', 'prefix' => 'user', 'as' => 'user.'], function() {
+        Route::get('səbət', [CartController::class, 'index'])->name('cart');
         Route::get('/addcart/{id}', [CartController::class, 'addcart'])->name('addcart');
         Route::get('/delete/{id}', [CartController::class, 'delete'])->name('delete');
         Route::post('/addcomment', [CommentsController::class, 'addcomment'])->name('addcomment');
+        Route::get('/addcount/{id}', [CartController::class, 'addcount'])->name('addcount');
+        Route::get('/mincount/{id}', [CartController::class, 'mincount'])->name('mincount');
     });
 
 
