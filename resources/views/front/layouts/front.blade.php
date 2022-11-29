@@ -73,7 +73,7 @@
          </div>
          <nav class="main__nav">
         	<div class="menu">
-			    	<div class="menuActiveLink"><a href="index.html">Ana Səhifə</a></div>
+			    	<div class="menuActiveLink"><a href="{{route('front.index')}}">Ana Səhifə</a></div>
 			    	<div><a href="about.html">Haqqımızda</a></div>
 			    	<div><a href="{{route('front.delivery')}}">Çatdırılma</a></div>
 			    	<div><a href="news.html">Yeniliklər</a></div>
@@ -96,7 +96,7 @@
                    <ul>
                    <li><a href="about.html">Haqqımızda</a></li>
                    <li><a href="{{route('front.conf')}}">Konfidensiallıq siyasəti</a></li>
-                   <li><a href="#">Hissə-hissə ödəniş şərtləri</a></li>
+                   <li><a href="{{route('front.piece')}}">Hissə-hissə ödəniş şərtləri</a></li>
                    <li><a href="{{route('front.back')}}">Geri qaytarma siyasəti</a></li>
                    <li><a href="{{route('front.monthly')}}">Aylıq ödənişlərin həyata keçməsi</a></li>
                    <li><a href="contact.html">Servis Mərkəzləri</a></li>
@@ -105,7 +105,7 @@
              <div class="col_1_of_4 span_1_of_4">
                 <h4>Müştərilər</h4>
                    <ul>
-                   <li><a href="about.html">Saytın istifadə şərtləri</a></li>
+                   <li><a href="{{route('front.terms')}}">Saytın istifadə şərtləri</a></li>
                    <li><a href="{{route('front.corporative')}}">Korporativ satışlar</a></li>
                    <li><a href="{{route('front.complaints')}}">Şikayətlərin idarəolunma siyasəti</a></li>
                    <li><a href="{{route('front.bestprice')}}">Ən yaxşı qiymətə zəmanət!</a></li>

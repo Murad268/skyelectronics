@@ -23,6 +23,8 @@ use App\Http\Controllers\front\DeliveryController;
 use App\Http\Controllers\front\GoodsMenuController;
 use App\Http\Controllers\front\MainMenuController;
 use App\Http\Controllers\front\MonthlyController;
+use App\Http\Controllers\front\PieceController;
+use App\Http\Controllers\front\TermsController;
 use App\Http\Controllers\user\CartController;
 use App\Http\Controllers\user\CommentsController;
 use App\Http\Controllers\user\FavoritesController;
@@ -111,10 +113,9 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
     Route::get('konfidensialliq-siyaseti', [ConfController::class, 'index'])->name('front.conf');
     Route::get('elaqe', [ContactUsController::class, 'index'])->name('front.contact');
     Route::get('korporativ-shatıshlar', [CorporativesController::class, 'index'])->name('front.corporative');
-
     Route::get('chatdirilma', [DeliveryController::class, 'index'])->name('front.delivery');
-
-
+    Route::get('hisse-hisse-odenish-shertleri', [PieceController::class, 'index'])->name('front.piece');
+    Route::get('saytin-istifade-shertleri', [TermsController::class, 'index'])->name('front.terms');
     Route::group(['namespace' => 'Auth', 'prefix' => 'auth', 'as' => 'auth.'], function() {
         Route::get('/', [RegisterController::class, 'index'])->name('register');
         Route::post('/create', [RegisterController::class, 'create'])->name('create');
