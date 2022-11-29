@@ -40,7 +40,7 @@
                                 {{session('errorok')}}
                             </div>
                         @endif
-                        
+
                         <input name="name" type="text" id="form3Example1c" class="form-control" />
                         <label class="form-label" for="form3Example1c">Adınız</label>
                       </div>
@@ -69,7 +69,7 @@
                         <label class="form-label" for="form3Example4cd">Şifrəni təkrar edin</label>
                       </div>
                     </div>
-
+                    <div class="mb-3 ms-3" style="font-size: 14px">hesabınız artıq var? O zaman <a href="{{route('auth.enter')}}">daxil</a> olun</div>
                     <div class="form-check d-flex justify-content-center mb-5">
                       <input name="ok" class="form-check-input me-2" type="checkbox" id="form2Example3c" />
                       <label class="form-check-label" for="form2Example3">

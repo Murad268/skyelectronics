@@ -75,9 +75,9 @@
         	<div class="menu">
 			    	<div class="menuActiveLink"><a href="index.html">Ana Səhifə</a></div>
 			    	<div><a href="about.html">Haqqımızda</a></div>
-			    	<div><a href="delivery.html">Çatdırılma</a></div>
+			    	<div><a href="{{route('front.delivery')}}">Çatdırılma</a></div>
 			    	<div><a href="news.html">Yeniliklər</a></div>
-			    	<div><a href="contact.html">Əlaqə</a></div>
+			    	<div><a href="{{route('front.contact')}}">Əlaqə</a></div>
 	     	</div>
             <div class="main__nav__right">
                <input placeholder="search" type="text">
@@ -95,9 +95,9 @@
                    <h4>İnformasiya</h4>
                    <ul>
                    <li><a href="about.html">Haqqımızda</a></li>
-                   <li><a href="contact.html">Konfidensiallıq siyasəti</a></li>
+                   <li><a href="{{route('front.conf')}}">Konfidensiallıq siyasəti</a></li>
                    <li><a href="#">Hissə-hissə ödəniş şərtləri</a></li>
-                   <li><a href="delivery.html">Geri qaytarma siyasəti</a></li>
+                   <li><a href="{{route('front.back')}}">Geri qaytarma siyasəti</a></li>
                    <li><a href="{{route('front.monthly')}}">Aylıq ödənişlərin həyata keçməsi</a></li>
                    <li><a href="contact.html">Servis Mərkəzləri</a></li>
                    </ul>
@@ -106,9 +106,9 @@
                 <h4>Müştərilər</h4>
                    <ul>
                    <li><a href="about.html">Saytın istifadə şərtləri</a></li>
-                   <li><a href="contact.html">Korporativ satışlar</a></li>
-                   <li><a href="contact.html">Şikayətlərin idarəolunma siyasəti</a></li>
-                   <li><a href="#">Ən yaxşı qiymətə zəmanət!</a></li>
+                   <li><a href="{{route('front.corporative')}}">Korporativ satışlar</a></li>
+                   <li><a href="{{route('front.complaints')}}">Şikayətlərin idarəolunma siyasəti</a></li>
+                   <li><a href="{{route('front.bestprice')}}">Ən yaxşı qiymətə zəmanət!</a></li>
                    </ul>
              </div>
              <div class="col_1_of_4 span_1_of_4">

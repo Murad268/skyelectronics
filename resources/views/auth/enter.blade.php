@@ -49,7 +49,7 @@
                       </div>
                     </div>
 
-
+                    <div class="mb-3 ms-3" style="font-size: 14px">hesabınız yoxdur? O zaman <a href="{{route('auth.register')}}">qeydiyyatdan</a> keçin</div>
 
 
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">

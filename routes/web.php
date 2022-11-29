@@ -13,6 +13,13 @@ use App\Http\Controllers\admin\PotoController;
 use App\Http\Controllers\admin\TagsController;
 use App\Http\Controllers\auth\EnterController;
 use App\Http\Controllers\auth\RegisterController;
+use App\Http\Controllers\front\BackController;
+use App\Http\Controllers\front\BestPrice;
+use App\Http\Controllers\front\ComplaintsController;
+use App\Http\Controllers\front\ConfController;
+use App\Http\Controllers\front\ContactUsController;
+use App\Http\Controllers\front\CorporativesController;
+use App\Http\Controllers\front\DeliveryController;
 use App\Http\Controllers\front\GoodsMenuController;
 use App\Http\Controllers\front\MainMenuController;
 use App\Http\Controllers\front\MonthlyController;
@@ -98,7 +105,14 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
 
     Route::get('/məhsul/{slug}/{color}', [GoodsMenuController::class, 'index'])->name('goodsab');
     Route::get('/aylıq-odenishlerin-heyata-kechmesi', [MonthlyController::class, 'index'])->name('front.monthly');
+    Route::get('geri-qaytarma-siyaseti', [BackController::class, 'index'])->name('front.back');
+    Route::get('en-yaxshi-qiymete-zemanet-siyaseti', [BestPrice::class, 'index'])->name('front.bestprice');
+    Route::get('shikayetlerin-idareolunma-siyaseti', [ComplaintsController::class, 'index'])->name('front.complaints');
+    Route::get('konfidensialliq-siyaseti', [ConfController::class, 'index'])->name('front.conf');
+    Route::get('elaqe', [ContactUsController::class, 'index'])->name('front.contact');
+    Route::get('korporativ-shatıshlar', [CorporativesController::class, 'index'])->name('front.corporative');
 
+    Route::get('chatdirilma', [DeliveryController::class, 'index'])->name('front.delivery');
 
 
     Route::group(['namespace' => 'Auth', 'prefix' => 'auth', 'as' => 'auth.'], function() {
