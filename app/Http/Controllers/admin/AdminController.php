@@ -9,7 +9,11 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function index() {
+       if(session('admin_email')) {
         $siteInfo = Settings::all();
-        return view('admin.index', compact('siteInfo'));
+            return view('admin.index', compact('siteInfo'));
+       } else {
+            return redirect()->route('admin.loginshow');
+       }
     }
 }

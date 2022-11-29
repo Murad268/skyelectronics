@@ -9,8 +9,12 @@ use Illuminate\Http\Request;
 class ContactsController extends Controller
 {
     public function index() {
+        if(session('admin_email')) {
         $siteInfo = Settings::all();
         return view('admin.contactsparameters.index', compact('siteInfo'));
+        } else {
+            return redirect()->route('admin.loginshow');
+       }
     }
 
     public function edit(Request $req) {

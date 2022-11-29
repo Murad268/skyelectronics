@@ -10,9 +10,13 @@ use Illuminate\Http\Request;
 class ColorController extends Controller
 {
     public function index() {
+        if(session('admin_email')) {
         $siteInfo = Settings::all();
         $colors = Colors::all();
         return view('admin.colorsparameters.index', compact('siteInfo', 'colors'));
+        } else {
+            return redirect()->route('admin.loginshow');
+       }
     }
 
     public function delete($id) {

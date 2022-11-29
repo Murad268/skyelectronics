@@ -4,6 +4,12 @@
     </div>
     <div class="dashboard__btns">
         <div class="dashboard__button">
+            <a href="{{route('admin.exit')}}">Çıxış</a>
+        </div>
+        <div class="dashboard__button">
+            <a href="{{route('admin.users.index')}}">İstifadəçilər</a>
+        </div>
+        <div class="dashboard__button">
             <a href="{{route('admin.goods.index')}}">Məhsul parametrləri</a>
         </div>
         <div class="dashboard__button">

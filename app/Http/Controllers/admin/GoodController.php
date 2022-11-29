@@ -17,20 +17,24 @@ use Illuminate\Support\Facades\File;
 class GoodController extends Controller
 {
     public function index(Request $req) {
+        if(session('admin_email')) {
+            if(isset($req->catsearch)) {
+                $q = $req->catsearch;
+                $goods =  Goods::where('goods_name', 'like', '%'.$q.'%')->paginate(10);
+            } else {
+                $goods = Goods::paginate(10);
+            }
+            $siteInfo = Settings::all();
+            $tags = Tags::all();
+            $categories = categories::all();
+            $firms = Firms::all();
+            $colors = Colors::all();
 
-        if(isset($req->catsearch)) {
-            $q = $req->catsearch;
-            $goods =  Goods::where('goods_name', 'like', '%'.$q.'%')->paginate(10);
+            return view('admin.goodsparameters.index', compact('siteInfo', 'goods', 'categories', 'firms', 'tags', 'colors'));
         } else {
-            $goods = Goods::paginate(10);
+            return redirect()->route('admin.loginshow');
         }
-        $siteInfo = Settings::all();
-        $tags = Tags::all();
-        $categories = categories::all();
-        $firms = Firms::all();
-        $colors = Colors::all();
 
-        return view('admin.goodsparameters.index', compact('siteInfo', 'goods', 'categories', 'firms', 'tags', 'colors'));
     }
 
     public function store(Request $req) {

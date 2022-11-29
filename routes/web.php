@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\AdminLoginController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ColorController;
 use App\Http\Controllers\admin\ContactsController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\admin\SiteParametersController;
 use App\Http\Controllers\admin\GoodController;
 use App\Http\Controllers\admin\PotoController;
 use App\Http\Controllers\admin\TagsController;
+use App\Http\Controllers\admin\UsersListController;
 use App\Http\Controllers\auth\EnterController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\front\BackController;
@@ -46,6 +48,18 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
     Route::post('/edit', [ContactsController::class, 'edit'])->name('contactsparametersedit');
     Route::post('/create', [PhonesController::class, 'create'])->name('phonesparametersadd');
     Route::get('/delete', [PhonesController::class, 'delete'])->name('phonesparameterdelete');
+    Route::get('/delete', [PhonesController::class, 'delete'])->name('phonesparameterdelete');
+    Route::get('/login', [AdminLoginController::class, 'index'])->name('loginshow');
+    Route::post('/login', [AdminLoginController::class, 'login'])->name('login');
+    Route::get('/exit', [AdminLoginController::class, 'exit'])->name('exit');
+
+    Route::group(['prefix' => 'users', 'as' => 'users.'], function() {
+        Route::get('/', [UsersListController::class, 'index'])->name('index');
+        Route::get('/axtaris', [UsersListController::class, 'index'])->name('search');
+        Route::get('/addadmin/{id}', [UsersListController::class, 'addadmin'])->name('addadmin');
+        Route::get('/block/{id}', [UsersListController::class, 'block'])->name('block');
+        Route::get('/removeblock/{id}', [UsersListController::class, 'removeblock'])->name('removeblock');
+    });
 
     Route::group(['prefix' => 'faq', 'as' => 'faq.'], function() {
         Route::get('/', [FaqController::class, 'index'])->name('index');

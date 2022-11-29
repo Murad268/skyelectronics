@@ -10,8 +10,12 @@ use Illuminate\Support\Facades\File;
 class SiteParametersController extends Controller
 {
     public function index() {
-        $siteInfo = Settings::all();
-        return view('admin.siteparameters.index', compact('siteInfo'));
+        if(session('admin_email')) {
+            $siteInfo = Settings::all();
+            return view('admin.siteparameters.index', compact('siteInfo'));
+        } else {
+            return redirect()->route('admin.loginshow');
+       }
     }
 
     public function update(Request $req) {

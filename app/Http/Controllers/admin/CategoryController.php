@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 class CategoryController extends Controller
 {
     public function index(Request $req) {
+        if(session("admin_email")) {
         if($req->catsearch != null) {
             $q = $req->catsearch;
             $categories =  DB::table('categories')->where('cat__name','LIKE','%'.$q.'%')
@@ -23,6 +24,9 @@ class CategoryController extends Controller
         $catlist = categories::all();
 
         return view('admin.categoryparameters.index', compact('siteInfo', 'categories', 'catlist'));
+     } else {
+        return redirect()->route('admin.loginshow');
+   }
     }
     public function create(Request $req) {
         $categories = new categories();

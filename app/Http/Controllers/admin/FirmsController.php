@@ -11,16 +11,20 @@ use Illuminate\Support\Facades\File;
 class FirmsController extends Controller
 {
     public function index(Request $req) {
+        if(session('admin_email')) {
+            if($req->catsearch != null) {
+                $q = $req->catsearch;
+                $firms =  Firms::where('firm__name', 'like', '%'.$q.'%')->paginate(10);
+            } else {
+                $firms = Firms::paginate(10);
+            }
+            $siteInfo = Settings::all();
 
-        if($req->catsearch != null) {
-            $q = $req->catsearch;
-            $firms =  Firms::where('firm__name', 'like', '%'.$q.'%')->paginate(10);
+            return view('admin.firmparameters.index', compact('siteInfo', 'firms'));
         } else {
-            $firms = Firms::paginate(10);
+            return redirect()->route('admin.loginshow');
         }
-        $siteInfo = Settings::all();
 
-        return view('admin.firmparameters.index', compact('siteInfo', 'firms'));
     }
 
     public function store(Request $req) {

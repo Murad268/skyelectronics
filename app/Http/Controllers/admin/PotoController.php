@@ -12,10 +12,14 @@ use Illuminate\Support\Facades\File;
 class PotoController extends Controller
 {
     public function index() {
-        $siteInfo = Settings::all();
-        $goods = Goods::all();
-        $photos = Photo::all();
-        return view('admin.photoparameters.index', compact('siteInfo', 'goods', 'photos'));
+        if(session('admin_email')) {
+            $siteInfo = Settings::all();
+            $goods = Goods::all();
+            $photos = Photo::all();
+            return view('admin.photoparameters.index', compact('siteInfo', 'goods', 'photos'));
+        } else {
+            return redirect()->route('admin.loginshow');
+       }
     }
 
     public function create(Request $req) {

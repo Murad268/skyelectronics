@@ -12,16 +12,20 @@ use Illuminate\Support\Facades\DB;
 class TagsController extends Controller
 {
     public function index(Request $req) {
-        if(isset($req->catsearch)) {
-            $q = $req->catsearch;
-            $tags =  Tags::where('tag__name', 'like', '%'.$q.'%')->paginate(10);
+        if(session('admin_email')) {
+            if(isset($req->catsearch)) {
+                $q = $req->catsearch;
+                $tags =  Tags::where('tag__name', 'like', '%'.$q.'%')->paginate(10);
 
+            } else {
+                $tags = Tags::paginate(10);
+            }
+            $siteInfo = Settings::all();
+
+            return view('admin.tagsparameters.index', compact('siteInfo', 'tags'));
         } else {
-            $tags = Tags::paginate(10);
-        }
-        $siteInfo = Settings::all();
-
-        return view('admin.tagsparameters.index', compact('siteInfo', 'tags'));
+            return redirect()->route('admin.loginshow');
+       }
     }
 
     public function store(Request $req) {

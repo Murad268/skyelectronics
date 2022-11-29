@@ -11,9 +11,13 @@ use Illuminate\Http\Request;
 class FaqController extends Controller
 {
     public function index() {
+        if(session('admin_email')) {
         $siteInfo = Settings::all();
         $faq = Faq::all();
         return view('admin.faqparameters.index', compact('siteInfo', 'faq'));
+        } else {
+            return redirect()->route('admin.loginshow');
+       }
     }
     public function delete($id) {
         $deleted = Faq::destroy($id);

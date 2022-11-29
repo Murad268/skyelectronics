@@ -12,10 +12,13 @@ use Illuminate\Support\Facades\Redis;
 class PhonesController extends Controller
 {
     public function index() {
-        $siteInfo = Settings::all();
-        $allPhones = phones::all();
+        if(session('admin_email')) {
+            $siteInfo = Settings::all();
+            $allPhones = phones::all();
 
-        return view('admin.phoneparameters.index', compact('allPhones', 'siteInfo'));
+            return view('admin.phoneparameters.index', compact('allPhones', 'siteInfo'));
+        }
+
     }
     public function create(Request $req) {
         $all = $req->all();
