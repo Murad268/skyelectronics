@@ -21,8 +21,8 @@
                         <div class="dropdown-content">
 
                             @foreach($categories as $category1)
-                                @if($category1->upid == $category   ->id)
-                                    <a class="dropdown-item">
+                                @if($category1->upid == $category->id)
+                                    <a href="{{route('front.store', ['slug' => $category1->slug])}}" class="dropdown-item">
                                         {{$category1->cat__name}}
                                     </a>
                                 @endif

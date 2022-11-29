@@ -1713,3 +1713,17 @@ thead {
     visibility: visible;
     opacity: 1;
 }
+
+
+
+.store__wrapper {
+    display: grid;
+    grid-template-columns: 30% 65%;
+    column-gap: 50px
+}
+.store__goods__wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+    row-gap: 20px;
+}

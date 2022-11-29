@@ -24,6 +24,7 @@ use App\Http\Controllers\front\GoodsMenuController;
 use App\Http\Controllers\front\MainMenuController;
 use App\Http\Controllers\front\MonthlyController;
 use App\Http\Controllers\front\PieceController;
+use App\Http\Controllers\front\StoreController;
 use App\Http\Controllers\front\TermsController;
 use App\Http\Controllers\user\CartController;
 use App\Http\Controllers\user\CommentsController;
@@ -116,6 +117,11 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
     Route::get('chatdirilma', [DeliveryController::class, 'index'])->name('front.delivery');
     Route::get('hisse-hisse-odenish-shertleri', [PieceController::class, 'index'])->name('front.piece');
     Route::get('saytin-istifade-shertleri', [TermsController::class, 'index'])->name('front.terms');
+    Route::get('magaza/{slug?}', [StoreController::class, 'index'])->name('front.store');
+    Route::get('magaza', [StoreController::class, 'index'])->name('front.seacrh');
+
+
+
     Route::group(['namespace' => 'Auth', 'prefix' => 'auth', 'as' => 'auth.'], function() {
         Route::get('/', [RegisterController::class, 'index'])->name('register');
         Route::post('/create', [RegisterController::class, 'create'])->name('create');

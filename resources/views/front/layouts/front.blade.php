@@ -80,7 +80,7 @@
 			    	<div><a href="{{route('front.contact')}}">Əlaqə</a></div>
 	     	</div>
             <div class="main__nav__right">
-               <input placeholder="search" type="text">
+               <form method="get" action="{{Route('front.seacrh')}}"><input placeholder="search" name="good_name" type="text"></form>
                <i class="input_search fa fa-search" aria-hidden="true"></i>
             </div>
          </nav>

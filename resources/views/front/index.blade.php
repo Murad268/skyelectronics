@@ -57,7 +57,7 @@
             </div>
             <div class="content__title__right">
                <p>
-                  <a href="">Bütün məhsulları gör</a>
+                  <a href="{{route('front.store', ['slug' => 'news'])}}">Bütün məhsulları gör</a>
                   <i class="text-danger fa fa-caret-right"></i>
                </p>
             </div>
@@ -86,7 +86,7 @@
             </div>
             <div class="content__title__right">
                <p>
-                  <a href="">Bütün məhsulları gör</a>
+                  <a href="{{route('front.store', ['slug' => 'popular'])}}">Bütün məhsulları gör</a>
                   <i class="text-danger fa fa-caret-right"></i>
                </p>
             </div>
