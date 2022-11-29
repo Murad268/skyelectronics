@@ -46,12 +46,30 @@
                <a href=""><img src="{{asset('admin/assets/images/'.$siteInfo->siteLogosu)}}" alt=""></a>
             </div>
             <div class="header__cart">
-               <div>Onlayn Mağazamıza xoş gəlmisiniz! <span style="font-size: 20px;" class="text-danger">Səbət:</span>0 məhsul(lar) - ⫙0.00</div>
+               <div>Onlayn Mağazamıza xoş gəlmisiniz! <span style="font-size: 20px;" class="text-danger">Səbət:</span>{{$cart->count()}} məhsul(lar) - ⫙{{$cart->sum('price') * $cart->sum('quantity')}}</div>
                <div class="odrar">
                   <i class="odrardown fa fa-caret-down"></i>
                   <i style="display: none;" class="odrarup fa fa-caret-up"></i>
                </div>
+               <div class="header__cart__footer">
+                    @if($cart->count() > 0)
+                        @foreach($cart as $item)
+                            <div>
+                                <a href="{{route('user.delete', ['id' => $item->id])}}"><i class="fa fa-trash text-danger"></i></a>
+                                <div class="header__cart__footer__name">
+                                    {{$item->name}}
+                                </div>
+                                <div class="header__cart__footer__count">{{$item->quantity}}</div>
+                                <div class="header__cart__footer__price">{{$item->price}} AZN</div>
+                            </div>
+                            <hr>
+                        @endforeach
+                    @else
+                        Hazırda səbətiniz boşdur
+                    @endif
+               </div>
             </div>
+
          </div>
          <nav class="main__nav">
         	<div class="menu">

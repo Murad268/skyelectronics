@@ -1,28 +1,31 @@
 
 
 try {
-   function cartArrow(arrowSelector1, arrowSelector2) {
+   function cartArrow(arrowSelector1, arrowSelector2, footerSelector) {
       let arrow1 = document.querySelector(arrowSelector1);
       let arrow2 = document.querySelector(arrowSelector2);
+      let selector = document.querySelector(footerSelector);
       arrow1.addEventListener("click", () => {
          if(arrow1.classList.contains('odrardown')) {
             arrow1.classList.remove('arrowActive');
             arrow1.classList.add('arrowPassive');
             arrow2.classList.add('arrowActive');
             arrow2.classList.remove('arrowPassive');
+            selector.classList.add('header__cart__footer__active')
          } else {
             arrow1.classList.remove('arrowActive');
             arrow1.classList.add('arrowPassive');
             arrow2.classList.add('arrowActive');
             arrow2.classList.remove('arrowPassive');
+            selector.classList.remove('header__cart__footer__active')
          }
       })
       arrow2.addEventListener("click", () => {
 
       })
    }
-   cartArrow('.odrardown', '.odrarup')
-   cartArrow('.odrarup', '.odrardown')
+   cartArrow('.odrardown', '.odrarup', '.header__cart__footer')
+   cartArrow('.odrarup', '.odrardown', '.header__cart__footer')
 
 
    var swiper = new Swiper(".mySwiper", {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\Favorites;
 use App\Models\Goods;
 use App\Models\Settings;
@@ -15,7 +16,8 @@ class FavoritesController extends Controller
         $siteInfo = Settings::find(1);
         $user = User::where('email', session('user_email'))->get();
         $fav = Favorites::where('user_id', $user[0]->id)->get();
-        return view('front.favorites.index', compact('siteInfo', "fav"));
+        $cart = Cart::where('user_id', $user[0]->id)->get();
+        return view('front.favorites.index', compact('siteInfo', "fav", 'cart'));
     }
     public function addfav($id) {
         $user = User::where('email', session('user_email'))->get();
@@ -44,7 +46,7 @@ class FavoritesController extends Controller
         $delgood = Favorites::where('good_id', $id)->get();
 
         $delete = Favorites::destroy($delgood[0]->id);
- 
+
         if($delete) {
             return redirect()->back();
         }
