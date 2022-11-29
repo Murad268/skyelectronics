@@ -4,7 +4,7 @@
     <div class="search">
         <i class="fa fa-search"></i>
         <input type="text" class="form-control" placeholder="axtar">
-        <button class="btn btn-success">Search</button>
+        <button class="btn btn-success">Axtar</button>
     </div>
     <div class="panel__cordinate">
         <a href=""><i class="me-2 fa fa-home" aria-hidden="true"></i></a>
@@ -39,7 +39,7 @@
                     {{session('error')}}
                 </div>
             @endif
-            
+
         </div>
         <button style="margin: 0 auto" class="d-block mt-4 btn btn-success">Məlumatları yenilə</button>
     </form>

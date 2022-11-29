@@ -31,7 +31,7 @@
             <ul class="header__fnavbar__links">
                 @if(session('user_email'))
                     <li class="header__fnavbar__link"><a href="{{route('auth.exit')}}">Çıxış</a></li>
-                    <li class="header__fnavbar__link"><a href="">Hesabım</a></li>
+                    <li class="header__fnavbar__link"><a href="{{route('user.index')}}">Hesabım</a></li>
                     <li class="header__fnavbar__link"><a href="{{route('user.cart')}}">Səbətim</a></li>
                     <li class="header__fnavbar__link"><a href="{{route('user.favorites')}}">Favorilərim</a></li>
                 @else
@@ -119,10 +119,9 @@
                     <li class=""><a href="">Hesabım</a></li>
                     <li><a href="{{route('user.cart')}}">Səbəti Gör</a></li>
                     <li><a href="{{route('user.favorites')}}">Sevimlilər</a></li>
-                    <li><a href="#">Sifarişlərim</a></li>
+                    <li><a href="{{route('user.index')}}">Sifarişlərim</a></li>
                     @else
                       <li><a href="{{route('auth.enter')}}">Daxil ol</a></li>
-
                       <li class="header__fnavbar__link"><a href="{{route('auth.enter')}}">Daxil ol</a></li>
                       <li class="header__fnavbar__link"><a href="{{route('auth.register')}}">Qeyd ol</a></li>
                     @endif

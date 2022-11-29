@@ -9,7 +9,7 @@
             @csrf
             <i class="fa fa-search"></i>
             <input name="catsearch" type="text" class="form-control" placeholder="axtar">
-            <button class="btn btn-success">Search</button>
+            <button class="btn btn-success">Axtar</button>
         </form>
     </div>
     <div class="panel__cordinate">

@@ -13,11 +13,12 @@ class EnterController extends Controller
     }
     public function login(Request $req) {
         $checkemail = User::where('email', $req->email)->where('password', md5($req->password))->get();
-      
-        if($checkemail[0]->block == 1) {
-            return redirect()->route('auth.enter')->with('errorenter', 'sizin hesabınız administrasiya tərəfindən bloklanıb');
-        }
+
+
         if($checkemail->count() > 0) {
+            if($checkemail[0]->block == 1) {
+                return redirect()->route('auth.enter')->with('errorenter', 'sizin hesabınız administrasiya tərəfindən bloklanıb');
+            }
             session()->put('user_email', $req->email);
             return redirect()->route('front.index');
         } else {

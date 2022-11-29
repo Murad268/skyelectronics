@@ -14,12 +14,12 @@ class UsersListController extends Controller
             $siteInfo = Settings::all();
               if(isset($req->userssearch)) {
                 $q = $req->userssearch;
-                $users =  User::where('name', 'like', '%'.$q.'%')->paginate(2);
+                $users =  User::where('name', 'like', '%'.$q.'%')->paginate(10);
 
             } else {
                 $users = User::orderBy('admin', 'desc')->paginate(10);
             }
-            
+
             return view('admin.usersparameters.index', compact('siteInfo', 'users'));
         } else {
             return redirect()->route('admin.loginshow');

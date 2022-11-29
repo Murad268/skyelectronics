@@ -5,13 +5,13 @@
         <form method="get" action="{{Route('admin.users.search')}}">
             <i class="fa fa-search"></i>
             <input name="userssearch" type="text" class="form-control" placeholder="axtar">
-            <button class="btn btn-success">Search</button>
+            <button class="btn btn-success">Axtar</button>
         </form>
     </div>
     <div class="panel__cordinate">
         <a href=""><i class="me-2 fa fa-home" aria-hidden="true"></i></a>
         <i class="me-2 fas fa-angle-right"></i>
-        <span><a href="">Tag parametrləri</a></span>
+        <span><a href="">İstifadəçi parametrləri</a></span>
     </div>
         <div style="width: 100%" class="panel__info">
         @if(session('success'))

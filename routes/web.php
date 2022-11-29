@@ -31,6 +31,7 @@ use App\Http\Controllers\front\TermsController;
 use App\Http\Controllers\user\CartController;
 use App\Http\Controllers\user\CommentsController;
 use App\Http\Controllers\user\FavoritesController;
+use App\Http\Controllers\user\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -155,6 +156,9 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::get('/addfav/{id}', [FavoritesController::class, 'addfav'])->name('addfav');
         Route::get('/favorilərim', [FavoritesController::class, 'index'])->name('favorites');
         Route::get('/delfav/{id}', [FavoritesController::class, 'delfav'])->name('delfav');
+        Route::get('/profile', [UserProfileController::class, 'index'])->name('index');
+        Route::post('/updatemain', [UserProfileController::class, 'updatemain'])->name('updatemain');
+        Route::post('/updatelink', [UserProfileController::class, 'updatelink'])->name('updatelink');
     });
 
 
