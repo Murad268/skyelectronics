@@ -13,11 +13,16 @@ use Illuminate\Http\Request;
 class FavoritesController extends Controller
 {
     public function index() {
-        $siteInfo = Settings::find(1);
-        $user = User::where('email', session('user_email'))->get();
-        $fav = Favorites::where('user_id', $user[0]->id)->get();
-        $cart = Cart::where('user_id', $user[0]->id)->get();
-        return view('front.favorites.index', compact('siteInfo', "fav", 'cart'));
+        if(session('user_email')) {
+            $siteInfo = Settings::find(1);
+            $user = User::where('email', session('user_email'))->get();
+            $fav = Favorites::where('user_id', $user[0]->id)->get();
+            $cart = Cart::where('user_id', $user[0]->id)->get();
+            return view('front.favorites.index', compact('siteInfo', "fav", 'cart'));
+        } else {
+            return redirect()->route('auth.enter');
+        }
+
     }
     public function addfav($id) {
         $user = User::where('email', session('user_email'))->get();

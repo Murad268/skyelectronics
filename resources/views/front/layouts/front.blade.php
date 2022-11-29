@@ -43,7 +43,7 @@
          </div>
          <div class="header__cart__block">
             <div class="header__cart__logo">
-               <a href=""><img src="{{asset('admin/assets/images/'.$siteInfo->siteLogosu)}}" alt=""></a>
+               <a href="{{route('front.index')}}"><img src="{{asset('admin/assets/images/'.$siteInfo->siteLogosu)}}" alt=""></a>
             </div>
             <div class="header__cart">
                <div>Onlayn Mağazamıza xoş gəlmisiniz! <span style="font-size: 20px;" class="text-danger">Səbət:</span>{{$cart->count()}} məhsul(lar) - ⫙{{$cart->sum('price') * $cart->sum('quantity')}}</div>
@@ -98,7 +98,7 @@
                    <li><a href="contact.html">Konfidensiallıq siyasəti</a></li>
                    <li><a href="#">Hissə-hissə ödəniş şərtləri</a></li>
                    <li><a href="delivery.html">Geri qaytarma siyasəti</a></li>
-                   <li><a href="contact.html">Aylıq ödənişlərin həyata keçməsi</a></li>
+                   <li><a href="{{route('front.monthly')}}">Aylıq ödənişlərin həyata keçməsi</a></li>
                    <li><a href="contact.html">Servis Mərkəzləri</a></li>
                    </ul>
                 </div>
@@ -114,10 +114,19 @@
              <div class="col_1_of_4 span_1_of_4">
                 <h4>Mənim Hesabım</h4>
                    <ul>
-                      <li><a href="contact.html">Daxil ol</a></li>
-                      <li><a href="{{route('user.cart')}}">Səbəti Gör</a></li>
-                      <li><a href="#">Sevimlilər</a></li>
-                      <li><a href="#">Sifarişlərim</a></li>
+                   @if(session('user_email'))
+                    <li class=""><a href="{{route('auth.exit')}}">Çıxış</a></li>
+                    <li class=""><a href="">Hesabım</a></li>
+                    <li><a href="{{route('user.cart')}}">Səbəti Gör</a></li>
+                    <li><a href="{{route('user.favorites')}}">Sevimlilər</a></li>
+                    <li><a href="#">Sifarişlərim</a></li>
+                    @else
+                      <li><a href="{{route('auth.enter')}}">Daxil ol</a></li>
+
+                      <li class="header__fnavbar__link"><a href="{{route('auth.enter')}}">Daxil ol</a></li>
+                      <li class="header__fnavbar__link"><a href="{{route('auth.register')}}">Qeyd ol</a></li>
+                    @endif
+
                       <li><a href="contact.html">Yardım</a></li>
                    </ul>
              </div>

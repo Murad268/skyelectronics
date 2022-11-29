@@ -15,6 +15,7 @@ use App\Http\Controllers\auth\EnterController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\front\GoodsMenuController;
 use App\Http\Controllers\front\MainMenuController;
+use App\Http\Controllers\front\MonthlyController;
 use App\Http\Controllers\user\CartController;
 use App\Http\Controllers\user\CommentsController;
 use App\Http\Controllers\user\FavoritesController;
@@ -96,6 +97,9 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
     Route::get('/', [MainMenuController::class, 'index'])->name('front.index');
 
     Route::get('/məhsul/{slug}/{color}', [GoodsMenuController::class, 'index'])->name('goodsab');
+    Route::get('/aylıq-odenishlerin-heyata-kechmesi', [MonthlyController::class, 'index'])->name('front.monthly');
+
+
 
     Route::group(['namespace' => 'Auth', 'prefix' => 'auth', 'as' => 'auth.'], function() {
         Route::get('/', [RegisterController::class, 'index'])->name('register');

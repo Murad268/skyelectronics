@@ -17,25 +17,30 @@ use Illuminate\Http\Request;
 class GoodsMenuController extends Controller
 {
     public function index($slug, $color) {
-        $user = User::where('email', session('user_email'))->get();
-        $siteInfo = Settings::find(1);
-        $its = Goods::where('slug', $slug)->where('color_id', $color)->get();
-        $increment = $its[0]->views + 1;
-        $its[0]->update(['views' => $increment]);
-        $smiliar = Goods::where('goods__category', $its[0]->goods__category)->take(3)->get();
-        $cat = categories::find($its[0]->goods__category);
-        $colorsId = ColorsModel::where('good_slug', $its[0]->slug)->get();
-        $colors = Colors::all();
-        $categories = categories::all();
-        $user_id = User::where('email', session('user_email'))->get();
-        $cart = Cart::where('user_id', $user_id[0]->id)->get();
-        $comments = Comments::all();
-        $env = Favorites::where('user_id', $user[0]->id)->where('good_id', $its[0]->id)->get();
-        if($env->count() > 0) {
-            $bool = true;
+        if(session('user_email')) {
+            $user = User::where('email', session('user_email'))->get();
+            $siteInfo = Settings::find(1);
+            $its = Goods::where('slug', $slug)->where('color_id', $color)->get();
+            $increment = $its[0]->views + 1;
+            $its[0]->update(['views' => $increment]);
+            $smiliar = Goods::where('goods__category', $its[0]->goods__category)->take(3)->get();
+            $cat = categories::find($its[0]->goods__category);
+            $colorsId = ColorsModel::where('good_slug', $its[0]->slug)->get();
+            $colors = Colors::all();
+            $categories = categories::all();
+            $user_id = User::where('email', session('user_email'))->get();
+            $cart = Cart::where('user_id', $user_id[0]->id)->get();
+            $comments = Comments::all();
+            $env = Favorites::where('user_id', $user[0]->id)->where('good_id', $its[0]->id)->get();
+            if($env->count() > 0) {
+                $bool = true;
+            } else {
+                $bool = false;
+            }
+            return view('front.goodsown.index', compact('siteInfo', 'its', 'smiliar', 'cat', 'colorsId', 'colors', 'categories', 'cart', 'comments', 'bool'));
         } else {
-            $bool = false;
+            return redirect()->route('auth.enter');
         }
-        return view('front.goodsown.index', compact('siteInfo', 'its', 'smiliar', 'cat', 'colorsId', 'colors', 'categories', 'cart', 'comments', 'bool'));
+
     }
 }
