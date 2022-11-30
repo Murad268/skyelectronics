@@ -28,6 +28,7 @@ use App\Http\Controllers\front\MonthlyController;
 use App\Http\Controllers\front\PieceController;
 use App\Http\Controllers\front\StoreController;
 use App\Http\Controllers\front\TermsController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\user\CartController;
 use App\Http\Controllers\user\CommentsController;
 use App\Http\Controllers\user\FavoritesController;
@@ -162,4 +163,6 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::post('/updateavatar', [UserProfileController::class, 'updateavatar'])->name('updateavatar');
     });
 
+
+    Route::post('/mail', [MailController::class, 'send'])->name('sendmail');
 

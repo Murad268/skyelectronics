@@ -22,12 +22,13 @@
                 </div>
                 </div>
                 <div class="form-contact">
-                <form>
+                <form method="post" action="{{Route('sendmail')}}">
+                    @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <div class="single-input">
                             <i class="fas fa-user"></i>
-                            <input type="text" name="name" placeholder="ADINIZI DAXİL EDİN">
+                            <input type="text" name="ad" placeholder="ADINIZI DAXİL EDİN">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -39,7 +40,7 @@
                         <div class="col-md-6">
                             <div class="single-input">
                             <i class="fas fa-phone"></i>
-                            <input type="text" name="phoneNumber" placeholder="TELEFON NÖMRƏNİZİ DAXİL EDİN">
+                            <input type="text" name="telefon" placeholder="TELEFON NÖMRƏNİZİ DAXİL EDİN">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -51,15 +52,21 @@
                         <div class="col-12">
                             <div class="single-input">
                             <i class="fas fa-comment-dots"></i>
-                            <textarea placeholder="MƏKTUBUNUZU DAXİL EDİN"></textarea>
+                            <textarea name="mesaj" placeholder="MƏKTUBUNUZU DAXİL EDİN"></textarea>
                             </div>
                         </div>
+                        @if(session('successsendemail'))
+                            <div class="alert alert-success" role="alert">
+                                {{session('successsendemail')}}
+                            </div>
+                        @endif
                         <div class="col-12">
                             <div class="submit-input text-center">
                             <input type="submit" name="submit" value="İNDİ GÖNDƏR">
                             </div>
                         </div>
                     </div>
+
                 </form>
                 </div>
             </div>
