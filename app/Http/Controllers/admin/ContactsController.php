@@ -18,7 +18,7 @@ class ContactsController extends Controller
     }
 
     public function edit(Request $req) {
-        $settings = Settings::find(3);
+        $settings = Settings::find(1);
         $all = $req->all();
         $update = $settings->update($all);
         if($update) {

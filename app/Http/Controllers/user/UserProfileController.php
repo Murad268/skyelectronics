@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\phones;
 use App\Models\Settings;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class UserProfileController extends Controller
             $user = User::where('email', session('user_email'))->get();
 
             $cart = Cart::where('user_id', $user[0]->id)->get();
-            return view('front.profile.index', compact('siteInfo', 'cart', 'user'));
+            $phones = phones::all();
+            return view('front.profile.index', compact('siteInfo', 'cart', 'user', 'phones'));
         } else {
             return redirect()->route('auth.enter');
         }

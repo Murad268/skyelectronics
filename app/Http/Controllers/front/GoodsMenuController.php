@@ -10,6 +10,7 @@ use App\Models\ColorsModel;
 use App\Models\Comments;
 use App\Models\Favorites;
 use App\Models\Goods;
+use App\Models\phones;
 use App\Models\Settings;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -32,12 +33,13 @@ class GoodsMenuController extends Controller
             $cart = Cart::where('user_id', $user_id[0]->id)->get();
             $comments = Comments::all();
             $env = Favorites::where('user_id', $user[0]->id)->where('good_id', $its[0]->id)->get();
+            $phones = phones::all();
             if($env->count() > 0) {
                 $bool = true;
             } else {
                 $bool = false;
             }
-            return view('front.goodsown.index', compact('siteInfo', 'its', 'smiliar', 'cat', 'colorsId', 'colors', 'categories', 'cart', 'comments', 'bool'));
+            return view('front.goodsown.index', compact('siteInfo', 'its', 'smiliar', 'cat', 'colorsId', 'colors', 'categories', 'cart', 'comments', 'bool', 'phones'));
         } else {
             return redirect()->route('auth.enter');
         }

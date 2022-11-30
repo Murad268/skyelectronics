@@ -15,7 +15,7 @@
         @csrf
         <div class="panel__info">
             <label for="disabledTextInput" class="mt-4 form-label">Saytın elekyron poçtu</label>
-            <input value="{{$siteInfo[0]->siteMailAdresi}}" type="text" id="disabledTextInput" name="siteMailAdresi" class="form-control">
+            <input value="{{$siteInfo[0]->siteMailAdresi}}" type="email" id="disabledTextInput" name="siteMailAdresi" class="form-control">
             <label for="disabledTextInput" class="mt-4 form-label">Saytın elekyron poçtunun şifrəsi</label>
             <input value="{{$siteInfo[0]->siteEmailSifresi}}" type="text" id="disabledTextInput" name="siteEmailSifresi" class="form-control">
             <label for="disabledTextInput" class="mt-4 form-label">host</label>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Faq;
+use App\Models\phones;
 use App\Models\Settings;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,8 +18,8 @@ class DeliveryController extends Controller
             $siteInfo = Settings::find(1);
             $cart = Cart::where('user_id', $user[0]->id)->get();
             $faq = Faq::all();
-       
-            return view('front.delivery.index', compact('siteInfo', 'cart', 'faq'));
+            $phones = phones::all();
+            return view('front.delivery.index', compact('siteInfo', 'cart', 'faq', 'phones'));
 
         } else {
             return redirect()->route('auth.enter');

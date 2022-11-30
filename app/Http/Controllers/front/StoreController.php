@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\categories;
 use App\Models\Goods;
+use App\Models\phones;
 use App\Models\Settings;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,6 +20,7 @@ class StoreController extends Controller
             $siteInfo = Settings::find(1);
             $cart = Cart::where('user_id', $user[0]->id)->get();
             $categories = categories::all();
+            $phones = phones::all();
             if(isset($req->good_name)) {
                 $q = $req->good_name;
                 $goodsAll = Goods::where('goods_name', 'like', '%'.$q.'%')->paginate(9);
@@ -38,7 +40,7 @@ class StoreController extends Controller
 
 
 
-                return view('front.store.index', compact('siteInfo', 'cart', 'categories', 'goodsAll'));
+                return view('front.store.index', compact('siteInfo', 'cart', 'categories', 'goodsAll', 'phones'));
 
 
 

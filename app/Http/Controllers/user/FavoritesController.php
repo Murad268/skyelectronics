@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Favorites;
 use App\Models\Goods;
+use App\Models\phones;
 use App\Models\Settings;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,7 +19,8 @@ class FavoritesController extends Controller
             $user = User::where('email', session('user_email'))->get();
             $fav = Favorites::where('user_id', $user[0]->id)->get();
             $cart = Cart::where('user_id', $user[0]->id)->get();
-            return view('front.favorites.index', compact('siteInfo', "fav", 'cart'));
+            $phones = phones::all();
+            return view('front.favorites.index', compact('siteInfo', "fav", 'cart', 'phones'));
         } else {
             return redirect()->route('auth.enter');
         }

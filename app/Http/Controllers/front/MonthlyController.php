@@ -5,6 +5,7 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\categories;
+use App\Models\phones;
 use App\Models\Settings;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,8 +17,8 @@ class MonthlyController extends Controller
             $user = User::where('email', session('user_email'))->get();
             $siteInfo = Settings::find(1);
             $cart = Cart::where('user_id', $user[0]->id)->get();
-
-            return view('front.monthly.index', compact('siteInfo', 'cart'));
+            $phones = phones::all();
+            return view('front.monthly.index', compact('siteInfo', 'cart', 'phones'));
         } else {
             return redirect()->route('auth.enter');
         }

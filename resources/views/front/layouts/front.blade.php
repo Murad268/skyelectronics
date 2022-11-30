@@ -26,7 +26,7 @@
             <nav class="header__fnavbar__contact">
                <div class="header__fnavbar__contact__span"><strong>Sualın var?</strong></div>
                <div style="color: #9C9C9C" class="header__fnavbar__contact__span">bizə zəng et</div>
-               <div class="text-danger header__fnavbar__contact__span"><strong>+99470-853-59-98</strong></div>
+               <div class="text-danger header__fnavbar__contact__span"><strong>{{$phones->first()->phone}}</strong></div>
             </nav>
             <ul class="header__fnavbar__links">
                 @if(session('user_email'))
@@ -132,8 +132,10 @@
              <div class="col_1_of_4 span_1_of_4">
                 <h4>Əlaqə</h4>
                    <ul>
-                      <li><span>+91-123-456789</span></li>
-                      <li><span>+00-123-000000</span></li>
+                    @foreach($phones as $phone)
+                        <li><span>{{$phone->phone}}</span></li>
+                    @endforeach
+                        <li><span>{{$siteInfo->siteMailAdresi}}</span></li>
                    </ul>
                    <div class="social-icons">
                       <h4>Bizi İzlə</h4>

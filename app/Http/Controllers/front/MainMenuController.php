@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\categories;
 use App\Models\Goods;
+use App\Models\phones;
 use App\Models\Settings;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,7 +21,8 @@ class MainMenuController extends Controller
             $populargoods = Goods::orderBy('views', 'desc')->take(4)->get();
             $categories = categories::all();
             $cart = Cart::where('user_id', $user[0]->id)->get();
-            return view('front.index', compact('siteInfo', 'newgoods', 'populargoods', 'categories', 'cart'));
+            $phones = phones::all();
+            return view('front.index', compact('siteInfo', 'newgoods', 'populargoods', 'categories', 'cart', 'phones'));
         } else {
             return redirect()->route('auth.enter');
         }
