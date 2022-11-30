@@ -71,7 +71,7 @@ class FirmsController extends Controller
             $image = $req->file('firm__logo');
             $path =  public_path('/admin/assets/images/firms');
             $image__path = public_path('/admin/assets/images/firms/'.$firms->firm__logo);
-            // dd( $image__path);
+        
             $f=File::delete($image__path);
 
             $image->move($path, $image->getClientOriginalName());

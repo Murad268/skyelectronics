@@ -159,6 +159,7 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::get('/profile', [UserProfileController::class, 'index'])->name('index');
         Route::post('/updatemain', [UserProfileController::class, 'updatemain'])->name('updatemain');
         Route::post('/updatelink', [UserProfileController::class, 'updatelink'])->name('updatelink');
+        Route::post('/updateavatar', [UserProfileController::class, 'updateavatar'])->name('updateavatar');
     });
 
 

@@ -1,5 +1,6 @@
 @extends('front.layouts.front')
 @section('content')
+
    <div class="content">
       <div class="container">
 
@@ -13,10 +14,21 @@
                 <div class="col-lg-4">
                   <div class="card mb-4">
                     <div class="card-body text-center">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                        @if($user[0]->user_avatar != "no")
+                        <img src="{{asset('admin/assets/images/users/'.explode(' ', $user[0]->name)[0].'-'.explode(' ', $user[0]->name)[1].'/'.$user[0]->user_avatar)}}" alt="avatar"
+                        class="rounded-circle img-fluid" style="width: 150px; height: 150px">
+                        @else
+                        <img src="{{asset('admin/assets/images/users/nouser.png')}}" alt="avatar"
                         class="rounded-circle img-fluid" style="width: 150px;">
-                      <h5 class="my-3">John Smith</h5>
-                      <p class="text-muted mb-1">Admin</p>
+                        @endif
+
+                      <h5 class="my-3">{{$user[0]->name}}</h5>
+                      @if($user[0]->admin == 1)
+                        <p class="text-muted mb-1">Admin</p>
+                      @else
+                        <p class="text-muted mb-1">Adi istifadəçi</p>
+
+                      @endif
 
                     </div>
                   </div>
@@ -132,7 +144,34 @@
                       </div>
                     </div>
                   </div>
-                  <form method="post" action="{{Route('user.updatemain')}}">
+                  <form class="mb-3" enctype="multipart/form-data" method="post" action="{{Route('user.updateavatar')}}">
+                    @csrf
+                  <div class="card mb-4">
+                        <div class="card-body">
+
+                           <div class="row">
+                             <div class="col-sm-3">
+                               <p class="mb-0">Avatar</p>
+                             </div>
+                             <div class="col-sm-9">
+                               <input name="user_avatar" type="file" class="form-control">
+                             </div>
+                           </div>
+                         </div>
+                   </div>
+                   @if(session('erroravatar'))
+                   <div class="alert alert-danger" role="alert">
+                        {{session('erroravatar')}}
+                    </div>
+                   @endif
+                   @if(session('successavatar'))
+                   <div class="alert alert-success" role="alert">
+                        {{session('successavatar')}}
+                    </div>
+                   @endif
+                   <button type="submit" class="btn btn-success">Avatarı yenilə</button>
+                  </form>
+                  <form enctype="multipart/form-data" method="post" action="{{Route('user.updatemain')}}">
                     @csrf
                   <div class="card mb-4">
                         <div class="card-body">
@@ -180,6 +219,8 @@
                                <input name="address" value="{{$user[0]->address}}" type="text" class="form-control">
                              </div>
                            </div>
+
+
                          </div>
                    </div>
                    @if(session('error'))
