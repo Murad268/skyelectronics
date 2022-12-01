@@ -251,6 +251,25 @@ try {
 
 
 
+        function lastcart(totalPricesSelector, totalSelector, cartcashdicountSelector, cashtotalpricesSelector, lastpricesSelector) {
+            let totalPrices = document.querySelectorAll(totalPricesSelector);
+            let total = document.querySelector(totalSelector);
+            let cartcashdicount = document.querySelectorAll(cartcashdicountSelector);
+            let cashtotalprices = document.querySelector(cashtotalpricesSelector);
+            let lastprices = document.querySelector(lastpricesSelector);
+            let t = 0;
+            let cash = 0;
+            totalPrices.forEach((total, i) => {
+                t += parseFloat(total.textContent);
+                cash += +cartcashdicount[i].value;
+
+            })
+            total.textContent = t + " AZN";
+            cashtotalprices.textContent = cash + " AZN";
+            lastprices.textContent = parseFloat(total.textContent) - parseFloat(cashtotalprices.textContent) + ' AZN';
+        }
+        lastcart('.carttotalprices', '.totalprices', '.cartcashdicount', '.cashtotalprices', '.lastprices');
+
 
 } catch {
 
@@ -259,21 +278,16 @@ try {
 
 
 
-function lastcart(totalPricesSelector, totalSelector, cartcashdicountSelector, cashtotalpricesSelector, lastpricesSelector) {
-    let totalPrices = document.querySelectorAll(totalPricesSelector);
-    let total = document.querySelector(totalSelector);
-    let cartcashdicount = document.querySelectorAll(cartcashdicountSelector);
-    let cashtotalprices = document.querySelector(cashtotalpricesSelector);
-    let lastprices = document.querySelector(lastpricesSelector);
-    let t = 0;
-    let cash = 0;
-    totalPrices.forEach((total, i) => {
-        t += parseFloat(total.textContent);
-        cash += +cartcashdicount[i].value;
-
+function order(countSelector, priceSelector, lastSelector) {
+    const count = document.querySelectorAll(countSelector);
+    const prices = document.querySelectorAll(priceSelector);
+    const last = document.querySelector(lastSelector);
+    let price = 0;
+    count.forEach((item, i) => {
+            price += parseFloat(item.textContent) * parseFloat(prices[i].textContent);
+            last.textContent = "cəmi: " + price + ' ₼'
     })
-    total.textContent = t + " AZN";
-    cashtotalprices.textContent = cash + " AZN";
-    lastprices.textContent = parseFloat(total.textContent) - parseFloat(cashtotalprices.textContent) + ' AZN';
+
 }
-lastcart('.carttotalprices', '.totalprices', '.cartcashdicount', '.cashtotalprices', '.lastprices');
+
+order(".order__list__el__footer__count", ".order__list__el__footer__price", ".order__lastPrice h3");

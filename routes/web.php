@@ -32,6 +32,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\user\CartController;
 use App\Http\Controllers\user\CommentsController;
 use App\Http\Controllers\user\FavoritesController;
+use App\Http\Controllers\user\orderController;
 use App\Http\Controllers\user\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -161,6 +162,7 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::post('/updatemain', [UserProfileController::class, 'updatemain'])->name('updatemain');
         Route::post('/updatelink', [UserProfileController::class, 'updatelink'])->name('updatelink');
         Route::post('/updateavatar', [UserProfileController::class, 'updateavatar'])->name('updateavatar');
+        Route::get('/order', [orderController::class, 'index'])->name('order');
     });
 
 

@@ -10,7 +10,7 @@
             <div class="good__content__top">
                 <a href="">ana səhifə</a> >>> <a href="">səbət</a>
             </div>
-            <h2 class="mt-3 about__subtitle">Mənim Səbətim(1 item)</h2>
+            <h2 class="mt-3 about__subtitle">Mənim Səbətim({{$cart->count()}} item)</h2>
         </div>
             <div class="cart_section">
                 <div class="">
@@ -77,7 +77,7 @@
                                         </div>
                                 </div>
                                 </div>
-                                <div class="cart_buttons"> <a href="{{route('front.index')}}" class="btn btn-white cart_button_clear">Alış-verişə davam elə</a> <button type="button" class="button cart_button_checkout">Sifarişi rəsmiləşdir</button> </div>
+                                <div class="cart_buttons"> <a href="{{route('front.index')}}" class="btn btn-white cart_button_clear">Alış-verişə davam elə</a> <a href="{{route('user.order')}}" class="btn btn-primary cart_button_checkout">Sifarişi rəsmiləşdir</a> </div>
                             </div>
                         </div>
                     </div>
