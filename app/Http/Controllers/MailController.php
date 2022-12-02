@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactUs;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 class MailController extends Controller
@@ -13,6 +14,7 @@ class MailController extends Controller
         $telefon = $req->telefon;
         $subject = $req->subject;
         $mesaj = $req->mesaj;
+
         Mail::send('mail', ['name' => $name, 'email' => $email, 'phone' => $telefon, 'mesaj' => $mesaj], function($message) use ($subject) {
             $message->to("agamedov94@mail.ru")->subject($subject);
         });

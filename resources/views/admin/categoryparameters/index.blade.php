@@ -69,7 +69,7 @@
                                             <td>{{$category->id}}</td>
                                             <td>{{$category->cat__name}}</td>
                                             <td><a class="text-primary" href="{{route('admin.categories.edit', ['id' => $category->id])}}"><i class="fa fa-pencil"></i></a></td>
-                                            <td><a onclick="return confirm('Kateqoriyanı silmək istədiyinizdən əminsiiniz?')" class="text-danger" href="{{route('admin.categories.delete', ['id' => $category->id])}}"><i class="fa fa-trash"></i></a></td>
+                                            <td><a onclick="return confirm('Kateqoriyanı silmək istədiyinizdən əminsinizmi?')" class="text-danger" href="{{route('admin.categories.delete', ['id' => $category->id])}}"><i class="fa fa-trash"></i></a></td>
                                         </tr>
                                         @foreach($categories as $category1)
                                             @if($category1->upid == $category->id)

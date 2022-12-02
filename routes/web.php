@@ -29,10 +29,12 @@ use App\Http\Controllers\front\PieceController;
 use App\Http\Controllers\front\StoreController;
 use App\Http\Controllers\front\TermsController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\user\addOrderController;
 use App\Http\Controllers\user\CartController;
 use App\Http\Controllers\user\CommentsController;
 use App\Http\Controllers\user\FavoritesController;
 use App\Http\Controllers\user\orderController;
+use App\Http\Controllers\user\UserOrderListController;
 use App\Http\Controllers\user\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -163,8 +165,12 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::post('/updatelink', [UserProfileController::class, 'updatelink'])->name('updatelink');
         Route::post('/updateavatar', [UserProfileController::class, 'updateavatar'])->name('updateavatar');
         Route::get('/order', [orderController::class, 'index'])->name('order');
+        Route::get('sifarislerim', [UserOrderListController::class, 'index'])->name('orderlist');
+        Route::get('cancelorder/{id}', [UserOrderListController::class, 'cancelorder'])->name('cancelorder');
+        Route::get('deleteorder/{id}', [UserOrderListController::class, 'deleteorder'])->name('deleteorder');
     });
 
 
     Route::post('/mail', [MailController::class, 'send'])->name('sendmail');
+    Route::post('/ordering', [addOrderController::class, 'add'])->name('addorder');
 

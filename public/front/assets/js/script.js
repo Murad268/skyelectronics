@@ -279,12 +279,12 @@ try {
 
 
 function order(countSelector, priceSelector, lastSelector) {
-    const count = document.querySelectorAll(countSelector);
     const prices = document.querySelectorAll(priceSelector);
     const last = document.querySelector(lastSelector);
     let price = 0;
-    count.forEach((item, i) => {
-            price += parseFloat(item.textContent) * parseFloat(prices[i].textContent);
+    prices.forEach((item, i) => {
+            console.log(parseFloat(prices[i].textContent))
+            price += parseFloat(item.textContent);
             last.textContent = "cəmi: " + price + ' ₼'
     })
 
