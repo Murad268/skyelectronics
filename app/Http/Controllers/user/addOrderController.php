@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Mail;
 class addOrderController extends Controller
 {
     public function add(Request $req) {
+        try{
+
         if(session('user_email')) {
             $user = User::where('email', session('user_email'))->get();
             $cart = Cart::where('user_id', $user[0]->id)->get();
@@ -31,7 +33,7 @@ class addOrderController extends Controller
             $street = $req->street;
             $ordermeth = $req->ordermeth;
             $time = $req->time;
-
+            $mail = $req->email;
             $carts = Cart::where('user_id', $user[0]->id);
             $order_code = rand();
             $prices = 0;
@@ -65,7 +67,6 @@ class addOrderController extends Controller
 
 
 
-       try{
         Mail::send('order', [
             'cart' => $cart,
             'name' => $name,
@@ -78,9 +79,27 @@ class addOrderController extends Controller
             'rayon' => $rayon,
             'street' => $street,
             'ordermeth' => $ordermeth,
-            'time' => $time
+            'time' => $time,
+            'email' => $mail
         ], function($message) {
             $message->to("agamedov94@mail.ru")->subject("skyelectronics yeni sifariş");
+        });
+        Mail::send('retorder', [
+            'cart' => $cart,
+            'name' => $name,
+            'surname' => $surname,
+            'fathername' => $fathername,
+            'phone' => $phone,
+            'desc' => $desc,
+            'date' => $date,
+            'city' => $city,
+            'rayon' => $rayon,
+            'street' => $street,
+            'ordermeth' => $ordermeth,
+            'time' => $time,
+            'order_code' => $order_code
+        ], function($message) use ($mail) {
+            $message->to($mail)->subject("sifariş çeki");
         });
             return redirect()->back()->with('successorder', 'sifarişiniz uğurla qeydiyyata alınmışdır.');
        } catch (Exception $e) {

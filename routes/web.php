@@ -34,6 +34,7 @@ use App\Http\Controllers\user\CartController;
 use App\Http\Controllers\user\CommentsController;
 use App\Http\Controllers\user\FavoritesController;
 use App\Http\Controllers\user\orderController;
+use App\Http\Controllers\user\OrdersListController;
 use App\Http\Controllers\user\UserOrderListController;
 use App\Http\Controllers\user\UserProfileController;
 use Illuminate\Support\Facades\Route;

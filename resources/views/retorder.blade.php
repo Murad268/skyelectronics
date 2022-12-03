@@ -1,7 +1,7 @@
+Sifarişiniz üçün təşəkkür edirik. Sifariş kodu: {{$order_code}} <br> <br>
 ad: {{$name}} <br> <br>
 soyad: {{$surname}} <br> <br>
 ada adı: {{$fathername}} <br> <br>
-email: {{$email}}
 telefon: {{$phone}} <br> <br>
 qeyd: {{$desc}} <br> <br>
 çatdırılacaq tarix: {{$date}} <br> <br>

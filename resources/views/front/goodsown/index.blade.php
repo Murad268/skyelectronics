@@ -40,7 +40,6 @@
 
                     @endforeach
 
-
                </div>
                <div style="display: flex; justify-content: center; align-items: center;" class="good__content__wrapper__slider__img">
                     @if($its[0]->photos->first() != null)
@@ -98,6 +97,7 @@
                <br>
                <input type="range" min="1" max="6" step="1" id="calculator" name="calculator" />
                <input class="goods__percent" type="hidden" name="" value="{{$its[0]->percent}}">
+               <input class="goods__pricering" type="hidden" name="" value="{{$its[0]->goods_price}}">
                <div class="calculator__list">
                   <span style="margin-left: 3px">|</span>
                   <span style="margin-left: 3px">|</span>
@@ -121,7 +121,7 @@
                   </div>
                   <div class="mountly_pay">
                      Aylıq ödəniş <br>
-                     <span class="monthly_pay">16.8</span> ⫙
+                     <span class="monthly_paying">16.8</span> ⫙
                   </div>
                </div>
                <div class="paymethods">
@@ -240,16 +240,7 @@
                             </div>
                             <div class="cartelprice creadit__modal__top__right__top__price">{{$el->price}} ⫙</div>
                         </div>
-                            <div class="creadit__modal__top__right__footer">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Zəmanət əlavə et</option>
-                                <option value="1">İstifadəçi zəmanəti 0 ⫙</option>
-                                <option value="3">Qızıl zəmanət(1 il) - 35 ⫙</option>
-                                <option value="3">Qızıl zəmanət(2 il) - 53 ⫙</option>
-                                <option value="3">Qızıl zəmanət(3 il) - 70 ⫙</option>
-                                <option value="2">Qızıl zəmanət(6 ay) - 88 ⫙</option>
-                            </select>
-                            </div>
+
                         </div>
                     </div>
 
@@ -292,7 +283,7 @@
                </div>
             </div>
             <hr>
-            <button class="credit__button">Sifarişi rəsmiləşdir <i class="fa 	fa-angle-right"></i></button>
+            <button class="credit__button">Sifarişi rəsmiləşdir <i class="fa fa-angle-right"></i></button>
           </div>
       </div>
     </div>
@@ -302,7 +293,7 @@
       <div class="modal-dialog modal-dialog-centered">
          <div class="creadit__modal modal-content">
             <div data-bs-dismiss="modal" class="credit__modal__exit">
-               <i class="fa fa-window-close" aria-hidden="true"></i>
+               <i class="fa fa-window-close" ass="aria-hidden="true"></i>
             </div>
             <div class="cart-overflow" style="height: 320px;">
                @foreach($cart as $el)
@@ -326,16 +317,7 @@
                             <div class="creadit__modal__top__right__top__price1 creadit__modal__top__right__top__price">{{$el->price}} ⫙</div>
                             <a href="{{route('user.delete', ['id' => $el->id])}}"><i class="fa fa-trash cart__delete" aria-hidden="true"></i></a>
                             </div>
-                            <div class="creadit__modal__top__right__footer">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Zəmanət əlavə et</option>
-                                <option value="1">İstifadəçi zəmanəti 0 ⫙</option>
-                                <option value="3">Qızıl zəmanət(1 il) - 35 ⫙</option>
-                                <option value="3">Qızıl zəmanət(2 il) - 53 ⫙</option>
-                                <option value="3">Qızıl zəmanət(3 il) - 70 ⫙</option>
-                                <option value="2">Qızıl zəmanət(6 ay) - 88 ⫙</option>
-                                </select>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -357,8 +339,8 @@
                <div class="lastall">2849.96⫙</div>
             </div>
             <div class="cash__buttons">
-               <button>Alış-verişə davam et</button>
-               <button>Sifarişi rəsmiləşdir <i class="fa fa-angle-right"></i></button>
+               <button data-bs-dismiss="modal">Alış-verişə davam et</button>
+               <button><a style="text-decoration: none; color: white" href="{{route('user.order')}}">Sifarişi rəsmiləşdir</a> <i class="fa fa-angle-right"></i></button>
             </div>
           </div>
       </div>

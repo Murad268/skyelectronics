@@ -51,7 +51,11 @@
                 <input name="phone" class="order-form-input" placeholder="Telefon nömrəniz">
                 </div>
             </div>
-
+            <div class="row mt-3 mx-4">
+                <div class="col-12 mt-2">
+                <input type="email" name="email" class="order-form-input" placeholder="email">
+                </div>
+            </div>
 
             <div class="row mt-3 mx-4">
                 <div class="col-12">

@@ -141,62 +141,7 @@ try {
 
         multimenu('.multimenu', '.category__list');
 
-        function creditCalculator(calcSelector, monSelector, perSelector, priceSelector) {
-            const calc = document.querySelector(calcSelector);
-            const monthly_pay = document.querySelector(monSelector);
-            const percent = document.querySelector(perSelector);
-            const price = document.querySelector(priceSelector);
 
-            let drop = 0;
-            switch(calc.value) {
-                case '1':
-                    drop = 6
-                    break
-                case '2':
-                    drop = 9
-                    break
-                case '3':
-                    drop = 12
-                    break
-                case '4':
-                    drop = 15
-                    break
-                case '5':
-                    drop = 18
-                    break
-                case '6':
-                    drop = 24
-                    break
-            }
-
-            monthly_pay.textContent = ((+price.textContent/drop) * +percent.value/100).toFixed(2)
-            calc.addEventListener('change', (e) => {
-
-                switch(e.target.value) {
-                    case '1':
-                        drop = 6
-                        break
-                    case '2':
-                        drop = 9
-                        break
-                    case '3':
-                        drop = 12
-                        break
-                    case '4':
-                        drop = 15
-                        break
-                    case '5':
-                        drop = 18
-                        break
-                    case '6':
-                        drop = 24
-                        break
-                }
-                monthly_pay.textContent = ((+price.textContent/drop) * +percent.value/100).toFixed(2)
-            })
-        }
-
-        creditCalculator('#calculator', '.monthly_pay', '.goods__percent', '.goods_price')
 
         function cashdicount(cashdiscountSelector, priceSelector, countSelector, allPriceSelector, cashAllSelector, lastPriceSelector) {
             let cashdiscount = document.querySelectorAll(cashdiscountSelector);
@@ -223,31 +168,7 @@ try {
         cashdicount('.cashdiscount1', '.creadit__modal__top__right__top__price1', '.quantitity1', '.allprice1', '.cashall1', '.lastall');
 
 
-        function cashdicount1(countSelector, priceSelector, timeSelector, monthlySelector, triggerSelector, percentSeelector) {
-            let count = document.querySelectorAll(countSelector);
-            let price = document.querySelectorAll(priceSelector);
-            let time = document.querySelector(timeSelector);
-            let monthly = document.querySelector(monthlySelector);
-            let triggers = document.querySelectorAll(triggerSelector);
-            const percent = document.querySelectorAll(percentSeelector);
-            let month = 6;
-            let prices = 0;
 
-            price.forEach((item, i) => {
-                prices += parseFloat(item.textContent) * parseFloat(count[i].value);
-                monthly.textContent = (prices/month * +percent[i].value/100).toFixed(2);
-            })
-            time.textContent = month;
-            triggers.forEach((trigger, i) => {
-                trigger.addEventListener('click', () => {
-                    price.forEach((item, i) => {
-                        monthly.textContent = (prices/parseFloat(trigger.textContent) * +percent[i].value/100).toFixed(2);
-                    })
-                    time.textContent = parseFloat(trigger.textContent);
-                })
-            })
-        }
-        cashdicount1('.cartelcount', '.cartelprice', '.cartduration', '.monthlypacart', '.creadit__modal__center__month div', '.cartelper');
 
 
 
@@ -291,3 +212,67 @@ function order(countSelector, priceSelector, lastSelector) {
 }
 
 order(".order__list__el__footer__count", ".order__list__el__footer__price", ".order__lastPrice h3");
+
+
+
+function creditCalculator(monthly_payingSel, goods__priceringSel, goods__percentSel, calcSel) {
+    let drop = 15;
+    const monthly_paying = document.querySelector(monthly_payingSel);
+    const goods__pricering = document.querySelector(goods__priceringSel);
+    const goods__percent = document.querySelector(goods__percentSel);
+    const calculator = document.querySelector(calcSel);
+    monthly_paying.textContent = ((+goods__pricering.value + (drop * +goods__percent.value))/drop).toFixed(2);
+    calculator.addEventListener("click", (e) => {
+        switch(e.target.value) {
+            case '1':
+                drop = 6;
+                break;
+            case '2':
+                drop = 9;
+                break;
+            case '3':
+                drop = 12;
+                break;
+            case '4':
+                drop = 15;
+                break;
+            case '5':
+                drop = 18;
+                break;
+            case '6':
+                drop = 24;
+                break;
+        }
+        monthly_paying.textContent = ((+goods__pricering.value + (drop * +goods__percent.value))/drop).toFixed(2);
+    })
+
+
+
+}
+creditCalculator('.monthly_paying', '.goods__pricering', '.goods__percent', '#calculator');
+
+
+
+
+function modalcreditcalc(creadit__modal__center__monthSel, cartdurationSel, cartelcountSel, cartelperSel, cartelpriceSel, monthlypacartSel) {
+    const creadit__modal__center__month = document.querySelectorAll(creadit__modal__center__monthSel);
+    let monthlypacart = document.querySelector(monthlypacartSel);
+    const cartduration = document.querySelector(cartdurationSel);
+    const cartelcount = document.querySelectorAll(cartelcountSel);
+    const cartelper = document.querySelectorAll(cartelperSel);
+    const cartelprice = document.querySelectorAll(cartelpriceSel);
+    let monthly_paying = 0;
+    creadit__modal__center__month.forEach((month, i) => {
+
+        month.addEventListener("click", (e) => {
+
+            cartduration.textContent = parseFloat(e.target.textContent) + " ay";
+            monthlypacart.textContent = monthly_paying;
+            cartelprice.forEach((item, i) => {
+
+                monthlypacart.textContent = ((parseFloat(cartelprice[i].textContent) + (parseFloat(e.target.textContent)  * cartelper[i].value))/parseFloat(e.target.textContent) ).toFixed(2);
+            })
+        })
+    })
+}
+modalcreditcalc('.creadit__modal__center__month div', '.cartduration', '.cartelcount', '.cartelper', '.cartelprice', '.monthlypacart')

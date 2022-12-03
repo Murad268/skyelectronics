@@ -44,7 +44,7 @@
                                     </td>
                                     <td>{{$order->created_at}}</td>
                                     <td>{{date('Y-m-d', $order->delt_date)}} {{$order->delt_time}}</td>
-                                    <td style="font-size: 24px; text-align: center"><a style="text-decoration: none; color: green" href="">⮚</a></td>
+                                    <td style="font-size: 24px; text-align: center"><a style="text-decoration: none; color: green" href="{{route('user.orderslist', ['coder' => $order->order_code])}}">⮚</a></td>
                                     <td>
                                         @if($order->status != 0)
                                             <button disabled class="btn btn-danger">Bu sifarişi ləğv etmək olmaz</button>
