@@ -268,11 +268,17 @@ function modalcreditcalc(creadit__modal__center__monthSel, cartdurationSel, cart
 
             cartduration.textContent = parseFloat(e.target.textContent) + " ay";
             monthlypacart.textContent = monthly_paying;
-            cartelprice.forEach((item, i) => {
+            document.querySelector('.monthdur').value = parseFloat(e.target.textContent) ;
 
+            cartelprice.forEach((item, i) => {
                 monthlypacart.textContent = ((parseFloat(cartelprice[i].textContent) + (parseFloat(e.target.textContent)  * cartelper[i].value))/parseFloat(e.target.textContent) ).toFixed(2);
+                document.querySelector('.monthprice').value = ((parseFloat(cartelprice[i].textContent) + (parseFloat(e.target.textContent)  * cartelper[i].value))/parseFloat(e.target.textContent) ).toFixed(2);
+
             })
+            console.log(document.querySelector('.monthdur').value )
+            console.log(document.querySelector('.monthprice').value )
         })
+
     })
 }
 modalcreditcalc('.creadit__modal__center__month div', '.cartduration', '.cartelcount', '.cartelper', '.cartelprice', '.monthlypacart')

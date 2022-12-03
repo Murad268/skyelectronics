@@ -243,7 +243,6 @@
 
                         </div>
                     </div>
-
                 @endforeach
             <div class="creadit__modal__center">
                <div class="creadit__modal__center__months">
@@ -269,6 +268,7 @@
                <div class="creadit__modal__dur">
                   <div>Müddət:
                      <span class="cartduration">24 ay</span>
+                     <input value="" type="hidden" class="monthdur">
                   </div>
                </div>
                <div class="creadit__modal__dur">
@@ -279,6 +279,7 @@
                <div class="creadit__modal__dur">
                   <div>Aylıq ödəniş:
                      <span class="monthlypacart">16.8  ⫙ </span>
+                     <input value="" type="hidden" class="monthprice">
                   </div>
                </div>
             </div>
