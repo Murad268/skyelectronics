@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\AdminLoginController;
+use App\Http\Controllers\admin\AdminOrdersList;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ColorController;
 use App\Http\Controllers\admin\ContactsController;
@@ -58,7 +59,8 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
     Route::get('/login', [AdminLoginController::class, 'index'])->name('loginshow');
     Route::post('/login', [AdminLoginController::class, 'login'])->name('login');
     Route::get('/exit', [AdminLoginController::class, 'exit'])->name('exit');
-
+    Route::get('/orderslist', [AdminOrdersList::class, 'orderslist'])->name('orderslist');
+    Route::post('/orderssearch', [AdminOrdersList::class, 'orderslist'])->name('orderssearch');
     Route::group(['prefix' => 'users', 'as' => 'users.'], function() {
         Route::get('/', [UsersListController::class, 'index'])->name('index');
         Route::get('/axtaris', [UsersListController::class, 'index'])->name('search');
@@ -166,12 +168,14 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
         Route::post('/updatelink', [UserProfileController::class, 'updatelink'])->name('updatelink');
         Route::post('/updateavatar', [UserProfileController::class, 'updateavatar'])->name('updateavatar');
         Route::get('/order', [orderController::class, 'index'])->name('order');
-        Route::get('sifarislerim', [UserOrderListController::class, 'index'])->name('orderlist');
-        Route::get('cancelorder/{id}', [UserOrderListController::class, 'cancelorder'])->name('cancelorder');
-        Route::get('deleteorder/{id}', [UserOrderListController::class, 'deleteorder'])->name('deleteorder');
+        Route::post('/order', [orderController::class, 'index'])->name('ordered');
+        Route::get('/orderfinish/{id}', [AdminOrdersList::class, 'orderfinish'])->name('orderfinish');
+        Route::get('/cancelorder/{id}', [UserOrderListController::class, 'cancelorder'])->name('cancelorder');
+        Route::get('/deleteorder/{id}', [UserOrderListController::class, 'deleteorder'])->name('deleteorder');
     });
 
 
     Route::post('/mail', [MailController::class, 'send'])->name('sendmail');
     Route::post('/ordering', [addOrderController::class, 'add'])->name('addorder');
 
+    Route::get('/sifarislerim', [UserOrderListController::class, 'index'])->name('orderlisting');

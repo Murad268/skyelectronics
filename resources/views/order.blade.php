@@ -1,7 +1,7 @@
 ad: {{$name}} <br> <br>
 soyad: {{$surname}} <br> <br>
 ada adı: {{$fathername}} <br> <br>
-email: {{$email}}
+email: {{$email}} <br> <br>
 telefon: {{$phone}} <br> <br>
 qeyd: {{$desc}} <br> <br>
 çatdırılacaq tarix: {{$date}} <br> <br>
@@ -9,6 +9,14 @@ qeyd: {{$desc}} <br> <br>
 şəhər: {{$city}} <br> <br>
 rayon: {{$rayon}} <br> <br>
 küçə: {{$street}} <br> <br>
+@if(strlen($monthdur > 1))
+    alış: kredit <br> <br>
+    ay: {{$monthdur}} <br> <br>
+    aylıq ödəniş: {{$monthprice}} AZN <br> <br>
+    ümumi məbləğ: {{$monthdur * $monthprice}} AZN <br> <br>
+@else
+    alış: nəğd <br> <br>
+@endif
 şifariş metodu: @if($ordermeth == "cashpay") nəğd ödəniş @else kredit kartı ilə ödəniş @endif <br> <br>
 
 

@@ -100,6 +100,8 @@
                 </div>
             </div>
 
+           @if($monthprice)
+           @else
             <div class="row mt-3 mx-4">
                 <div class="col-12">
                 <label class="order-form-label">Sifarişin tamamlanması</label>
@@ -126,11 +128,16 @@
             <div style="font-size: 14px;" class="mt-3 alert alert-info" role="alert">
                 Alış-veriş məbləğini TamKart, BolKart, Albalı kart ilə çatdırılma zamanı aylara bölə bilərsiz.
             </div>
-        </div>
-
-
-
             </div>
+            </div>
+
+           @endif
+           <input name="monthprice" type="hidden" value="{{$monthprice}}">
+            <input name="monthdur" type="hidden" value="{{$monthdur}}">
+
+
+
+
 
 
 
@@ -164,7 +171,15 @@
             @endforeach
             <hr>
             <div style="text-align: right;" class="order__lastPrice">
-                <h3></h3>
+
+                @if($monthprice)
+                    <h4>ay: {{$monthdur}}</h4>
+                    <h4>aylıq ödəniş: {{$monthprice}}</h4>
+                    <h3>cəmi {{$monthdur * $monthprice}}</h3>
+                @else
+                    <h3 class="order__lastPriceh"></h3>
+                @endif
+
             </div>
         </div>
 

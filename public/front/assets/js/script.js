@@ -211,7 +211,7 @@ function order(countSelector, priceSelector, lastSelector) {
 
 }
 
-order(".order__list__el__footer__count", ".order__list__el__footer__price", ".order__lastPrice h3");
+order(".order__list__el__footer__count", ".order__list__el__footer__price", ".order__lastPriceh");
 
 
 

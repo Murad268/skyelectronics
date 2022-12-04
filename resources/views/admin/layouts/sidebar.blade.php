@@ -10,6 +10,9 @@
             <a href="{{route('admin.users.index')}}">İstifadəçilər</a>
         </div>
         <div class="dashboard__button">
+            <a href="{{route('admin.orderslist')}}">Sifarişlər</a>
+        </div>
+        <div class="dashboard__button">
             <a href="{{route('admin.goods.index')}}">Məhsul parametrləri</a>
         </div>
         <div class="dashboard__button">

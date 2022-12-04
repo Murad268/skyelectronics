@@ -1,19 +1,27 @@
+@extends('admin.layouts.admin')
 
-   @extends('front.layouts.front')
-   @section('content')
-
-
-   <div class="content">
-      <div class="container">
-         <div class="good__content__top">
-            <a href="">ana səhifə</a> >>> <a href="">sifarişlərim</a>
-         </div>
-         <h2 class="mt-2 about__subtitle">Sifarişlərim</h2>
+@section('content')
+       <div class="panel">
+       <div class="search">
+            <form action="{{route('admin.orderssearch')}}" method="post">
+                @csrf
+                <i class="fa fa-search"></i>
+                <input name="orderssearch" type="text" class="form-control" placeholder="axtar">
+                <button class="btn btn-success">Axtar</button>
+            </form>
+        </div>
+        <div class="content">
+        <div class="container">
+        <div class="panel__cordinate">
+            <a href=""><i class="me-2 fa fa-home" aria-hidden="true"></i></a>
+            <i class="me-2 fas fa-angle-right"></i>
+            <span><a href="">sifarişlər</a></span>
+        </div>
       </div>
 
         @if($orders->count() > 0)
-        <div class="d-flex justify-content-center row">
-            <div class="col-md-10">
+        <div class="mt-5 d-flex justify-content-center row">
+            <div class="col-md-12">
                 <div class="rounded">
                     <div class="table-responsive table-borderless">
                         <table class="table">
@@ -48,9 +56,9 @@
 
                                     <td>
                                         @if($order->status != 0)
-                                            <button disabled class="btn btn-danger">Bu sifarişi ləğv etmək olmaz</button>
+                                            <button disabled class="btn btn-danger">Bu sifarişi tamamlamaq olmaz</button>
                                         @else
-                                            <a onclick="return confirm('Sifarişi ləğv etmək istədiyinizdən əminsinizmi?')" href="{{route('user.cancelorder', ['id' => $order->id])}}" class="btn btn-danger">Ləğv et</a>
+                                            <a onclick="return confirm('sifariş artıq çatdırılıb?')" href="{{route('user.orderfinish', ['id' => $order->id])}}" class="btn btn-primary">Tamamla</a>
                                         @endif
                                     </td>
                                     <th>
@@ -65,18 +73,21 @@
                                 </tr>
                                 @endforeach
                             </tbody>
+
                         </table>
                     </div>
                 </div>
+                {{$orders->appends(['orderssearch' => request()->orderssearch])->links("pagination::bootstrap-5")}}
             </div>
         </div>
         @else
-        <div class="container alert alert-warning" role="alert">
-            Hazırda sifarişləriniz boşdur
+        <div class="mt-5  alert alert-warning" role="alert">
+            Hazırda sifarişlər yoxdur
         </div>
         @endif
 
    </div>
+       </div>
 
-   @endsection
+@endsection
 

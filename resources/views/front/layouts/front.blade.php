@@ -38,7 +38,7 @@
                     <li class="header__fnavbar__link"><a href="{{route('auth.enter')}}">Daxil ol</a></li>
                     <li class="header__fnavbar__link"><a href="{{route('auth.register')}}">Qeyd ol</a></li>
                 @endif
-               <li class="header__fnavbar__link"><a href="{{route('user.orderlist')}}">Sifarişlərim</a></li>
+               <li class="header__fnavbar__link"><a href="{{route('orderlisting')}}">Sifarişlərim</a></li>
             </ul>
          </div>
          <div class="header__cart__block">
@@ -119,7 +119,7 @@
                     <li class=""><a href="">Hesabım</a></li>
                     <li><a href="{{route('user.cart')}}">Səbəti Gör</a></li>
                     <li><a href="{{route('user.favorites')}}">Sevimlilər</a></li>
-                    <li><a href="{{route('user.index')}}">Sifarişlərim</a></li>
+                    <li><a href="{{route('orderlisting')}}">Sifarişlərim</a></li>
                     @else
                       <li><a href="{{route('auth.enter')}}">Daxil ol</a></li>
                       <li class="header__fnavbar__link"><a href="{{route('auth.enter')}}">Daxil ol</a></li>

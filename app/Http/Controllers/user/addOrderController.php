@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Mail;
 class addOrderController extends Controller
 {
     public function add(Request $req) {
+       if($req->monthdur) {
+            $monthdur = $req->monthdur;
+            $monthprice = $req->monthprice;
+       } else {
+            $monthprice = '';
+            $monthdur = '';
+       }
         try{
 
         if(session('user_email')) {
@@ -80,7 +87,9 @@ class addOrderController extends Controller
             'street' => $street,
             'ordermeth' => $ordermeth,
             'time' => $time,
-            'email' => $mail
+            'email' => $mail,
+            'monthdur' => $monthdur,
+            'monthprice' => $monthprice
         ], function($message) {
             $message->to("agamedov94@mail.ru")->subject("skyelectronics yeni sifariş");
         });
@@ -97,7 +106,9 @@ class addOrderController extends Controller
             'street' => $street,
             'ordermeth' => $ordermeth,
             'time' => $time,
-            'order_code' => $order_code
+            'order_code' => $order_code,
+            'monthdur' => $monthdur,
+            'monthprice' => $monthprice
         ], function($message) use ($mail) {
             $message->to($mail)->subject("sifariş çeki");
         });

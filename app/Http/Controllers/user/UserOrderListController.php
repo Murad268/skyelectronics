@@ -20,14 +20,14 @@ class UserOrderListController extends Controller
 
             $cart = Cart::where('user_id', $user[0]->id)->get();
             $phones = phones::all();
-            return view('front.orderlist.index', compact('siteInfo', 'cart', 'user', 'phones', 'orders'));
+            return view('front.orderList.index', compact('siteInfo', 'cart', 'user', 'phones', 'orders'));
         } else {
             return redirect()->route('auth.enter');
         }
     }
 
     public function cancelorder($id) {
-        $orders = OrderModel::where('id', $id)->update(['status' => 3]);
+        $orders = OrderModel::where('id', $id)->update(['status' => 2]);
         if($orders) {
             return redirect()->back();
         }
