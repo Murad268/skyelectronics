@@ -77,9 +77,15 @@
                            <form id="newgoods" action="{{Route('admin.colors.store')}}" enctype="multipart/form-data" method="post">
                             @csrf
                             <label for="disabledTextInput" class="mt-4 form-label">Rəng adı</label>
-                            <input type="text" name="color_name" id="disabledTextInput" class="form-control">
+                            <input type="text" name="color_name" id="disabledTextInput" class="form-control @error('color_name') is-invalid @enderror">
+                            @error('color_name')
+                                <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <label for="disabledTextInput" class="mt-4 form-label">Rəng</label>
-                            <input type="text" name="color" id="disabledTextInput" class="form-control">
+                            <input type="text" name="color" id="disabledTextInput" class="form-control @error('color') is-invalid @enderror">
+                            @error('color')
+                                <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <button class="mt-3 btn btn-success">Yeni rəng əlavə elə</button>
                         </form>
                    </div>

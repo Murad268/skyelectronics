@@ -190,6 +190,24 @@ return [
         ],
         'desc' => [
             'required' => "Açıqlama hissəsi heç vaxt boş qoyula bilməz"
+        ],
+        'cat__name' => [
+            'required' => "Kateqoriyanın mütləq bir adı olmalıdır"
+        ],
+        'tag__name' => [
+            'required' => "Taqın mütləq bir adı olmalıdır"
+        ],
+        'color_name' => [
+            'required' => 'Rəng adı mütləq daxil edilməlidir'
+        ],
+        'color' => [
+            'required' => 'Rəngi daxil eləyin mütləq!'
+        ],
+        'upid' => [
+            'required' => "Kateqoriyanın müstəqil və ya alt kateqoriya olduyğunu mütləq qeyd edin"
+        ],
+        'goods__firm' => [
+            'required' => 'Məhsulun mutləq bir firması olmalıdır'
         ]
     ],
 

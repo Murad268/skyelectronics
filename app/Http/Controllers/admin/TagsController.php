@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Colors;
 use App\Models\Goods;
 use App\Models\Settings;
 use App\Models\Tags;
@@ -21,14 +22,20 @@ class TagsController extends Controller
                 $tags = Tags::paginate(10);
             }
             $siteInfo = Settings::all();
+            $colors = Colors::all();
 
-            return view('admin.tagsparameters.index', compact('siteInfo', 'tags'));
+            return view('admin.tagsparameters.index', compact('siteInfo', 'tags', 'colors'));
         } else {
             return redirect()->route('admin.loginshow');
        }
     }
 
     public function store(Request $req) {
+        if(session('admin_email')) {
+            $req->validate([
+                'tag__name' => 'required'
+            ]);
+
         $all = $req->all();
         $created = Tags::create($all);
 
@@ -37,8 +44,12 @@ class TagsController extends Controller
         } else {
             return redirect()->route('admin.tags.index')->with('error', 'Tagın əlavə edilməsi zamanı xəta');
         }
+    } else {
+        return redirect()->route('admin.loginshow');
+   }
     }
     public function delete($id) {
+        if(session('admin_email')) {
         $id = intval($id);
         $updategoods =  Goods::where('tags', 'like', '%'.$id.'%')->get();
 
@@ -57,5 +68,8 @@ class TagsController extends Controller
         } else {
             return redirect()->route('admin.tags.index')->with('error', 'Tagın silinməsi zamanı xəta');
         }
+    } else {
+        return redirect()->route('admin.loginshow');
+   }
     }
 }

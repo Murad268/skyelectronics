@@ -99,7 +99,7 @@
         <form id="newcat" action="{{Route('admin.categories.create')}}" method="post">
             @csrf
             <label for="disabledTextInput" class="mt-4 form-label">Aid olduğu kateqoriya</label>
-            <select class="form-select" name="upid" id="">
+            <select class="form-select @error('upid') is-invalid @enderror" name="upid" id="">
                 <option value="0">Yeni bir kateqoriya</option>
                 @foreach($catlist as $category)
                 @if($category->upid == 0)
@@ -112,8 +112,14 @@
                 @endif
                 @endforeach
             </select>
+            @error('upid')
+                <div class="mt-3 alert alert-danger">{{ $message }}</div>
+            @enderror
             <label for="disabledTextInput" class="mt-4 form-label">Kateqoriya adı</label>
-            <input type="text" name="cat__name" id="disabledTextInput" class="form-control">
+            <input type="text" name="cat__name" id="disabledTextInput" class="form-control @error('cat__name') is-invalid @enderror">
+            @error('cat__name')
+                <div class="mt-3 alert alert-danger">{{ $message }}</div>
+            @enderror
             <button class="mt-3 btn btn-success">Yeni kateqoriya əlavə elə</button>
         </form>
         </div>

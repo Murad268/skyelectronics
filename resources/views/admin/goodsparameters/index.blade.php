@@ -128,11 +128,14 @@
                                 <div class="mt-3 alert alert-danger">{{ $message }}</div>
                             @enderror
                             <label for="disabledTextInput" class="mt-4 form-label">Məhsul firması</label>
-                            <select name="goods__firm" class="form-select" aria-label="Default select example">
+                            <select name="goods__firm @error('goods__firm') is-invalid @enderror" class="form-select" aria-label="Default select example">
                                 @foreach($firms as $firm)
                                     <option value="{{$firm->id}}">{{$firm->firm__name}}</option>
                                 @endforeach
                             </select>
+                            @error('goods__firm')
+                                <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <label for="disabledTextInput" class="mt-4 form-label @error('goods__category') is-invalid @enderror">Tagları seç</label>
                             <select style="width: 100%;" class="js-example-basic-single" multiple="multiple" name="tags[]">
                                 @foreach($tags as $tag)

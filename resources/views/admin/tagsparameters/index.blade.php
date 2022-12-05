@@ -63,7 +63,19 @@
                            <form id="newgoods" action="{{Route('admin.tags.store')}}" enctype="multipart/form-data" method="post">
                             @csrf
                             <label for="disabledTextInput" class="mt-4 form-label">Tag adı</label>
-                            <input type="text" name="tag__name" id="disabledTextInput" class="form-control">
+                            <input type="text" name="tag__name" id="disabledTextInput" class="form-control @error('tag__name') is-invalid @enderror">
+                            @error('tag__name')
+                                <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            <label for="disabledTextInput" class="mt-4 form-label">Tag rəngi</label>
+                            <select name="color" class="form-select @error('color') is-invalid @enderror" aria-label="Default select example">
+                                @foreach($colors as $color)
+                                    <option value="{{$color->color}}">{{$color->color}}</option>
+                                @endforeach
+                            </select>
+                            @error('color')
+                                <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <button class="mt-3 btn btn-success">Yeni Tag əlavə elə</button>
                         </form>
                    </div>

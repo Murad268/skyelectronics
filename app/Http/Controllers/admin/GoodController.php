@@ -50,6 +50,7 @@ class GoodController extends Controller
             'percent' => 'required|integer',
             'color_id' => 'required',
             'cashdicount' => 'required',
+            'goods__firm' => 'required'
         ]);
         $all = $req->all();
         if(isset($all['tags'])) {
