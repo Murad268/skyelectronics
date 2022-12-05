@@ -11,9 +11,15 @@
         @csrf
         <div class="panel__info">
             <label for="disabledTextInput" class="mt-3 form-label">Başlığı dəyiş</label>
-            <input value="{{$question->title}}" type="text" id="disabledTextInput" name="title" class="form-control">
+            <input value="{{$question->title}}" type="text" id="disabledTextInput" name="title" class="form-control @error('title') is-invalid @enderror">
+                @error('title')
+                    <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                @enderror
             <label for="disabledTextInput" class="mt-3 form-label">Sualı dəyiş</label>
-            <input value="{{$question->desc}}" type="text" id="disabledTextInput" name="desc" class="form-control">
+            <input value="{{$question->desc}}" type="text" id="disabledTextInput" name="desc" class="form-control @error('desc') is-invalid @enderror">
+                @error('desc')
+                    <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                @enderror
             <button class="mt-3 btn btn-success">Sualı dəyiş</button>
         </div>
     </form>

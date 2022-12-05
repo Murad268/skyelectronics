@@ -42,9 +42,12 @@
                 </div>
             @endif
             <label for="disabledTextInput" class="mt-4 form-label">Sualın başlığı</label>
-            <input value="" type="text" id="disabledTextInput" name="title" class="form-control">
+            <input value="" type="text" id="disabledTextInput" name="title" class="form-control @error('title') is-invalid @enderror">
+            @error('title')
+                <div class="mt-3 alert alert-danger">{{ $message }}</div>
+            @enderror
             <label for="disabledTextInput" class="mt-3 form-label">Sual</label>
-            <input value="" type="text" id="disabledTextInput" name="desc" class="form-control">
+            <input value="" type="text" id="disabledTextInput" name="desc" class="form-control @error('desc') is-invalid @enderror">
                 @if(session('addsuccess'))
                     <div class="mt-3 alert alert-success">
                         {{session('addsuccess')}}
@@ -55,6 +58,9 @@
                         {{session('adderror')}}
                     </div>
                 @endif
+                @error('desc')
+                    <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                @enderror
             <button class="mt-3 btn btn-success">
                 Yeni sual əlavə ekə
             </button>

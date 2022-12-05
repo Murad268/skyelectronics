@@ -15,7 +15,7 @@
     <div class="panel__cordinate">
         <a href=""><i class="me-2 fa fa-home" aria-hidden="true"></i></a>
         <i class="me-2 fas fa-angle-right"></i>
-        <span><a href="">Firma parametrləri</a></span>
+        <span><a href="">Məhsul parametrləri</a></span>
     </div>
 
         <div style="width: 100%" class="panel__info">
@@ -33,11 +33,20 @@
                 <form id="newgoods" action="{{Route('admin.goods.update', ['id' => $el->id])}}" enctype="multipart/form-data" method="post">
                 @csrf
                 <label for="disabledTextInput" class="mt-4 form-label">Məhsul adı</label>
-                <input value="{{$el->goods_name}}" type="text" name="goods_name" id="disabledTextInput" class="form-control">
+                <input value="{{$el->goods_name}}" type="text" name="goods_name" id="disabledTextInput" class="form-control @error('goods_name') is-invalid @enderror">
+                    @error('goods_name')
+                        <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                    @enderror
                 <label for="disabledTextInput" class="mt-4 form-label">Məhsul sayı</label>
-                <input value="{{$el->goods__count}}" type="number" name="goods__count" id="disabledTextInput" class="form-control">
+                <input type="number" value="{{$el->goods__count}}" name="goods__count" id="disabledTextInput" class="form-control @error('goods__count') is-invalid @enderror">
+                    @error('goods__count')
+                        <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                    @enderror
                 <label for="disabledTextInput" class="mt-4 form-label">Məhsulun qiyməti</label>
-                <input value="{{$el->goods_price}}" type="number" name="goods_price" id="disabledTextInput" class="form-control">
+                <input type="text" value="{{$el->goods_price}}" name="goods_price" id="disabledTextInput" class="form-control @error('goods_price') is-invalid @enderror">
+                    @error('goods_price')
+                        <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                    @enderror
                 <label for="disabledTextInput" class="mt-4 form-label">Məhsul kateqoriyası</label>
                 <select name="goods__category" class="form-select" aria-label="Default select example">
                 @foreach($categories as $category)
@@ -60,9 +69,14 @@
                 <label for="disabledTextInput" class="mt-4 form-label">Tagları seç</label>
                 <select style="width: 100%;" class="js-example-basic-single" multiple="multiple" name="tags[]">
                     @foreach($tags as $tag)
-                        <option value="{{$tag->id}}">{{$tag->tag__name}}</option>
+                        <option {{ str_contains($el->tags, $tag->id)  ? "selected" : "" }} value="{{$tag->id}}">{{$tag->tag__name}}</option>
                     @endforeach
                 </select>
+                <label for="disabledTextInput" class="mt-4 form-label">Aylıq faiz</label>
+                <input type="number" value="{{$el->percent}}" name="percent" id="disabledTextInput" class="form-control  @error('percent') is-invalid @enderror">
+                    @error('percent')
+                        <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                    @enderror
                 <label for="disabledTextInput" class="mt-4 form-label">Rəngi seç</label>
                 <select name="color_id" class="form-select" aria-label="Default select example">
                     @foreach($colors as $color)
@@ -71,7 +85,10 @@
                 </select>
 
                 <label for="disabledTextInput" class="mt-4 form-label">Nəğd ödəniş endirimi</label>
-                <input value="{{$el->cashdicount}}" name="cashdicount" type="number" name="firm__name" id="disabledTextInput" class="form-control">
+                <input value="{{$el->cashdicount}}" name="cashdicount" type="number" name="firm__name" id="disabledTextInput" class="form-control @error('cashdicount') is-invalid @enderror">
+                    @error('cashdicount')
+                        <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                    @enderror
                 <button class="mt-3 btn btn-success">Məhsulu yenilə</button>
             </form>
         </div>
