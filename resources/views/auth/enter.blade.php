@@ -17,7 +17,7 @@
               <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Daxil olun</p>
 
                   <form action="{{Route('auth.login')}}" method="post" class="mx-1 mx-md-4">
                     @csrf

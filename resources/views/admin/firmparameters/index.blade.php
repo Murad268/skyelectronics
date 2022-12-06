@@ -70,9 +70,15 @@
                             @csrf
 
                             <label for="disabledTextInput" class="mt-4 form-label">Firma şəkli</label>
-                            <input type="file" name="firm__logo" id="disabledTextInput" class="form-control">
+                            <input type="file" name="firm__logo" id="disabledTextInput" class="form-control @error('firm__logo') is-invalid @enderror">
+                            @error('firm__logo')
+                                <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <label for="disabledTextInput" class="mt-4 form-label">Firma adı</label>
-                            <input type="text" name="firm__name" id="disabledTextInput" class="form-control">
+                            <input type="text" name="firm__name" id="disabledTextInput" class="form-control @error('firm__name') is-invalid @enderror">
+                            @error('firm__name')
+                                <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <button class="mt-3 btn btn-success">Yeni firma əlavə elə</button>
                         </form>
                    </div>

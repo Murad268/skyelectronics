@@ -27,35 +27,43 @@ class FavoritesController extends Controller
 
     }
     public function addfav($id) {
-        $user = User::where('email', session('user_email'))->get();
+        if(session('user_email')) {
+            $user = User::where('email', session('user_email'))->get();
 
-        $goods = Goods::find($id);
-        $create = Favorites::create([
-            'goods_name' =>  $goods->goods_name,
-            'goods_price' =>  $goods->goods_price,
-            'tags' =>  $goods->tags,
-            'views' =>  $goods->views,
-            'goods__firm' =>  $goods->goods__firm,
-            'goods__category' =>  $goods->goods__category,
-            'goods__count' =>  $goods->goods__count,
-            'cashdicount' =>  $goods->cashdicount,
-            'user_id' => $user[0]->id,
-            'good_id' => $id,
-            'slug' => $goods->slug,
-            'color_id' => $goods->color_id
-        ]);
-        if($create) {
-            return redirect()->back();
+            $goods = Goods::find($id);
+            $create = Favorites::create([
+                'goods_name' =>  $goods->goods_name,
+                'goods_price' =>  $goods->goods_price,
+                'tags' =>  $goods->tags,
+                'views' =>  $goods->views,
+                'goods__firm' =>  $goods->goods__firm,
+                'goods__category' =>  $goods->goods__category,
+                'goods__count' =>  $goods->goods__count,
+                'cashdicount' =>  $goods->cashdicount,
+                'user_id' => $user[0]->id,
+                'good_id' => $id,
+                'slug' => $goods->slug,
+                'color_id' => $goods->color_id
+            ]);
+            if($create) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->route('auth.enter');
         }
     }
 
     public function delfav($id) {
-        $delgood = Favorites::where('good_id', $id)->get();
+        if(session('user_email')) {
+                $delgood = Favorites::where('good_id', $id)->get();
 
-        $delete = Favorites::destroy($delgood[0]->id);
+                $delete = Favorites::destroy($delgood[0]->id);
 
-        if($delete) {
-            return redirect()->back();
+                if($delete) {
+                    return redirect()->back();
+                }
+        } else {
+            return redirect()->route('auth.enter');
         }
     }
 }

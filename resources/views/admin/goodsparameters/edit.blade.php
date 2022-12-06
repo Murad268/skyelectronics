@@ -89,6 +89,11 @@
                     @error('cashdicount')
                         <div class="mt-3 alert alert-danger">{{ $message }}</div>
                     @enderror
+                <label for="disabledTextInput" class="mt-4 form-label">Məhsulun xüsusiyyətləri</label>
+                        <textarea name="good_desc" class="form-control @error('good_desc') is-invalid @enderror" id="exampleFormControlTextarea1" rows="3">{{$el->good_desc}}</textarea>
+                        @error('good_desc')
+                            <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                        @enderror
                 <button class="mt-3 btn btn-success">Məhsulu yenilə</button>
             </form>
         </div>

@@ -26,7 +26,6 @@
                                         {{$category1->cat__name}}
                                     </a>
                                 @endif
-
                             @endforeach
 
                         </div>

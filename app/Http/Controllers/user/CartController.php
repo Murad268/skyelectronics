@@ -49,55 +49,70 @@ class CartController extends Controller
     }
 
     public function delete($id) {
-        $deleted = Cart::destroy($id);
-        if($deleted) {
-            return redirect()->back();
+        if(session('user_email')) {
+            $deleted = Cart::destroy($id);
+            if($deleted) {
+                return redirect()->back();
+            } else {
+                return redirect()->back();
+            }
         } else {
-            return redirect()->back();
+            return redirect()->route('auth.enter');
         }
     }
 
     public function index() {
-        $siteInfo = Settings::find(1);
-        $user = User::where('email', session('user_email'))->get();
-        $cart = Cart::where('user_id', $user[0]->id)->get();
-        $phones = phones::all();
-        return view('front.cart.index', compact('siteInfo', 'cart', 'phones'));
+        if(session('user_email')) {
+            $siteInfo = Settings::find(1);
+            $user = User::where('email', session('user_email'))->get();
+            $cart = Cart::where('user_id', $user[0]->id)->get();
+            $phones = phones::all();
+            return view('front.cart.index', compact('siteInfo', 'cart', 'phones'));
+        } else {
+            return redirect()->route('auth.enter');
+        }
     }
 
     public function addcount($id) {
-        $cart = Cart::find($id);
-        $goods = Goods::find($cart->good_id);
-        $goods__count = $goods->goods__count;
+        if(session('user_email')) {
+            $cart = Cart::find($id);
+            $goods = Goods::find($cart->good_id);
+            $goods__count = $goods->goods__count;
 
-        if($cart->quantity >= $goods__count) {
-            return redirect()->back();
+            if($cart->quantity >= $goods__count) {
+                return redirect()->back();
 
+            } else {
+                $increment = $cart->quantity + 1;
+            }
+
+            $updated = $cart->update([
+                "quantity" => $increment
+            ]);
+            if($updated) {
+                return redirect()->back();
+            }
         } else {
-            $increment = $cart->quantity + 1;
-
-        }
-
-        $updated = $cart->update([
-            "quantity" => $increment
-        ]);
-        if($updated) {
-            return redirect()->back();
+            return redirect()->route('auth.enter');
         }
     }
     public function mincount($id) {
-        $cart = Cart::find($id);
-        if($cart->quantity > 0) {
-            $increment = $cart->quantity - 1;
-        } else {
-            $increment = 0;
-        }
+        if(session('user_email')) {
+            $cart = Cart::find($id);
+            if($cart->quantity > 0) {
+                $increment = $cart->quantity - 1;
+            } else {
+                $increment = 0;
+            }
 
-        $updated = $cart->update([
-            "quantity" => $increment
-        ]);
-        if($updated) {
-            return redirect()->back();
+            $updated = $cart->update([
+                "quantity" => $increment
+            ]);
+            if($updated) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->route('auth.enter');
         }
     }
 }

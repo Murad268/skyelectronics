@@ -48,13 +48,19 @@
             <form action="{{Route('admin.photos.create')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <label for="disabledTextInput" class="form-label">Şəkli seç</label>
-                <input type="file" name="good_img" class="form-control">
+                <input type="file" name="good_img" class="form-control @error('good_img') is-invalid @enderror">
+                @error('good_img')
+                    <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                @enderror
                 <label for="disabledTextInput" class="mt-4 form-label">Məhsulu seç</label>
-                <select name="good_id" data-live-search="true" data-live-search-style="startsWith" class="form-control selectpicker" aria-label="Default select example" >
+                <select name="good_id" data-live-search="true" data-live-search-style="startsWith" class="@error('good_id') is-invalid @enderror form-control selectpicker" aria-label="Default select example" >
                     @foreach($goods as $item)
                         <option value="{{$item->id}}">{{$item->goods_name}} ({{$item->colors[0]->color_name}})</option>
                     @endforeach
                 </select>
+                @error('good_id')
+                    <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                @enderror
                 <button class="mt-3 btn btn-success">Yeni şəkil əlavə et</button>
             </form>
         </div>

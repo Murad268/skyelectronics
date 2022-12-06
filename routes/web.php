@@ -16,6 +16,7 @@ use App\Http\Controllers\admin\TagsController;
 use App\Http\Controllers\admin\UsersListController;
 use App\Http\Controllers\auth\EnterController;
 use App\Http\Controllers\auth\RegisterController;
+use App\Http\Controllers\front\AboutController;
 use App\Http\Controllers\front\BackController;
 use App\Http\Controllers\front\BestPrice;
 use App\Http\Controllers\front\ComplaintsController;
@@ -140,6 +141,7 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
     Route::get('hisse-hisse-odenish-shertleri', [PieceController::class, 'index'])->name('front.piece');
     Route::get('saytin-istifade-shertleri', [TermsController::class, 'index'])->name('front.terms');
     Route::get('magaza/{slug?}', [StoreController::class, 'index'])->name('front.store');
+    Route::get('tags/{slug?}', [StoreController::class, 'index'])->name('front.tagstore');
     Route::get('magaza', [StoreController::class, 'index'])->name('front.seacrh');
 
 
@@ -179,3 +181,4 @@ Route::group(['namespace' => 'Nedmin', 'prefix' => 'nedmin', 'as' => 'admin.'], 
     Route::post('/ordering', [addOrderController::class, 'add'])->name('addorder');
 
     Route::get('/sifarislerim', [UserOrderListController::class, 'index'])->name('orderlisting');
+    Route::get('/haqqımızda', [AboutController::class, 'index'])->name('about');

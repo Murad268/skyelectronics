@@ -57,30 +57,10 @@
                                         </ul>
                                     </div>
                                 @endforeach
-                                <div class="order_total">
-                                    <div class="order_total_content text-md-right">
-                                        <div class="order_total_title">Ümumi Qiymət:</div>
-                                        <div class="order_total_amount totalprices">₹22000</div>
-                                    </div>
 
-
-                                </div>
-                                <div class="order_total">
-                                    <div class="order_total_content text-md-right">
-                                            <div class="order_total_title">Nəğd Alış Endirimi:</div>
-                                            <div class="order_total_amount cashtotalprices">₹22000</div>
-                                        </div>
-                                </div>
-                                <div class="order_total">
-                                        <div class="order_total_content text-md-right">
-                                            <div class="order_total_title">Son Qiymət:</div>
-                                            <div class="order_total_amount lastprices">₹22000</div>
-                                        </div>
-                                </div>
                                 </div>
                                 <div class="cart_buttons">
                                         <a href="{{route('front.index')}}" class="btn btn-white cart_button_clear">Alış-verişə davam elə</a>
-                                        <button type="button" class="btn text-danger" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#oneclick">Bir kliklə al</button>
                                         <button type="button" class="btn  text-dark" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#cash">Nəğd al</button>
                                         <button type="button" class="btn  text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Hissə - hissə al</button>
 
@@ -226,50 +206,13 @@
                <div class="lastall">2849.96⫙</div>
             </div>
             <div class="cash__buttons">
-               <button data-bs-dismiss="modal">Alış-verişə davam et</button>
+               <button class="btn btn-primary" data-bs-dismiss="modal">Alış-verişə davam et</button>
                <button><a style="text-decoration: none; color: white" href="{{route('user.order')}}">Sifarişi rəsmiləşdir</a> <i class="fa fa-angle-right"></i></button>
             </div>
           </div>
       </div>
     </div>
-    <div class="modal fade" id="oneclick" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content oneclick__modal">
-            <hr>
-            <div data-bs-dismiss="modal" class="credit__modal__exit">
-               <i class="fa fa-window-close" aria-hidden="true"></i>
-            </div>
-            <form action="">
-               <label for="phone" class="form-label">Mobil telefon nömrənizi daxil edin</label>
-               <input type="tel" name="order" class="form-control" id="phone" aria-describedby="emailHelp">
-               <label for="" class="form-label">Sifariş formasını seçin</label> <br>
-               <div>
-                  <div>
-                     <input checked class="d-block" type="radio" value="cash" name="order" id="cashInput">
-                     <label class="d-block" for="cashInput" class="form-label">Nağd al</label>
-                  </div>
-                  <div>
-                     <input class="d-block" type="radio" value="cr" name="order" id="crInput">
-                     <label class="d-block" for="crInput" class="form-label">Hissə-hissə ödənişlə al</label>
-                  </div>
-               </div>
-               <div class="credit__info">
-                  <div>
-                     <label for="phone" class="form-label">Fin kodu qeyd edin * </label>
-                     <input type="tel" name="order" class="form-control" id="phone" aria-describedby="emailHelp">
-                  </div>
-                  <div>
-                     <label for="phone" class="form-label">Şəhər nömrənizi qeyd edin</label>
-                     <input type="tel" name="order" class="form-control" id="phone" aria-describedby="emailHelp">
-                  </div>
-               </div>
-               <button>Sifarişi göndər</button>
-            </form>
 
-            <hr>
-        </div>
-      </div>
-    </div>
 
 
    @endsection

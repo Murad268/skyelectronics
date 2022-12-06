@@ -74,7 +74,7 @@
          <nav class="main__nav">
         	<div class="menu">
 			    	<div class="menuActiveLink"><a href="{{route('front.index')}}">Ana Səhifə</a></div>
-			    	<div><a href="about.html">Haqqımızda</a></div>
+			    	<div><a href="{{route('about')}}">Haqqımızda</a></div>
 			    	<div><a href="{{route('front.delivery')}}">Çatdırılma</a></div>
 			    	<div><a href="news.html">Yeniliklər</a></div>
 			    	<div><a href="{{route('front.contact')}}">Əlaqə</a></div>
@@ -94,7 +94,7 @@
              <div class="col_1_of_4 span_1_of_4">
                    <h4>İnformasiya</h4>
                    <ul>
-                   <li><a href="about.html">Haqqımızda</a></li>
+                   <li><a href="{{route('about')}}">Haqqımızda</a></li>
                    <li><a href="{{route('front.conf')}}">Konfidensiallıq siyasəti</a></li>
                    <li><a href="{{route('front.piece')}}">Hissə-hissə ödəniş şərtləri</a></li>
                    <li><a href="{{route('front.back')}}">Geri qaytarma siyasəti</a></li>

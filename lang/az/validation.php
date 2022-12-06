@@ -208,6 +208,21 @@ return [
         ],
         'goods__firm' => [
             'required' => 'Məhsulun mutləq bir firması olmalıdır'
+        ],
+        'good_img' => [
+            'required' => 'Məhsulun şəklini mütləq daxil etməlisiniz'
+        ],
+        'good_id' => [
+            'required' => 'Şəkil hansı məhsula aiddir?'
+        ],
+        'firm__logo' => [
+            'required' => 'Firmanın şəklini mütləq daxil etməlisiniz'
+        ],
+        'firm__name' => [
+            'required' => 'Firmanın adını mütləq daxil etməlisiniz'
+        ],
+        'good_desc' => [
+            'required' => 'Məhsulun xüssiyyətləri mütləq daxil edilməlidir'
         ]
     ],
 

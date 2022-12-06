@@ -28,66 +28,83 @@ class FirmsController extends Controller
     }
 
     public function store(Request $req) {
+        if(session('admin_email')) {
+            $req->validate([
+                'firm__logo' => 'required',
+                'firm__name' => 'required'
+            ]);
+            if($req->hasFile('firm__logo')) {
+                $image = $req->file('firm__logo');
+                $rand = rand();
+                $path = public_path('/admin/assets/images/firms');
+                $image->move($path, $rand.$image->getClientOriginalName());
+            }
 
-        if($req->hasFile('firm__logo')) {
-            $image = $req->file('firm__logo');
-            $rand = rand();
-            $path = public_path('/admin/assets/images/firms');
-            $image->move($path, $rand.$image->getClientOriginalName());
-        }
+            $created = Firms::create([
+                "firm__logo" => $rand.$image->getClientOriginalName(),
+                "firm__name" => $req->firm__name
+            ]);
 
-        $created = Firms::create([
-            "firm__logo" => $rand.$image->getClientOriginalName(),
-            "firm__name" => $req->firm__name
-        ]);
-
-        if($created) {
-            return redirect()->route('admin.firms.index')->with('success', 'Firma uğurla əlavə edildi');
+            if($created) {
+                return redirect()->route('admin.firms.index')->with('success', 'Firma uğurla əlavə edildi');
+            } else {
+                return redirect()->route('admin.firms.index')->with('error', 'Firmanın əlavə edilməsi zamanı xəta');
+            }
         } else {
-            return redirect()->route('admin.firms.index')->with('error', 'Firmanın əlavə edilməsi zamanı xəta');
+            return redirect()->route('admin.loginshow');
         }
     }
     public function delete($id) {
-        $item = Firms::find($id);
-        $image__path = public_path('/admin/assets/images/firms/'.$item->firm__logo);
-        File::delete($image__path);
-        $destroyed = Firms::destroy($id);
-        if($destroyed) {
-            return redirect()->route('admin.firms.index')->with('success', 'Firma uğurla silindi');
+        if(session('admin_email')) {
+            $item = Firms::find($id);
+            $image__path = public_path('/admin/assets/images/firms/'.$item->firm__logo);
+            File::delete($image__path);
+            $destroyed = Firms::destroy($id);
+            if($destroyed) {
+                return redirect()->route('admin.firms.index')->with('success', 'Firma uğurla silindi');
+            } else {
+                return redirect()->route('admin.firms.index')->with('error', 'Firmanın silinməsi zamanı xəta');
+            }
         } else {
-            return redirect()->route('admin.firms.index')->with('error', 'Firmanın silinməsi zamanı xəta');
+            return redirect()->route('admin.loginshow');
         }
     }
 
     public function edit($id) {
-        $siteInfo = Settings::all();
-        $firm = Firms::find($id);
-        return view('admin.firmparameters.edit', compact('siteInfo', 'firm'));
+        if(session('admin_email')) {
+            $siteInfo = Settings::all();
+            $firm = Firms::find($id);
+            return view('admin.firmparameters.edit', compact('siteInfo', 'firm'));
+        } else {
+            return redirect()->route('admin.loginshow');
+        }
     }
     public function update(Request $req, $id) {
-        $firms = Firms::find($id);
-        if($req->hasFile('firm__logo')) {
 
-            $image = $req->file('firm__logo');
-            $path =  public_path('/admin/assets/images/firms');
-            $image__path = public_path('/admin/assets/images/firms/'.$firms->firm__logo);
-        
-            $f=File::delete($image__path);
+        if(session('admin_email')) {
+            $firms = Firms::find($id);
 
-            $image->move($path, $image->getClientOriginalName());
-            $firms->firm__logo = $image->getClientOriginalName();
+            if($req->hasFile('firm__logo')) {
 
+                $image = $req->file('firm__logo');
+                $path =  public_path('/admin/assets/images/firms');
+                $image__path = public_path('/admin/assets/images/firms/'.$firms->firm__logo);
 
-        }
+                $f=File::delete($image__path);
 
-        $firms->firm__name = $req->firm__name;
-        $update = $firms->save();
+                $image->move($path, $image->getClientOriginalName());
+                $firms->firm__logo = $image->getClientOriginalName();
+            }
 
-
-        if($update) {
-            return redirect()->route('admin.firms.index')->with('success', 'Məlumatlar uğurla yeniləndilər');
+            $firms->firm__name = $req->firm__name;
+            $update = $firms->save();
+            if($update) {
+                return redirect()->route('admin.firms.index')->with('success', 'Məlumatlar uğurla yeniləndilər');
+            } else {
+                return redirect()->route('admin.firms.index')->with('error', 'Məlumatların yenilənməsi zamanı xəta');
+            }
         } else {
-            return redirect()->route('admin.firms.index')->with('error', 'Məlumatların yenilənməsi zamanı xəta');
+            return redirect()->route('admin.loginshow');
         }
     }
 

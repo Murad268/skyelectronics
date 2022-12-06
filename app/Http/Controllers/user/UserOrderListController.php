@@ -27,15 +27,23 @@ class UserOrderListController extends Controller
     }
 
     public function cancelorder($id) {
-        $orders = OrderModel::where('id', $id)->update(['status' => 2]);
-        if($orders) {
-            return redirect()->back();
+        if(session('user_email')) {
+            $orders = OrderModel::where('id', $id)->update(['status' => 2]);
+            if($orders) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->route('auth.enter');
         }
     }
     public function deleteorder($id) {
-        $deleted = OrderModel::destroy($id);
-        if($deleted) {
-            return redirect()->back();
+        if(session('user_email')) {
+            $deleted = OrderModel::destroy($id);
+            if($deleted) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->route('auth.enter');
         }
     }
 }

@@ -128,7 +128,7 @@
                                 <div class="mt-3 alert alert-danger">{{ $message }}</div>
                             @enderror
                             <label for="disabledTextInput" class="mt-4 form-label">Məhsul firması</label>
-                            <select name="goods__firm @error('goods__firm') is-invalid @enderror" class="form-select" aria-label="Default select example">
+                            <select name="goods__firm" class="form-select @error('goods__firm') is-invalid @enderror" aria-label="Default select example">
                                 @foreach($firms as $firm)
                                     <option value="{{$firm->id}}">{{$firm->firm__name}}</option>
                                 @endforeach
@@ -159,6 +159,11 @@
                             <label for="disabledTextInput" class="mt-4 form-label">Nəğd ödəniş endirimi</label>
                             <input name="cashdicount" type="number" name="firm__name" id="disabledTextInput" class="form-control @error('cashdicount') is-invalid @enderror">
                             @error('cashdicount')
+                                <div class="mt-3 alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            <label for="disabledTextInput" class="mt-4 form-label">Məhsulun xüsusiyyətləri</label>
+                            <textarea name="good_desc" class="form-control @error('good_desc') is-invalid @enderror" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            @error('good_desc')
                                 <div class="mt-3 alert alert-danger">{{ $message }}</div>
                             @enderror
                             <button class="mt-3 btn btn-success">Yeni məhsul əlavə elə</button>

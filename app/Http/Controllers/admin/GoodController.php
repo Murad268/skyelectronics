@@ -50,7 +50,8 @@ class GoodController extends Controller
             'percent' => 'required|integer',
             'color_id' => 'required',
             'cashdicount' => 'required',
-            'goods__firm' => 'required'
+            'goods__firm' => 'required',
+            'good_desc' => 'required'
         ]);
         $all = $req->all();
         if(isset($all['tags'])) {
@@ -68,7 +69,8 @@ class GoodController extends Controller
             'percent' => $req->percent,
             'color_id' => $req->color_id,
             'cashdicount' => $req->cashdicount,
-            'tags' => $all['tags']
+            'tags' => $all['tags'],
+            'good_desc' => preg_replace("/\r\n|\r|\n/", '<br/>', $req->good_desc),
         ]);
         if($created) {
             return redirect()->route('admin.goods.index')->with('addsuccess', 'Məhsul uğurla əlavə edildi');
@@ -105,6 +107,7 @@ class GoodController extends Controller
             'goods__firm' => 'required',
             'percent' => 'required|integer',
             'cashdicount' => 'required',
+            'good_desc' => 'required'
         ]);
         $all = $req->all();
         if(isset($all['tags'])) {
@@ -123,7 +126,8 @@ class GoodController extends Controller
             'percent' => $req->percent,
             'color_id' => $req->color_id,
             'cashdicount' => $req->cashdicount,
-            'tags' => $all['tags']
+            'tags' => $all['tags'],
+            'good_desc' => preg_replace("/\r\n|\r|\n/", '<br/>', $req->good_desc),
         ]);
 
         if($updated) {

@@ -21,10 +21,10 @@
          </div>
          <div class="goods__tags">
             @foreach($its[0]->tagsOneIntr($its[0]->tags) as $tags)
-                <div  class="{{$tags->color}}"><a href="">{{$tags->tag__name}}</a></div>
+                <div style="border: none; background-color: {{$tags->color}}"><a style="color: white;" href="{{route('front.tagstore', ['slug' => $tags->slug])}}">{{$tags->tag__name}}</a></div>
             @endforeach
 
-         </div>foreac
+         </div>
          <div class="good__content__wrapper">
             <div style="width: max-content" class="categories__menu">
                 @include('front.layouts.sidebar')
@@ -133,8 +133,8 @@
                   <div class="good__content__listeners__top1">Xüsusiyyətlər</div>
                   <div class="active__cont__btn good__content__listeners__top2">İstifadəçi rəyləri</div>
                </div>
-               <div class="active__cont__disble  good__content__listeners__content first__cont">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam adipisci fuga tenetur quis fugiat suscipit cupiditate doloremque at explicabo tempora, qui ex iure distinctio autem cumque unde nesciunt earum eaque impedit assumenda laboriosam iste. Fugiat quidem veritatis rerum minus sit sequi culpa nemo perspiciatis, ab, mollitia ipsam harum recusandae sapiente aut dolore vero voluptas ratione.
+               <div class="p-4 active__cont__disble  good__content__listeners__content first__cont">
+                        {!! $its[0]->good_desc !!}
                </div>
                <div class="good__content__listeners__content second__cont">
                   <div class="good__content__listeners__content__comments">
@@ -211,7 +211,7 @@
 
 
     <!-- Modal -->
-  
+
 
 
 

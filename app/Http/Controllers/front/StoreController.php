@@ -8,6 +8,7 @@ use App\Models\categories;
 use App\Models\Goods;
 use App\Models\phones;
 use App\Models\Settings;
+use App\Models\Tags;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -21,6 +22,14 @@ class StoreController extends Controller
             $cart = Cart::where('user_id', $user[0]->id)->get();
             $categories = categories::all();
             $phones = phones::all();
+            if(str_contains($req->url(), 'tags')) {
+
+                $tag = Tags::where('slug', $slug)->get();
+                $tagId = $tag[0]->id;
+
+                $goodsAll = Goods::where('tags', 'LIKE', '%'.$tagId.'%')->paginate(9);
+                return view('front.store.index', compact('siteInfo', 'cart', 'categories', 'goodsAll', 'phones'));
+            }
             if(isset($req->good_name)) {
                 $q = $req->good_name;
                 $goodsAll = Goods::where('goods_name', 'like', '%'.$q.'%')->paginate(9);
