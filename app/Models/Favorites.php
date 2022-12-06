@@ -10,6 +10,6 @@ class Favorites extends Model
     use HasFactory;
     protected $guarded = [];
     public function photos() {
-        return $this->hasMany(Photo::class, 'good_id', 'id')->orderBy('main', 'desc');
+        return $this->hasMany(Photo::class, 'good_id', 'good_id')->orderBy('main', 'desc');
     }
 }

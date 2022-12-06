@@ -29,7 +29,6 @@ class FavoritesController extends Controller
     public function addfav($id) {
         if(session('user_email')) {
             $user = User::where('email', session('user_email'))->get();
-
             $goods = Goods::find($id);
             $create = Favorites::create([
                 'goods_name' =>  $goods->goods_name,
@@ -56,9 +55,7 @@ class FavoritesController extends Controller
     public function delfav($id) {
         if(session('user_email')) {
                 $delgood = Favorites::where('good_id', $id)->get();
-
                 $delete = Favorites::destroy($delgood[0]->id);
-
                 if($delete) {
                     return redirect()->back();
                 }

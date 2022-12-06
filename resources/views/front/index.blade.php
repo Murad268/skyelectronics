@@ -66,9 +66,9 @@
             @foreach($newgoods as $goods)
                 <div  style="height: 300px;" class="content__goods">
                 @if($goods->photos->first() != null)
-                    <img style="height: 200px;"height: 50px" src="{{asset('admin/assets/images/goods/'.$goods->photos->first()->good_img)}}" alt="">
+                    <img style="height: 200px;" src="{{asset('admin/assets/images/goods/'.$goods->photos->first()->good_img)}}" alt="">
                 @else
-                    <img style="width: 100%; height: 50px" src="{{asset('admin/assets/images/goods/empty.png')}}" alt="">
+                    <img style="width: 100%; height: 200px" src="{{asset('admin/assets/images/goods/empty.png')}}" alt="">
                 @endif
                 <div class="content__goods__title"><a style="color: gray; text-decoration: none" href="{{route('goodsab', ['slug' => $goods->slug, 'color' => $goods->color_id])}}">{{substr($goods->goods_name, 0, 15)}}</a></div>
                 <div class="mt-3 content__goods__footer">
@@ -77,9 +77,7 @@
                 </div>
                 </div>
             @endforeach
-
          </div>
-
          <div class="mt-3 mb-3 content__title">
             <div class="content__title__left">
                ƏN POPULYAR MƏHSULLAR
@@ -106,9 +104,7 @@
                 </div>
                 </div>
             @endforeach
-
          </div>
-
       </div>
    </div>
    @endsection
