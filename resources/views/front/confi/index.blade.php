@@ -1,5 +1,8 @@
 
    @extends('front.layouts.front')
+   @section('title')
+    <title>{{"konfidensiallıq siyasəti"}}</title>
+   @endsection
    @section('content')
 
 
@@ -7,7 +10,7 @@
 
 <div class="container">
 <div class="good__content__top mb-5">
-    <a href="">ana səhifə</a> >>> <a href="">şikayətlərin idarəolunma siyasəti</a>
+    <a href="">ana səhifə</a> >>> <a href="">Konfidensiallıq siyasəti</a>
 </div>
 <div class="row">
 <div class="col-mm-12">

@@ -1,5 +1,8 @@
 
    @extends('front.layouts.front')
+   @section('title')
+    <title>{{"Hissə-hissə ödəniş şərtləri"}}</title>
+   @endsection
    @section('content')
 
 

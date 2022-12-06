@@ -1,4 +1,7 @@
 @extends('front.layouts.front')
+@section('title')
+    <title>{{"Hesabım"}}</title>
+@endsection
 @section('content')
 
    <div class="content">

@@ -17,7 +17,7 @@
     />
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
-   <title>Document</title>
+   @yield('title')
 </head>
 <body>
    <header class="header">
@@ -139,11 +139,11 @@
                    <div class="social-icons">
                       <h4>Bizi İzlə</h4>
                            <ul>
-                            <li><a href="#" target="_blank"><img src="./assets/images/facebook.png" alt="" /></a></li>
-                            <li><a href="#" target="_blank"><img src="./assets/images/twitter.png" alt="" /></a></li>
-                            <li><a href="#" target="_blank"><img src="./assets/images/skype.png" alt="" /> </a></li>
-                            <li><a href="#" target="_blank"> <img src="./assets/images/dribbble.png" alt="" /></a></li>
-                            <li><a href="#" target="_blank"> <img src="./assets/images/linkedin.png" alt="" /></a></li>
+                            <li><a href="{{$siteInfo->SosyalLinkFacebook}}" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                            <li><a href="{{$siteInfo->SosyalLinkTwitter}}" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="{{$siteInfo->SosyalLinkInstagram}}" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href="{{$siteInfo->SosyalLinkLinkedin}}" target="_blank"> <i class="fab fa-linkedin" aria-hidden="true"></i></li>
+                            <li><a href="{{$siteInfo->SosyalLinkYoutube}}" target="_blank">  <i class="fab fa-youtube" aria-hidden="true"></i></a></li>
                             <div class="clear"></div>
                         </ul>
                        </div>

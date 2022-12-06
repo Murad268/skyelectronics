@@ -1,5 +1,8 @@
 
    @extends('front.layouts.front')
+   @section('title')
+    <title>{{$its[0]->goods_name}}</title>
+   @endsection
    @section('content')
 
 

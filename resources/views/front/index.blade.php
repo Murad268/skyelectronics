@@ -1,5 +1,8 @@
 
    @extends('front.layouts.front')
+   @section('title')
+    <title>{{"Ana səhifə"}}</title>
+   @endsection
    @section('content')
    <div class="content">
       <div class="container">

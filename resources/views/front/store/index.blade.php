@@ -1,5 +1,8 @@
 
    @extends('front.layouts.front')
+   @section('title')
+    <title>{{"Mağaza"}}</title>
+   @endsection
    @section('content')
 
         <div class="store_content">

@@ -1,5 +1,8 @@
 
    @extends('front.layouts.front')
+   @section('title')
+    <title>{{"Ən yaxşı qiymətə zəmanət"}}</title>
+   @endsection
    @section('content')
 
     <div class="content">

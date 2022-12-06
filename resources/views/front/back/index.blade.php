@@ -1,5 +1,8 @@
 
    @extends('front.layouts.front')
+   @section('title')
+    <title>{{"Geri qaytarma siyasəti"}}</title>
+   @endsection
    @section('content')
 
 

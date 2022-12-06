@@ -1,5 +1,8 @@
 
    @extends('front.layouts.front')
+   @section('title')
+    <title>{{"Çatdırılma"}}</title>
+   @endsection
    @section('content')
 
 

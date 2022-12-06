@@ -1,11 +1,14 @@
 
    @extends('front.layouts.front')
+   @section('title')
+    <title>{{"Sevimlilərim"}}</title>
+   @endsection
    @section('content')
     <div class="container">
         @if($fav->count() > 0)
             <div class="content__goods__wrapper">
             @foreach($fav as $goods)
-       
+
                 <div style="height: 300px;" class="content__goods">
                 @if($goods->photos->first() != null)
                     <img style="height: 200px;" src="{{asset('admin/assets/images/goods/'.$goods->photos->first()->good_img)}}" alt="">

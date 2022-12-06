@@ -1,5 +1,8 @@
 
    @extends('front.layouts.front')
+   @section('title')
+    <title>{{"Aylıq ödənişlərin həyata keçməsi"}}</title>
+   @endsection
    @section('content')
 
    <div class="content monthly">

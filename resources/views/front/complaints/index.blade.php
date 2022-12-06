@@ -1,5 +1,8 @@
 
    @extends('front.layouts.front')
+   @section('title')
+    <title>{{"Şikayətlərin idarəolunma siyasəti"}}</title>
+   @endsection
    @section('content')
 
         <div class="content">

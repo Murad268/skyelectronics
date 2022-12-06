@@ -1,5 +1,8 @@
 
    @extends('front.layouts.front')
+   @section('title')
+    <title>{{"Haqqımızda"}}</title>
+   @endsection
    @section('content')
 
 
